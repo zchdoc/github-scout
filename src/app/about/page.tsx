@@ -18,14 +18,80 @@ export default function AboutPage() {
         </h2>
         <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-xl p-6 space-y-3">
           <p className="leading-relaxed">
-            <strong>GitHub Scout（GitHub 拾光）</strong>是一个面向中文 X/Twitter 内容创作者的
-            GitHub 项目策展库。我们每日精选值得关注的开源项目，提供简洁有力的中文推文文案，
-            帮助你高效产出优质内容。
+            <strong>GitHub Scout（GitHub 拾光）</strong>是一个面向中文开发者的
+            GitHub 项目实用策展库。我们的定位是<strong>「能为我所用」</strong>——
+            每日深度解析一个实用开源项目，不只是告诉你这个项目好在哪，
+            更要让你知道<strong>怎么跑起来、怎么用到自己的场景</strong>。
           </p>
           <p className="leading-relaxed text-[var(--muted)]">
             名字灵感：「拾光」既是"捡拾光芒"——发掘那些闪闪发光的开源项目，
             也谐音"时光"——记录开源世界每一天的精彩。
           </p>
+        </div>
+      </section>
+
+      <section className="mb-12 space-y-4">
+        <h2 className="text-xl font-semibold flex items-center gap-2">
+          <span className="text-2xl">📖</span> 内容特色
+        </h2>
+        <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-xl p-6">
+          <ul className="space-y-4">
+            <li className="flex gap-3">
+              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center font-bold text-sm">
+                1
+              </span>
+              <div>
+                <strong className="block mb-1">每日一个深度解析</strong>
+                <p className="text-sm text-[var(--muted)]">
+                  不是五个浅尝辄止，而是一个深入到底。每天只推荐一个项目，但给你足够的信息去实际使用它。
+                </p>
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center font-bold text-sm">
+                2
+              </span>
+              <div>
+                <strong className="block mb-1">有什么用（useForZh）</strong>
+                <p className="text-sm text-[var(--muted)]">
+                  明确告诉你这个项目面向谁、解决什么问题，帮你快速判断是否符合你的需求。
+                </p>
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center font-bold text-sm">
+                3
+              </span>
+              <div>
+                <strong className="block mb-1">实现了什么（featuresZh）</strong>
+                <p className="text-sm text-[var(--muted)]">
+                  3-6 个核心功能点，让你对项目的能力边界有清晰认知。
+                </p>
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center font-bold text-sm">
+                4
+              </span>
+              <div>
+                <strong className="block mb-1">怎么跑起来（howToRunZh）</strong>
+                <p className="text-sm text-[var(--muted)]">
+                  可复制的安装运行命令，标注依赖和注意事项，降低上手门槛。
+                </p>
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center font-bold text-sm">
+                5
+              </span>
+              <div>
+                <strong className="block mb-1">怎么为我所用（forYouZh）</strong>
+                <p className="text-sm text-[var(--muted)]">
+                  具体场景建议，告诉你"今天就能做的第一件事"，让项目真正落地。
+                </p>
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -40,9 +106,9 @@ export default function AboutPage() {
                 1
               </span>
               <div>
-                <strong className="block mb-1">有趣或有用</strong>
+                <strong className="block mb-1">实用优先</strong>
                 <p className="text-sm text-[var(--muted)]">
-                  项目要么能解决实际问题，要么足够新奇有趣，能引发讨论和分享欲
+                  项目必须能解决实际问题，不收录纯概念验证或玩具项目
                 </p>
               </div>
             </li>
@@ -51,9 +117,9 @@ export default function AboutPage() {
                 2
               </span>
               <div>
-                <strong className="block mb-1">活跃维护</strong>
+                <strong className="block mb-1">可跑起来</strong>
                 <p className="text-sm text-[var(--muted)]">
-                  优先选择近期有更新、有明确 roadmap 的项目，避免"弃坑"仓库
+                  有清晰的文档，能在合理时间内完成安装和基本使用
                 </p>
               </div>
             </li>
@@ -62,9 +128,9 @@ export default function AboutPage() {
                 3
               </span>
               <div>
-                <strong className="block mb-1">文档清晰</strong>
+                <strong className="block mb-1">活跃维护</strong>
                 <p className="text-sm text-[var(--muted)]">
-                  README 结构清晰，有演示或截图，方便读者快速理解项目价值
+                  优先选择近期有更新、社区活跃的项目，避免"弃坑"仓库
                 </p>
               </div>
             </li>
@@ -75,18 +141,7 @@ export default function AboutPage() {
               <div>
                 <strong className="block mb-1">话题性强</strong>
                 <p className="text-sm text-[var(--muted)]">
-                  与当下热门技术趋势相关（如 AI/LLM、Web3、可视化），容易引发共鸣
-                </p>
-              </div>
-            </li>
-            <li className="flex gap-3">
-              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--tag-bg)] text-[var(--tag-text)] flex items-center justify-center font-bold text-sm">
-                5
-              </span>
-              <div>
-                <strong className="block mb-1">多元覆盖</strong>
-                <p className="text-sm text-[var(--muted)]">
-                  平衡不同领域（前端/后端/AI/工具），避免单一类型垄断
+                  与当下热门技术趋势相关（如 AI/LLM、Web、可视化），容易引发共鸣
                 </p>
               </div>
             </li>
@@ -112,13 +167,13 @@ export default function AboutPage() {
               </div>
             </li>
             <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 px-2 py-0.5 rounded text-xs font-medium bg-[var(--tag-bg)] text-[var(--tag-text)]">
+              <span className="flex-shrink-0 px-2 py-0.5 rounded text-xs font-medium bg-[var(--success)] text-white">
                 v0.2
               </span>
               <div>
-                <strong>Repo 星球（3D 地球可视化）</strong>
+                <strong>深度内容升级</strong>
                 <p className="text-sm text-[var(--muted)]">
-                  交互式 3D 地球展示全球热门项目分布，探索式发现体验
+                  每日一个深度项目；新增用途、功能、安装、场景等实用字段
                 </p>
               </div>
             </li>
@@ -143,14 +198,15 @@ export default function AboutPage() {
         </h2>
         <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-xl p-6 space-y-3">
           <p className="leading-relaxed">
-            欢迎提交你发现的优质项目！只需要编辑{" "}
+            欢迎提交你发现的优质项目！编辑{" "}
             <code className="px-1.5 py-0.5 rounded bg-[var(--tag-bg)] text-[var(--tag-text)] text-sm">
               data/repos.json
             </code>{" "}
-            文件，按照现有格式添加新项目，然后提交 Pull Request。
+            文件，按照现有格式添加新项目（包含深度字段），然后提交 Pull Request。
           </p>
           <p className="text-sm text-[var(--muted)]">
-            详细的贡献指南请参阅项目 README。
+            贡献要求：不只是复制 README，要提供真正有用的中文内容——
+            让读者看完就知道怎么跑起来、怎么用到自己的场景。
           </p>
         </div>
       </section>
