@@ -43,3 +43,7 @@ next-env.d.ts
 .vscode
 *.swp
 *.swo
+
+# Auto-generated AI agent docs
+AGENTS.md
+CLAUDE.md
