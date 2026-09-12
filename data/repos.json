@@ -1,0 +1,114 @@
+{
+  "repos": [
+    {
+      "id": "ponytail",
+      "fullName": "DietrichGebert/ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "starsApprox": 136000,
+      "hookZh": "最好的代码，是你根本没写出来的那部分。",
+      "whyZh": "YAGNI agent skill，少写约一半代码。",
+      "tags": ["AI", "LLM", "agent skill"],
+      "curatedDate": "2026-09-12",
+      "tweetDraftZh": "🔥 DietrichGebert/ponytail ⭐136k\n\n最好的代码，是你根本没写出来的那部分。\n\nYAGNI agent skill，少写约一半代码。\n\n#GitHub #开源 #AI #LLM\n\nhttps://github.com/DietrichGebert/ponytail"
+    },
+    {
+      "id": "webwright",
+      "fullName": "microsoft/Webwright",
+      "url": "https://github.com/microsoft/Webwright",
+      "starsApprox": 6000,
+      "hookZh": "终端里的浏览器 agent，把「解过一次」蒸馏成可重跑脚本。",
+      "whyZh": "微软长程网页 agent；Skill Factory。",
+      "tags": ["AI agent", "Playwright"],
+      "curatedDate": "2026-09-12",
+      "tweetDraftZh": "🔥 microsoft/Webwright ⭐6k\n\n终端里的浏览器 agent，把「解过一次」蒸馏成可重跑脚本。\n\n微软长程网页 agent；Skill Factory。\n\n#GitHub #开源 #AI #Playwright\n\nhttps://github.com/microsoft/Webwright"
+    },
+    {
+      "id": "img2threejs",
+      "fullName": "img2threejs/img2threejs",
+      "url": "https://github.com/img2threejs/img2threejs",
+      "starsApprox": 16000,
+      "hookZh": "不是砸一坨 mesh，而是用代码把物体「长」出来。",
+      "whyZh": "图→可动画 Three.js 代码模型。",
+      "tags": ["前端", "创意", "Three.js"],
+      "curatedDate": "2026-09-12",
+      "tweetDraftZh": "🔥 img2threejs/img2threejs ⭐16k\n\n不是砸一坨 mesh，而是用代码把物体「长」出来。\n\n图→可动画 Three.js 代码模型。\n\n#GitHub #开源 #前端 #创意 #Three.js\n\nhttps://github.com/img2threejs/img2threejs"
+    },
+    {
+      "id": "colibri",
+      "fullName": "JustVugg/colibri",
+      "url": "https://github.com/JustVugg/colibri",
+      "starsApprox": 28000,
+      "hookZh": "引擎很小，模型可以很大：专家权重从磁盘流式加载。",
+      "whyZh": "纯 C 零依赖跑 MoE。",
+      "tags": ["趣味", "硬件", "MoE"],
+      "curatedDate": "2026-09-12",
+      "tweetDraftZh": "🔥 JustVugg/colibri ⭐28k\n\n引擎很小，模型可以很大：专家权重从磁盘流式加载。\n\n纯 C 零依赖跑 MoE。\n\n#GitHub #开源 #MoE #硬件\n\nhttps://github.com/JustVugg/colibri"
+    },
+    {
+      "id": "openwiki",
+      "fullName": "langchain-ai/openwiki",
+      "url": "https://github.com/langchain-ai/openwiki",
+      "starsApprox": 16000,
+      "hookZh": "人读的 README 不够用了，OpenWiki 专写 agent 友好的项目 wiki。",
+      "whyZh": "LangChain CLI，可维护的 agent 文档。",
+      "tags": ["开发者工具", "agent docs"],
+      "curatedDate": "2026-09-12",
+      "tweetDraftZh": "🔥 langchain-ai/openwiki ⭐16k\n\n人读的 README 不够用了，OpenWiki 专写 agent 友好的项目 wiki。\n\nLangChain CLI，可维护的 agent 文档。\n\n#GitHub #开源 #开发者工具 #AI\n\nhttps://github.com/langchain-ai/openwiki"
+    },
+    {
+      "id": "gods-eye-view",
+      "fullName": "bilawalsidhu/gods-eye-view",
+      "url": "https://github.com/bilawalsidhu/gods-eye-view",
+      "starsApprox": 24848,
+      "hookZh": "浏览器里开一架「上帝视角」间谍卫星——数据竟然全是真的。",
+      "whyZh": "把航班、船舶、卫星、地震等公开信号叠进 3D 地球；座舱跟飞、夜视/热成像。",
+      "tags": ["创意", "可视化", "趣味"],
+      "curatedDate": "2026-09-11",
+      "tweetDraftZh": "🔥 bilawalsidhu/gods-eye-view ⭐24.8k\n\n浏览器里开一架「上帝视角」间谍卫星——数据竟然全是真的。\n\n把航班、船舶、卫星、地震等公开信号叠进 3D 地球；座舱跟飞、夜视/热成像。\n\n#GitHub #开源 #创意 #可视化\n\nhttps://github.com/bilawalsidhu/gods-eye-view"
+    },
+    {
+      "id": "diagram-design",
+      "fullName": "cathrynlavery/diagram-design",
+      "url": "https://github.com/cathrynlavery/diagram-design",
+      "starsApprox": 37958,
+      "hookZh": "让 AI 画出设计师也不会嫌弃的架构图——告别 Mermaid 塑料感。",
+      "whyZh": "杂志级图表技能；HTML+SVG；可重绘 draw.io/Mermaid/Excalidraw。",
+      "tags": ["AI", "前端", "设计"],
+      "curatedDate": "2026-09-11",
+      "tweetDraftZh": "🔥 cathrynlavery/diagram-design ⭐38k\n\n让 AI 画出设计师也不会嫌弃的架构图——告别 Mermaid 塑料感。\n\n杂志级图表技能；HTML+SVG；可重绘 draw.io/Mermaid/Excalidraw。\n\n#GitHub #开源 #AI #设计\n\nhttps://github.com/cathrynlavery/diagram-design"
+    },
+    {
+      "id": "llmfit",
+      "fullName": "AlexsJones/llmfit",
+      "url": "https://github.com/AlexsJones/llmfit",
+      "starsApprox": 35827,
+      "hookZh": "一条命令问清楚：这台机器到底能舒服跑哪些开源大模型？",
+      "whyZh": "Rust 硬件嗅探+模型适配；TUI/Dashboard。",
+      "tags": ["AI", "LLM", "开发者工具"],
+      "curatedDate": "2026-09-11",
+      "tweetDraftZh": "🔥 AlexsJones/llmfit ⭐35.8k\n\n一条命令问清楚：这台机器到底能舒服跑哪些开源大模型？\n\nRust 硬件嗅探+模型适配；TUI/Dashboard。\n\n#GitHub #开源 #AI #LLM #开发者工具\n\nhttps://github.com/AlexsJones/llmfit"
+    },
+    {
+      "id": "openmaic",
+      "fullName": "THU-MAIC/OpenMAIC",
+      "url": "https://github.com/THU-MAIC/OpenMAIC",
+      "starsApprox": 35492,
+      "hookZh": "一句话生成整堂课：AI 老师 + AI 同学，还能白板板书。",
+      "whyZh": "清华多智能体课堂；Live Demo；中文友好。",
+      "tags": ["AI", "教育", "创意"],
+      "curatedDate": "2026-09-11",
+      "tweetDraftZh": "🔥 THU-MAIC/OpenMAIC ⭐35.5k\n\n一句话生成整堂课：AI 老师 + AI 同学，还能白板板书。\n\n清华多智能体课堂；Live Demo；中文友好。\n\n#GitHub #开源 #AI #教育\n\nhttps://github.com/THU-MAIC/OpenMAIC"
+    },
+    {
+      "id": "open-pencil",
+      "fullName": "open-pencil/open-pencil",
+      "url": "https://github.com/open-pencil/open-pencil",
+      "starsApprox": 8261,
+      "hookZh": "开源、可脚本化的 Figma 替代：AI 直接在画布上画，还能读写 .fig。",
+      "whyZh": "原生 .fig/.pen；MCP/CLI；低估黑马。",
+      "tags": ["前端", "设计", "AI"],
+      "curatedDate": "2026-09-11",
+      "tweetDraftZh": "🔥 open-pencil/open-pencil ⭐8.3k\n\n开源、可脚本化的 Figma 替代：AI 直接在画布上画，还能读写 .fig。\n\n原生 .fig/.pen；MCP/CLI；低估黑马。\n\n#GitHub #开源 #设计 #Figma替代\n\nhttps://github.com/open-pencil/open-pencil"
+    }
+  ]
+}

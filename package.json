@@ -1,0 +1,41 @@
+{
+  "name": "github-scout",
+  "version": "0.1.0",
+  "description": "GitHub Scout / GitHub 拾光 - 精选 GitHub 开源项目库",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zchdoc/github-scout.git"
+  },
+  "keywords": [
+    "github",
+    "opensource",
+    "curation",
+    "twitter",
+    "nextjs"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zchdoc/github-scout/issues"
+  },
+  "homepage": "https://github.com/zchdoc/github-scout#readme",
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^22.20.2",
+    "@types/react": "^19.3.0",
+    "autoprefixer": "^10.5.6",
+    "next": "^16.3.5",
+    "postcss": "^8.5.28",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
+  }
+}
