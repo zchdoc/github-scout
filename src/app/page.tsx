@@ -9,7 +9,7 @@ import { Repo, SortOption } from "@/lib/types";
 import { getAllTags, groupByDate, getDateLabel } from "@/lib/utils";
 import reposData from "../../data/repos.json";
 
-const repos: Repo[] = reposData.repos;
+const repos = reposData.repos as Repo[];
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -38,6 +38,9 @@ export default function HomePage() {
           repo.fullName.toLowerCase().includes(query) ||
           repo.hookZh.toLowerCase().includes(query) ||
           repo.whyZh.toLowerCase().includes(query) ||
+          repo.useForZh.toLowerCase().includes(query) ||
+          repo.forYouZh.toLowerCase().includes(query) ||
+          repo.featuresZh.some((f) => f.toLowerCase().includes(query)) ||
           repo.tags.some((tag) => tag.toLowerCase().includes(query))
       );
     }
@@ -80,9 +83,9 @@ export default function HomePage() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <section className="mb-8 text-center">
-        <h2 className="text-3xl font-bold mb-3">精选开源项目库</h2>
+        <h2 className="text-3xl font-bold mb-3">实用开源项目深度库</h2>
         <p className="text-[var(--muted)] max-w-2xl mx-auto">
-          每日发掘值得关注的 GitHub 项目，一键复制推文文案，助力你的 X/Twitter 内容运营
+          每日一个深度项目解析——不只是「看一眼」，而是「能为我所用」。告诉你怎么跑起来、怎么用到自己的场景。
         </p>
       </section>
 
