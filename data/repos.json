@@ -1,13 +1,47 @@
 {
   "repos": [
     {
+      "id": "serena",
+      "fullName": "oraios/serena",
+      "url": "https://github.com/oraios/serena",
+      "starsApprox": 29000,
+      "hookZh": "别再让 agent 靠 grep 猜代码——给它一套真正的 IDE 级语义工具。",
+      "whyZh": "MCP 把符号级检索/重构塞进 Cursor、Claude Code、Grok 等任意 coding agent。",
+      "tags": [
+        "AI",
+        "LLM",
+        "MCP",
+        "developer-tools",
+        "IDE"
+      ],
+      "curatedDate": "2026-09-13",
+      "tweetDraftZh": "🛠️ oraios/serena ⭐29k\n\n别再让 coding agent 靠 grep 猜代码了。\n\nSerena 是给 agent 用的「IDE」：符号查找、引用追踪、跨文件重命名，全走 MCP，Cursor / Claude Code / Grok 都能接。\n\n今天就能做：\n1) uv tool install -p 3.13 serena-agent\n2) serena init\n3) 在 Cursor MCP 里加：serena start-mcp-server --context ide\n\n#GitHub #开源 #MCP #AI\n\nhttps://github.com/oraios/serena",
+      "useForZh": "面向每天用 Cursor / Claude Code / Codex / Grok 写代码的人。解决大仓库里 agent「全文搜索+瞎改」又慢又容易改错的问题——把 IDE 才有的符号理解、引用追踪和安全重构，通过 MCP 交给任意 coding agent。",
+      "featuresZh": [
+        "符号级检索：按符号找定义、引用、文件大纲，而不是靠正则扫全文",
+        "语义编辑与重构：替换符号体、插入前后、安全删除；LSP 支持跨文件 rename",
+        "40+ 语言：默认走 Language Server；也可用 JetBrains 插件后端",
+        "MCP 即插即用：Cursor、Claude Code、Codex、Grok、VS Code Copilot 等都有现成 context",
+        "项目记忆：跨会话记住项目约定，可和 AGENTS.md 一起用",
+        "可配置：YAML 分层配置，按客户端关掉重复工具，避免 context 膨胀"
+      ],
+      "howToRunZh": "前提：本机已装 [uv](https://docs.astral.sh/uv/)（唯一硬依赖）；语言服务器后端下，个别语言可能要额外装对应 LSP。\n\n```bash\n# 1) 安装 CLI（官方强调：不要从 MCP 市场乱装，命令容易过时）\nuv tool install -p 3.13 serena-agent\n\n# 2) 初始化并自检（默认 Language Server 后端）\nserena init\n# 若要用 JetBrains 后端：serena init -b JetBrains\n\n# 3) 接到你的客户端（任选其一）\n# Cursor / Cline / Windsurf 等 IDE：MCP 启动命令用\n#   serena start-mcp-server --context ide\n# Claude Code 一键：\n#   serena setup claude-code\n# Grok CLI 一键：\n#   serena setup grok\n```\n\nCursor 侧：在 MCP 设置里加一条 stdio 服务器，command 填 `serena`，args 填 `start-mcp-server`、`--context`、`ide`（工作区项目可再加 `--project` 指向仓库根目录）。若客户端找不到 `serena`，改成 `uv tool` 装好后的绝对路径。\n\n验证：在 agent 对话里能看到 Serena 工具；首次可说「用 Serena 激活当前项目并读初始说明」。文档：https://oraios.github.io/serena",
+      "forYouZh": "今天第一件事：在你最常开的那个仓库里把 Serena 接到 Cursor（或 Grok CLI）。然后丢一句「用 Serena 找出 XxxService 的所有引用，并说明调用链」——对比以前靠 grep 的翻文件量。若你做开源安利内容，这也能写成一条「给 agent 装 IDE」的实操帖。",
+      "difficulty": "简单",
+      "demoUrl": "https://www.youtube.com/watch?v=5QN7gN1KYLA"
+    },
+    {
       "id": "ponytail",
       "fullName": "DietrichGebert/ponytail",
       "url": "https://github.com/DietrichGebert/ponytail",
       "starsApprox": 136000,
       "hookZh": "最好的代码，是你根本没写出来的那部分。",
       "whyZh": "YAGNI agent skill，少写约一半代码。",
-      "tags": ["AI", "LLM", "agent skill"],
+      "tags": [
+        "AI",
+        "LLM",
+        "agent skill"
+      ],
       "curatedDate": "2026-09-12",
       "tweetDraftZh": "🔥 DietrichGebert/ponytail ⭐136k\n\n最好的代码，是你根本没写出来的那部分。\n\nYAGNI agent skill，让 AI 像最懒的资深工程师一样思考——少写约一半代码。\n\n💡 今天就试：在你的 AI agent 配置中引入这个 skill。\n\n#GitHub #开源 #AI #LLM\n\nhttps://github.com/DietrichGebert/ponytail",
       "useForZh": "面向使用 AI 编程 agent 的开发者。解决 AI 生成代码时过度工程化、写太多不必要代码的问题——让 AI 像「最懒的资深工程师」一样，只写真正需要的代码。",
@@ -29,7 +63,10 @@
       "starsApprox": 6000,
       "hookZh": "终端里的浏览器 agent，把「解过一次」蒸馏成可重跑脚本。",
       "whyZh": "微软长程网页 agent；Skill Factory。",
-      "tags": ["AI agent", "Playwright"],
+      "tags": [
+        "AI agent",
+        "Playwright"
+      ],
       "curatedDate": "2026-09-12",
       "tweetDraftZh": "🔥 microsoft/Webwright ⭐6k\n\n终端里的浏览器 agent，把「解过一次」蒸馏成可重跑脚本。\n\n微软出品，长程网页任务 SOTA。\n\n💡 试试：让它帮你自动化一个重复的网页操作。\n\n#GitHub #开源 #AI #Playwright\n\nhttps://github.com/microsoft/Webwright",
       "useForZh": "面向需要自动化复杂网页任务的开发者和测试工程师。解决长程网页操作（多步骤、跨页面）难以自动化的问题，可将手动操作转化为可重复执行的脚本。",
@@ -51,7 +88,11 @@
       "starsApprox": 16000,
       "hookZh": "不是砸一坨 mesh，而是用代码把物体「长」出来。",
       "whyZh": "图→可动画 Three.js 代码模型。",
-      "tags": ["前端", "创意", "Three.js"],
+      "tags": [
+        "前端",
+        "创意",
+        "Three.js"
+      ],
       "curatedDate": "2026-09-12",
       "tweetDraftZh": "🔥 img2threejs/img2threejs ⭐16k\n\n不是砸一坨 mesh，而是用代码把物体「长」出来。\n\n图片→程序化 Three.js 模型，可动画、可编辑。\n\n💡 试试：上传一张简单物体的图片看看效果。\n\n#GitHub #开源 #前端 #创意 #Three.js\n\nhttps://github.com/img2threejs/img2threejs",
       "useForZh": "面向前端开发者、3D 创意工作者和游戏开发者。解决从 2D 图片创建 3D 模型的问题——生成的不是静态 mesh，而是可编辑、可动画的 Three.js 代码。",
@@ -74,7 +115,11 @@
       "starsApprox": 28000,
       "hookZh": "引擎很小，模型可以很大：专家权重从磁盘流式加载。",
       "whyZh": "纯 C 零依赖跑 MoE。",
-      "tags": ["趣味", "硬件", "MoE"],
+      "tags": [
+        "趣味",
+        "硬件",
+        "MoE"
+      ],
       "curatedDate": "2026-09-12",
       "tweetDraftZh": "🔥 JustVugg/colibri ⭐28k\n\n引擎很小，模型可以很大：专家权重从磁盘流式加载。\n\n纯 C 零依赖，让普通硬件也能跑 MoE 大模型。\n\n💡 试试：在你的旧电脑上跑一个 MoE 模型。\n\n#GitHub #开源 #MoE #硬件\n\nhttps://github.com/JustVugg/colibri",
       "useForZh": "面向想在消费级硬件上运行大型 MoE 模型的开发者和 AI 爱好者。解决 MoE 模型内存需求巨大的问题——通过磁盘流式加载专家权重，用有限内存运行超大模型。",
@@ -96,7 +141,10 @@
       "starsApprox": 16000,
       "hookZh": "人读的 README 不够用了，OpenWiki 专写 agent 友好的项目 wiki。",
       "whyZh": "LangChain CLI，可维护的 agent 文档。",
-      "tags": ["开发者工具", "agent docs"],
+      "tags": [
+        "开发者工具",
+        "agent docs"
+      ],
       "curatedDate": "2026-09-12",
       "tweetDraftZh": "🔥 langchain-ai/openwiki ⭐16k\n\n人读的 README 不够用了，OpenWiki 专写 agent 友好的项目 wiki。\n\nLangChain 出品，自动生成 AI 能理解的项目文档。\n\n💡 试试：在你的项目上跑一次，看看生成的文档。\n\n#GitHub #开源 #开发者工具 #AI\n\nhttps://github.com/langchain-ai/openwiki",
       "useForZh": "面向希望让 AI agent 更好理解自己项目的开发者。解决 AI 编程助手难以理解项目上下文的问题——生成结构化、agent 友好的项目文档，让 AI 更高效地帮你写代码。",
@@ -118,7 +166,11 @@
       "starsApprox": 24848,
       "hookZh": "浏览器里开一架「上帝视角」间谍卫星——数据竟然全是真的。",
       "whyZh": "把航班、船舶、卫星、地震等公开信号叠进 3D 地球；座舱跟飞、夜视/热成像。",
-      "tags": ["创意", "可视化", "趣味"],
+      "tags": [
+        "创意",
+        "可视化",
+        "趣味"
+      ],
       "curatedDate": "2026-09-11",
       "tweetDraftZh": "🔥 bilawalsidhu/gods-eye-view ⭐24.8k\n\n浏览器里开一架「上帝视角」间谍卫星——数据竟然全是真的。\n\n航班、船舶、卫星实时轨迹全在 3D 地球上。\n\n💡 打开就能玩：访问在线 Demo 感受一下。\n\n#GitHub #开源 #创意 #可视化\n\nhttps://github.com/bilawalsidhu/gods-eye-view",
       "useForZh": "面向对地理空间数据和可视化感兴趣的开发者、数据爱好者和好奇心旺盛的普通用户。提供「上帝视角」——在 3D 地球上实时查看航班、船舶、卫星等公开数据，满足探索世界的好奇心。",
@@ -141,7 +193,11 @@
       "starsApprox": 37958,
       "hookZh": "让 AI 画出设计师也不会嫌弃的架构图——告别 Mermaid 塑料感。",
       "whyZh": "杂志级图表技能；HTML+SVG；可重绘 draw.io/Mermaid/Excalidraw。",
-      "tags": ["AI", "前端", "设计"],
+      "tags": [
+        "AI",
+        "前端",
+        "设计"
+      ],
       "curatedDate": "2026-09-11",
       "tweetDraftZh": "🔥 cathrynlavery/diagram-design ⭐38k\n\n让 AI 画出设计师也不会嫌弃的架构图——告别 Mermaid 塑料感。\n\n38 种杂志级图表风格，HTML+SVG 输出。\n\n💡 试试：让 Claude/GPT 用这个 skill 画一张架构图。\n\n#GitHub #开源 #AI #设计\n\nhttps://github.com/cathrynlavery/diagram-design",
       "useForZh": "面向需要制作高质量技术图表的开发者、技术写作者和架构师。解决 AI 生成图表丑陋（Mermaid 风格）的问题——提供 38 种杂志级图表设计，让 AI 也能画出专业美观的图。",
@@ -164,7 +220,11 @@
       "starsApprox": 35827,
       "hookZh": "一条命令问清楚：这台机器到底能舒服跑哪些开源大模型？",
       "whyZh": "Rust 硬件嗅探+模型适配；TUI/Dashboard。",
-      "tags": ["AI", "LLM", "开发者工具"],
+      "tags": [
+        "AI",
+        "LLM",
+        "开发者工具"
+      ],
       "curatedDate": "2026-09-11",
       "tweetDraftZh": "🔥 AlexsJones/llmfit ⭐35.8k\n\n一条命令问清楚：这台机器到底能舒服跑哪些开源大模型？\n\nRust 写的硬件嗅探工具，自动匹配适合你的模型。\n\n💡 马上试：在你电脑上跑一下，看看推荐结果。\n\n#GitHub #开源 #AI #LLM #开发者工具\n\nhttps://github.com/AlexsJones/llmfit",
       "useForZh": "面向想在本地跑大模型的开发者和 AI 爱好者。解决「我的电脑能跑什么模型」的困惑——自动检测硬件配置，匹配能流畅运行的开源大模型列表。",
@@ -187,7 +247,11 @@
       "starsApprox": 35492,
       "hookZh": "一句话生成整堂课：AI 老师 + AI 同学，还能白板板书。",
       "whyZh": "清华多智能体课堂；Live Demo；中文友好。",
-      "tags": ["AI", "教育", "创意"],
+      "tags": [
+        "AI",
+        "教育",
+        "创意"
+      ],
       "curatedDate": "2026-09-11",
       "tweetDraftZh": "🔥 THU-MAIC/OpenMAIC ⭐35.5k\n\n一句话生成整堂课：AI 老师 + AI 同学，还能白板板书。\n\n清华出品，多智能体互动课堂。\n\n💡 试试：输入一个你想学的主题，体验 AI 课堂。\n\n#GitHub #开源 #AI #教育\n\nhttps://github.com/THU-MAIC/OpenMAIC",
       "useForZh": "面向学习者、教育工作者和对 AI 教育感兴趣的开发者。提供沉浸式多智能体学习体验——AI 老师讲课、AI 同学互动提问，让自学变得更有课堂氛围。",
@@ -210,7 +274,11 @@
       "starsApprox": 8261,
       "hookZh": "开源、可脚本化的 Figma 替代：AI 直接在画布上画，还能读写 .fig。",
       "whyZh": "原生 .fig/.pen；MCP/CLI；低估黑马。",
-      "tags": ["前端", "设计", "AI"],
+      "tags": [
+        "前端",
+        "设计",
+        "AI"
+      ],
       "curatedDate": "2026-09-11",
       "tweetDraftZh": "🔥 open-pencil/open-pencil ⭐8.3k\n\n开源、可脚本化的 Figma 替代：AI 直接在画布上画，还能读写 .fig。\n\nAI 原生设计编辑器，被低估的黑马。\n\n💡 试试：用它打开一个 .fig 文件看看。\n\n#GitHub #开源 #设计 #Figma替代\n\nhttps://github.com/open-pencil/open-pencil",
       "useForZh": "面向设计师、前端开发者和想要 AI 辅助设计的用户。提供开源的 Figma 替代方案——AI 原生、可脚本化、支持读写 .fig 文件，让 AI 能直接参与设计工作。",
