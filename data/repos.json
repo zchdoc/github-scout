@@ -411,6 +411,36 @@
       "forYouZh": "今天第一件事：本机装好后进一个小仓库跑 `yoyo \"解释这个仓库并标出入口\"`，再打开它的 journal 看看「自己改自己」长什么样——和普通聊天 coding agent 对比一下。",
       "difficulty": "中等",
       "demoUrl": "https://yoyo.yolog.dev/"
+    },
+    {
+      "id": "agent-reach",
+      "fullName": "Panniantong/Agent-Reach",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "starsApprox": 83000,
+      "hookZh": "Agent 会写代码，但网上一搜就抓瞎？给它装一双免费的「互联网眼睛」。",
+      "whyZh": "一句话安装：读推特/YouTube/B站/小红书/Reddit，多后端路由换代，本地免费。",
+      "tags": [
+        "AI",
+        "LLM",
+        "agent",
+        "CLI",
+        "MCP",
+        "web-scraping"
+      ],
+      "curatedDate": "2026-09-19",
+      "tweetDraftZh": "🛠️ Panniantong/Agent-Reach ⭐83k\n\nAgent 会写代码，但一上网就抓瞎？\n\nAgent Reach：替你选好、装好、体检好各平台接入——推特/YouTube/B站/小红书/Reddit，多后端换代你无感。MIT。\n\n今天就能试：\n1) 把这句丢给 Cursor/Claude Code：\n帮我安装 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md\n2) agent-reach doctor 看哪些渠道通了\n3) 「帮我总结这个 YouTube 链接」\n\n#GitHub #开源 #AI #Agent\n\nhttps://github.com/Panniantong/Agent-Reach",
+      "useForZh": "面向用 Cursor / Claude Code / OpenClaw 等 coding agent、却经常卡在「读不了推特、拿不到字幕、搜不了 Reddit」的人。解决各平台要付费 API、要登录、要绕风控的折腾——用一层能力路由把当下最稳的开源接入装好并持续换代。",
+      "featuresZh": [
+        "一句话安装/更新：复制 install.md / update.md 链接给 Agent 即可",
+        "多平台：网页、YouTube、RSS、GitHub、Twitter/X、B站、Reddit、小红书、Facebook、Instagram、LinkedIn 等",
+        "多后端路由：每平台首选+备选，某条路失效自动换，doctor 显示当前后端",
+        "默认安全：install 默认只检查环境；显式 --system 才改系统与写 skill",
+        "兼容任意能跑 shell 的 Agent；Cookie/Token 仅存本机"
+      ],
+      "howToRunZh": "前提：Python 3.10+；Claude Code / Cursor / OpenClaw 等能执行 shell 的 Agent。OpenClaw 需先开 exec（tools.profile=coding）。\n\n```bash\n# 把下面这句话丢给你的 Agent（推荐）\n# 帮我安装 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md\n\n# 或本机自检（默认不改系统）\npip install git+https://github.com/Panniantong/Agent-Reach.git\nagent-reach install --env=auto\nagent-reach doctor\n```\n\n⚠️ 不要从 PyPI 装同名包（不是本项目）。需要登录态的平台请用小号 Cookie；本地一般无需代理。文档：https://github.com/Panniantong/Agent-Reach",
+      "forYouZh": "今天第一件事：把安装那句话丢给 Cursor，跑完 `agent-reach doctor`，再让它「总结一个 YouTube 技术视频字幕」——对比以前「看不到网页」的感觉。",
+      "difficulty": "轻松",
+      "demoUrl": null
     }
   ]
 }
