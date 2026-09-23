@@ -1,1 +1,4 @@
-LOADING_FROM_DISK
+{
+  "repos": [],
+  "_comment": "Split into data/repos.part1.json + data/repos.part2.json; page.tsx concatenates them."
+}

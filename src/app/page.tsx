@@ -7,7 +7,10 @@ import SearchBar from "@/components/SearchBar";
 import SortSelect from "@/components/SortSelect";
 import { Repo, SortOption } from "@/lib/types";
 import { getAllTags, groupByDate, getDateLabel } from "@/lib/utils";
-import reposData from "../../data/repos.json";
+import reposPart1 from "../../data/repos.part1.json";
+import reposPart2 from "../../data/repos.part2.json";
+
+const reposData = { repos: [...reposPart1.repos, ...reposPart2.repos] };
 
 const repos = reposData.repos as Repo[];
 
