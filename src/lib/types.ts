@@ -15,6 +15,8 @@ export interface Repo {
   featuresZh: string[];    // 实现了什么 — 3-6 个核心功能
   howToRunZh: string;      // 怎么跑起来 — 安装运行步骤
   forYouZh: string;        // 怎么为我所用 — 1-2 个具体场景
+  howItWorksZh?: string;   // 工作原理 — 白话讲清运行机制
+  coreTechZh?: string[];   // 核心技术 — 3-5 个技术要点
   // 可选字段
   difficulty?: Difficulty; // 难度级别
   demoUrl?: string | null; // 演示链接

@@ -41,6 +41,8 @@ export default function HomePage() {
           repo.useForZh.toLowerCase().includes(query) ||
           repo.forYouZh.toLowerCase().includes(query) ||
           repo.featuresZh.some((f) => f.toLowerCase().includes(query)) ||
+          (repo.howItWorksZh?.toLowerCase().includes(query) ?? false) ||
+          (repo.coreTechZh?.some((t) => t.toLowerCase().includes(query)) ?? false) ||
           repo.tags.some((tag) => tag.toLowerCase().includes(query))
       );
     }
