@@ -7,7 +7,10 @@ import SearchBar from "@/components/SearchBar";
 import SortSelect from "@/components/SortSelect";
 import { Repo, SortOption } from "@/lib/types";
 import { getAllTags, groupByDate, getDateLabel } from "@/lib/utils";
-import reposData from "../../data/repos.json";
+import reposPart1 from "../../data/repos.part1.json";
+import reposPart2 from "../../data/repos.part2.json";
+
+const reposData = { repos: [...reposPart1.repos, ...reposPart2.repos] };
 
 const repos = reposData.repos as Repo[];
 
@@ -41,6 +44,8 @@ export default function HomePage() {
           repo.useForZh.toLowerCase().includes(query) ||
           repo.forYouZh.toLowerCase().includes(query) ||
           repo.featuresZh.some((f) => f.toLowerCase().includes(query)) ||
+          (repo.howItWorksZh?.toLowerCase().includes(query) ?? false) ||
+          (repo.coreTechZh?.some((t) => t.toLowerCase().includes(query)) ?? false) ||
           repo.tags.some((tag) => tag.toLowerCase().includes(query))
       );
     }

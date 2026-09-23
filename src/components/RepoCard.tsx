@@ -128,6 +128,36 @@ export default function RepoCard({ repo }: RepoCardProps) {
             </ul>
           </div>
 
+
+          {/* 工作原理 */}
+          {repo.howItWorksZh && (
+            <div>
+              <h4 className="text-sm font-semibold mb-2 flex items-center gap-2">
+                <span className="text-[var(--accent)]">⚙️</span> 工作原理
+              </h4>
+              <p className="text-sm text-[var(--muted)] leading-relaxed">
+                {repo.howItWorksZh}
+              </p>
+            </div>
+          )}
+
+          {/* 核心技术 */}
+          {repo.coreTechZh && repo.coreTechZh.length > 0 && (
+            <div>
+              <h4 className="text-sm font-semibold mb-2 flex items-center gap-2">
+                <span className="text-[var(--accent)]">🔬</span> 核心技术
+              </h4>
+              <ul className="space-y-1.5">
+                {repo.coreTechZh.map((item, index) => (
+                  <li key={index} className="text-sm text-[var(--muted)] flex items-start gap-2">
+                    <span className="text-[var(--accent)] flex-shrink-0">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {/* 怎么跑起来 */}
           <div>
             <h4 className="text-sm font-semibold mb-2 flex items-center gap-2">
