@@ -75,12 +75,14 @@ export default function RootLayout({
               </h1>
             </Link>
             <nav className="flex items-center gap-4">
-              <Link
-                href="/"
+              <a
+                href="https://github.com/zchdoc/github-scout"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm hover:text-[var(--accent)] transition-colors"
               >
                 项目库
-              </Link>
+              </a>
               <Link
                 href="/about"
                 className="text-sm hover:text-[var(--accent)] transition-colors"
