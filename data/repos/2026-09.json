@@ -1,0 +1,581 @@
+{
+  "repos": [
+    {
+      "id": "hcom",
+      "fullName": "aannoo/hcom",
+      "url": "https://github.com/aannoo/hcom",
+      "starsApprox": 519,
+      "hookZh": "开两个 coding agent，想让它们互相 review？你还在终端之间复制粘贴。",
+      "whyZh": "单二进制 CLI：agent 互相发消息、盯状态、互相 spawn；Claude Code / Codex / Cursor CLI 等可混搭。开源，MIT。",
+      "tags": [
+        "AI",
+        "coding-agents",
+        "multi-agent",
+        "CLI",
+        "Claude Code",
+        "Codex",
+        "Cursor",
+        "terminal",
+        "hooks"
+      ],
+      "curatedDate": "2026-09-26",
+      "tweetDraftZh": "🛠️ aannoo/hcom ⭐~519\n\n开两个 Claude Code / Codex，想让它们互相 review？你还在终端之间复制粘贴。\n\nhcom：单二进制 CLI，让 coding agent 互相发消息、盯状态、互相 spawn。Claude Code / Codex / Cursor CLI / OpenCode 等随便混搭；默认开碰撞检测——两人改同一文件 30 秒内都会被提醒。开源 MIT。\n\n快速上手：\n```bash\ncurl -fsSL https://github.com/aannoo/hcom/releases/latest/download/hcom-installer.sh | sh\n# Windows: irm https://github.com/aannoo/hcom/releases/latest/download/hcom-installer.ps1 | iex\nhcom claude   # 终端 1\nhcom codex    # 终端 2\n```\n然后丢一句：「ask the other agent to review what you just changed」。\n\nhttps://github.com/aannoo/hcom",
+      "useForZh": "面向同时开多个 CLI coding agent（Claude Code / Codex / Cursor CLI 等）、又懒得在终端之间复制粘贴的人。解决「agent 各干各的、没法互相 review、改同一文件撞车才发现」——用 hooks + 本地 SQLite 把消息和状态串起来。",
+      "featuresZh": [
+        "跨工具互通：Claude Code / Codex / OpenCode / Cursor CLI / Gemini / Copilot 等可任意组合",
+        "互相发消息、观察 transcript / 终端屏 / 文件编辑，并订阅状态变化自动反应",
+        "可 spawn / fork / resume / kill 彼此；默认碰撞检测（同文件 30 秒内双改会通知）",
+        "单 Rust 二进制，无常驻后台服务；可选 MQTT relay 跨设备",
+        "TUI 仪表盘：一条 `hcom` 看所有活跃 agent"
+      ],
+      "howToRunZh": "前提：已装至少一个支持的 CLI agent（如 Claude Code / Codex）。\n\n**安装：**\n```bash\n# macOS / Linux / WSL\ncurl -fsSL https://github.com/aannoo/hcom/releases/latest/download/hcom-installer.sh | sh\n\n# Windows PowerShell\nirm https://github.com/aannoo/hcom/releases/latest/download/hcom-installer.ps1 | iex\n\n# 或 brew / uv\nbrew install aannoo/hcom/hcom\n# uv tool install hcom\n```\n\n**开两个 agent：**\n```bash\nhcom claude   # 终端 1\nhcom codex    # 终端 2\n```\n提示词示例：「ask the other agent to review what you just changed」。仪表盘：`hcom`。详见 https://github.com/aannoo/hcom 。",
+      "forYouZh": "今天第一件事：装好 hcom，开两个终端分别 `hcom claude` 与 `hcom codex`（或你常用的两个 CLI），让其中一个 review 另一个刚改的文件——确认不用再复制粘贴。",
+      "difficulty": "轻松",
+      "demoUrl": "https://pypi.org/project/hcom/",
+      "howItWorksZh": "用各家 agent 的 hooks 把活动记进本地 SQLite，再从库把消息投递给对方：消息可插在工具调用之间，也能立刻叫醒空闲 agent。碰撞检测看短时间窗口内的同文件编辑。可选 MQTT relay 做跨设备，载荷端到端加密。",
+      "coreTechZh": [
+        "Rust 单二进制 CLI + 本地 SQLite 消息总线",
+        "各家 coding agent hooks：记录 transcript / 编辑 / 状态并投递消息",
+        "碰撞检测：同文件短窗口双改双向通知",
+        "可选 MQTT relay：跨设备编排，PSK 端到端加密"
+      ]
+    },
+    {
+      "id": "capa",
+      "fullName": "infragate/capa",
+      "url": "https://github.com/infragate/capa",
+      "starsApprox": 730,
+      "hookZh": "skills、rules、MCP 各写一份？换 Claude Code / Cursor / Codex 又要同步一遍。",
+      "whyZh": "一份 capabilities.yaml + capa install，写进 35+ agent 原生目录；本地 MCP 网关按需加载工具。开源，MIT。",
+      "tags": [
+        "AI",
+        "MCP",
+        "skills",
+        "Claude Code",
+        "Cursor",
+        "Codex",
+        "developer-tools",
+        "gateway"
+      ],
+      "curatedDate": "2026-09-25",
+      "tweetDraftZh": "🛠️ infragate/capa ⭐~730\n\nCursor / Claude Code / Codex 各写一套 skills、rules、MCP？队友 clone 下来对不上，自己换工具也要对半天。\n\nCAPA：一份 capabilities.yaml 管 skills / rules / 子 agent / MCP / hooks；capa install 写进 35+ 家原生目录，还有本地 MCP 网关按需加载工具（官方称约 19–40% 少烧 token）。开源 MIT。\n\n快速上手：\n```bash\ncurl -LsSf https://capa.sh/install.sh | sh\ncd your-project && capa init && capa install --yes\n```\nWindows 用：`irm https://capa.sh/install.ps1 | iex`\n\nhttps://github.com/infragate/capa",
+      "useForZh": "面向同时用 Cursor / Claude Code / Codex 等多家 coding agent、又要让队友拿到同一套 skills/rules/MCP 的人。解决「配置散落各目录、clone 对不上、工具表一次性塞满上下文」——版本库里一份 YAML，安装时扇出，运行时一个本地网关代理上游 MCP。",
+      "featuresZh": [
+        "一份 capabilities.yaml → 35+ agent 原生布局（.cursor/rules、.claude/agents、AGENTS.md 等）",
+        "capabilities.lock 钉 SHA：明天 clone 拿到同一字节",
+        "本地 MCP 网关：一个 endpoint，按需加载工具、按子 agent 过滤权限",
+        "capa wrap：影子工作区跑 agent，不把 .cursor/.claude 污染真仓库",
+        "本地 Web UI：编辑能力、看 MCP 调用轨迹"
+      ],
+      "howToRunZh": "前提：macOS / Linux / Windows；建议已装至少一家 coding agent。\n\n**安装 CLI：**\n```bash\n# macOS / Linux\ncurl -LsSf https://capa.sh/install.sh | sh\n\n# Windows PowerShell\nirm https://capa.sh/install.ps1 | iex\n```\n\n**进项目：**\n```bash\ncd your-project\ncapa init\ncapa add vercel-labs/agent-skills@web-researcher   # 示例，可换你要的\ncapa install --yes\ncapa status   # 本地 UI / 网关地址\n```\n可选：`capa wrap claude` / `capa wrap cursor` 在影子目录跑，避免污染仓库。详见 https://capa.sh 。",
+      "forYouZh": "今天第一件事：在常用仓库跑 capa init + capa install --yes，打开 capa status 看本地 UI；再故意换一家 agent（比如 Cursor 和 Claude Code）确认 skills/rules/MCP 是否同一套。",
+      "difficulty": "轻松",
+      "demoUrl": "https://capa.sh",
+      "howItWorksZh": "capabilities.yaml 是源；capa install 解析并写入各 agent 原生文件，SHA 记进 lock。运行时本地 CAPA 服务当 MCP 网关：agent 连一个 endpoint，CAPA 代理上游 stdio/HTTP/SSE，按需暴露工具、给子 agent 过滤权限，并把调用记进活动流。capa wrap 则在 ~/.capa/workspaces 建影子目录装配置再启动 agent。",
+      "coreTechZh": [
+        "capabilities.yaml + lock：声明式能力清单与内容寻址钉版",
+        "多 provider 写入器：扇出到 Cursor / Claude Code / Codex / Windsurf / Copilot 等原生路径",
+        "本地 MCP 网关：代理上游、按需加载、子 agent 工具过滤",
+        "Web UI + 活动追踪：编辑 YAML、观察工具调用"
+      ]
+    },
+    {
+      "id": "pane",
+      "fullName": "greenfield-inc/Pane",
+      "url": "https://github.com/greenfield-inc/Pane",
+      "starsApprox": 480,
+      "hookZh": "并行开三个 coding agent，最烦的不是模型，是满屏终端和工作树路径。",
+      "whyZh": "跨平台桌面壳把任意 CLI agent（Claude Code / Codex / Cursor 等）管进 pane；新建会话自动建 worktree，删会话一并清掉。开源，AGPL-3.0。",
+      "tags": [
+        "AI",
+        "coding-agents",
+        "worktree",
+        "desktop",
+        "multi-agent",
+        "Claude Code",
+        "Windows"
+      ],
+      "curatedDate": "2026-09-24",
+      "tweetDraftZh": "🛠️ greenfield-inc/Pane ⭐~480\n\n并行开三个 Claude Code / Codex，最烦的不是模型——是满屏终端、记不清哪个 worktree 在哪条分支。\n\nPane：不是又一个 IDE。任意能在终端跑的 agent 都能管；新建会话自动建 worktree，删会话一并清掉；Windows / macOS / Linux 一等公民，还能 Remote Pane 用手机盯。\n\n今天就能试：\n```bash\ncurl -fsSL https://runpane.com/install.sh | sh\n# Windows: irm https://runpane.com/install.ps1 | iex\n```\n装好后打开一个仓库，建两个 pane 各丢一个 agent，看状态点（堵了/在干/完了）一眼扫完。\n\nhttps://github.com/greenfield-inc/Pane",
+      "useForZh": "面向同时跑多个 CLI coding agent、又懒得手搓 git worktree 的人。解决「终端窗满屏、路径记不住、谁卡在等你批准看不清」——一个桌面壳把会话、worktree、diff、端口隔离收在一起。",
+      "featuresZh": [
+        "任意 CLI agent：Claude Code / Codex / Cursor Agent / Aider / Goose 等，能进终端就能进 Pane，不绑死一家",
+        "Worktree 隐形化：建 pane 自动隔离分支，删 pane 清理；还自动镜像 .env、按 pane 划端口段",
+        "状态一眼扫：红点=等你批准、琥珀=在干、完成提示；跨 pane @mention 拉对方终端最近几百行",
+        "跨端：Win/Mac/Linux 桌面；Remote Pane 可把算力放本机/服务器，手机或另一台桌面遥控"
+      ],
+      "howToRunZh": "前提：已装 Git；至少装一个 CLI agent（如 Claude Code / Codex / Cursor Agent）。\n\n**推荐一键安装：**\n```bash\n# macOS / Linux\ncurl -fsSL https://runpane.com/install.sh | sh\n\n# Windows PowerShell\nirm https://runpane.com/install.ps1 | iex\n```\n\n或用 npm 引导：\n```bash\nnpx --yes runpane@latest\n```\n\n装好后：打开 Pane → 选/加一个 git 仓库 → 新建 pane → 选 agent 并丢第一句提示。并行再开一个 pane 即可隔离 worktree。\n远程/手机：在宿主机器 Settings → Remote Pane 开 host，复制 `pane-remote://...` 到另一端连接（详见 https://runpane.com ）。",
+      "forYouZh": "今天第一件事：装好 Pane，对着你正在改的仓库开两个 pane，一个丢「只改测试」、一个丢「只改实现」，看状态点和各自 worktree——确认不用自己敲 git worktree。",
+      "difficulty": "轻松",
+      "demoUrl": "https://runpane.com",
+      "howItWorksZh": "每个 pane 对应一份自动管理的 git worktree 和端口段，里面用真正的终端跑你选的 agent CLI，而不是自研聊天壳。会话生命周期（建/归档）挂钩 worktree 与密钥镜像；状态灯从终端交互里汇总「在等批准 / 在跑 / 完成」。Remote Pane 把宿主上的仓库、终端、git 状态留在自托管机器，客户端只连控制面，所以手机也能盯同一套会话。",
+      "coreTechZh": [
+        "Electron + xterm.js：桌面壳与长滚动终端渲染",
+        "Git worktree 自动化：创建/删除 pane 时建拆隔离工作树",
+        "runpane CLI：给 agent 可调用的仓库/pane 契约（agent-context、panes create 等）",
+        "Remote daemon：自托管宿主 + pane-remote 连接码，桌面/浏览器遥控",
+        "按 pane 的端口段与 .env 镜像：并行 dev server 不撞车"
+      ]
+    },
+    {
+      "id": "foremerge",
+      "fullName": "naw103/foremerge",
+      "url": "https://github.com/naw103/foremerge",
+      "starsApprox": 500,
+      "hookZh": "…",
+      "whyZh": "…",
+      "tags": [
+        "AI",
+        "coding-agents"
+      ],
+      "curatedDate": "2026-09-23",
+      "tweetDraftZh": "…",
+      "useForZh": "…",
+      "featuresZh": [
+        "…"
+      ],
+      "howToRunZh": "见README",
+      "forYouZh": "见站点",
+      "difficulty": "中等"
+    },
+    {
+      "id": "openhuman",
+      "fullName": "tinyhumansai/openhuman",
+      "url": "https://github.com/tinyhumansai/openhuman",
+      "starsApprox": 40000,
+      "hookZh": "…",
+      "whyZh": "…",
+      "tags": [
+        "AI",
+        "LLM"
+      ],
+      "curatedDate": "2026-09-22",
+      "tweetDraftZh": "…",
+      "useForZh": "…",
+      "featuresZh": [
+        "…"
+      ],
+      "howToRunZh": "见README",
+      "forYouZh": "见站点",
+      "difficulty": "轻松"
+    },
+    {
+      "id": "context-mode",
+      "fullName": "mksglu/context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "starsApprox": 23800,
+      "hookZh": "写代码半小时就变笨？多半是工具输出把上下文塞满了，不是模型突然变差。",
+      "whyZh": "工具输出先丢沙箱，只回摘要；压缩后还能检索接上进度。开源，ELv2。",
+      "tags": [
+        "AI",
+        "MCP",
+        "context",
+        "Claude Code",
+        "Cursor"
+      ],
+      "curatedDate": "2026-09-21",
+      "tweetDraftZh": "🛠️ mksglu/context-mode ⭐23.8k\n\n用 Claude Code / Cursor 写代码，半小时就「变笨」？多半不是模型差，是工具输出把上下文塞满了。\n\nPlaywright 快照一次几十 KB，拉一堆 Issue 又几十 KB——半小时窗口少四成；一压缩，刚才改到哪全忘。\n\nContext Mode 很直接：工具输出先丢进沙箱，只把有用摘要塞回对话；压缩后还能靠索引接着…",
+      "useForZh": "面向每天用 Claude Code / Cursor 等 coding agent、又开了一堆 MCP 的人。解决「工具一吐就几十 KB，半小时上下文被啃掉，一…",
+      "featuresZh": [
+        "沙箱消化工具输出：原始日志/快照/API 响应不进对话，只回填短摘要（官方称可到约 98% 上下文节…",
+        "压缩后不丢进度：文件编辑、git、任务等事件入库，需要时按相关片段检索接上"
+      ],
+      "howToRunZh": "前提：已安装 Claude Code（v1.0.33+）或其它支持 MCP 的客户端；Node.js 用于非插件安装路径。\n\n**Claude Code（推荐，全自动 hooks）：**\n```bash\n/plugin marketplace add mksglu/context-mode\n/plu…",
+      "forYouZh": "今天第一件事：在 Claude Code 里装好 Context Mode，跑通 `/context-mode:ctx-…",
+      "difficulty": "轻松",
+      "demoUrl": "https://context-mode.com",
+      "howItWorksZh": "Agent 调用会吐大量数据的工具时，Context Mode 先在沙箱/子进程里跑完，原始输出留在本地，不整段塞进对话；模型只看到精简摘要。同时把「改了哪些文件、跑了什么命令、你做了什么决定」记进本地索引。会话一压缩，不是把旧内容再糊回去…",
+      "coreTechZh": [
+        "MCP Server：向 Claude Code / Cursor 等客户端暴露…",
+        "子进程沙箱：工具在隔离环境跑，stdout 摘要回传，完整数据默认不进上下文"
+      ]
+    },
+    {
+      "id": "headroom",
+      "fullName": "headroomlabs-ai/headroom",
+      "url": "https://github.com/headroomlabs-ai/headroom",
+      "starsApprox": 73000,
+      "hookZh": "…",
+      "whyZh": "…",
+      "tags": [
+        "AI",
+        "LLM"
+      ],
+      "curatedDate": "2026-09-20",
+      "tweetDraftZh": "…",
+      "useForZh": "…",
+      "featuresZh": [
+        "…"
+      ],
+      "howToRunZh": "见README",
+      "forYouZh": "见站点",
+      "difficulty": "轻松"
+    },
+    {
+      "id": "agent-reach",
+      "fullName": "Panniantong/Agent-Reach",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "starsApprox": 83000,
+      "hookZh": "…",
+      "whyZh": "…",
+      "tags": [
+        "AI",
+        "LLM"
+      ],
+      "curatedDate": "2026-09-19",
+      "tweetDraftZh": "…",
+      "useForZh": "…",
+      "featuresZh": [
+        "…"
+      ],
+      "howToRunZh": "见README",
+      "forYouZh": "见站点",
+      "difficulty": "轻松"
+    },
+    {
+      "id": "nanobot",
+      "fullName": "HKUDS/nanobot",
+      "url": "https://github.com/HKUDS/nanobot",
+      "starsApprox": 48000,
+      "hookZh": "…",
+      "whyZh": "…",
+      "tags": [
+        "AI",
+        "LLM"
+      ],
+      "curatedDate": "2026-09-18",
+      "tweetDraftZh": "…",
+      "useForZh": "…",
+      "featuresZh": [
+        "…"
+      ],
+      "howToRunZh": "见README",
+      "forYouZh": "见站点",
+      "difficulty": "中等"
+    },
+    {
+      "id": "yoyo-evolve",
+      "fullName": "yologdev/yoyo-evolve",
+      "url": "https://github.com/yologdev/yoyo-evolve",
+      "starsApprox": 1900,
+      "hookZh": "…",
+      "whyZh": "…",
+      "tags": [
+        "AI",
+        "LLM"
+      ],
+      "curatedDate": "2026-09-18",
+      "tweetDraftZh": "…",
+      "useForZh": "…",
+      "featuresZh": [
+        "…"
+      ],
+      "howToRunZh": "见README",
+      "forYouZh": "见站点",
+      "difficulty": "中等"
+    },
+    {
+      "id": "graphify",
+      "fullName": "Graphify-Labs/graphify",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "starsApprox": 118000,
+      "hookZh": "…",
+      "whyZh": "…",
+      "tags": [
+        "AI",
+        "knowledge-graph"
+      ],
+      "curatedDate": "2026-09-17",
+      "tweetDraftZh": "…",
+      "useForZh": "…",
+      "featuresZh": [
+        "…"
+      ],
+      "howToRunZh": "见README",
+      "forYouZh": "见站点",
+      "difficulty": "轻松"
+    },
+    {
+      "id": "prime-agent",
+      "fullName": "PrimeIntellect-ai/prime-agent",
+      "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+      "starsApprox": 21000,
+      "hookZh": "…",
+      "whyZh": "…",
+      "tags": [
+        "AI",
+        "LLM"
+      ],
+      "curatedDate": "2026-09-16",
+      "tweetDraftZh": "…",
+      "useForZh": "…",
+      "featuresZh": [
+        "…"
+      ],
+      "howToRunZh": "见README",
+      "forYouZh": "见站点",
+      "difficulty": "中等"
+    },
+    {
+      "id": "serena",
+      "fullName": "oraios/serena",
+      "url": "https://github.com/oraios/serena",
+      "starsApprox": 29000,
+      "hookZh": "别再让 agent 靠 grep 猜代码——给它一套真正的 IDE 级语义工具。",
+      "whyZh": "MCP 把符号级检索/重构塞进 Cursor、Claude Code、Grok 等任意 coding agent。",
+      "tags": [
+        "AI",
+        "LLM",
+        "MCP",
+        "developer-tools",
+        "IDE"
+      ],
+      "curatedDate": "2026-09-13",
+      "tweetDraftZh": "🛠️ oraios/serena ⭐29k\n\n别再让 coding agent 靠 grep 猜代码了。\n\nSerena 是给 agent 用的「IDE」：符号查找、引用追踪、跨文件重命名，全走…",
+      "useForZh": "面向每天用 Cursor / Claude Code / Codex / Grok 写代码的人。解决大仓库里 agent「全文搜索+瞎改」又慢又容易改错的问题——把 IDE 才有的符号理解、引用…",
+      "featuresZh": [
+        "符号级检索：按符号找定义、引用、文件大纲，而不是靠正则扫全文",
+        "语义编辑与重构：替换符号体、插入前后、安全删除；LSP 支持跨文件 rename"
+      ],
+      "howToRunZh": "前提：本机已装 [uv](https://docs.astral.sh/uv/)（唯一硬依赖）；语言服务器后端下，个别语言可能要额外装对应 LSP。\n\n```bash\n# 1) 安装 CLI（官…",
+      "forYouZh": "今天第一件事：在你最常开的那个仓库里把 Serena 接到 Cursor（或 Grok CLI）。然后丢一句「用 Serena 找出 XxxService 的所有引用，并说明调用链」——对比以前…",
+      "difficulty": "简单",
+      "demoUrl": "https://www.youtube.com/watch?v=5QN7gN1KYLA"
+    },
+    {
+      "id": "ponytail",
+      "fullName": "DietrichGebert/ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "starsApprox": 136000,
+      "hookZh": "最好的代码，是你根本没写出来的那部分。",
+      "whyZh": "YAGNI agent skill，少写约一半代码。",
+      "tags": [
+        "AI",
+        "LLM",
+        "agent skill"
+      ],
+      "curatedDate": "2026-09-12",
+      "tweetDraftZh": "🔥 DietrichGebert/ponytail ⭐136k\n\n最好的代码，是你根本没写出来的那部分。\n\nYAGNI agent skill，让 AI 像最懒的资深工程师一样思考——少写约一半…",
+      "useForZh": "面向使用 AI 编程 agent 的开发者。解决 AI 生成代码时过度工程化、写太多不必要代码的问题——让 AI 像「最懒的资深工程师」一样，只写真正需要的代码。",
+      "featuresZh": [
+        "YAGNI 原则驱动：自动识别并删减不必要的代码生成",
+        "Agent Skill 架构：可直接集成到主流 AI 编程工具中"
+      ],
+      "howToRunZh": "```bash\n# 作为 agent skill 引入（具体步骤参考项目 README）\n# 通常步骤：\ngit clone https://github.com/DietrichGebert/…",
+      "forYouZh": "第一件事：在你下一次让 AI 写代码时，观察它是否生成了你不需要的功能。如果有，试试引入 ponytail skill，对比前后的代码量差异。",
+      "difficulty": "中等",
+      "demoUrl": null
+    },
+    {
+      "id": "webwright",
+      "fullName": "microsoft/Webwright",
+      "url": "https://github.com/microsoft/Webwright",
+      "starsApprox": 6000,
+      "hookZh": "终端里的浏览器 agent，把「解过一次」蒸馏成可重跑脚本。",
+      "whyZh": "微软长程网页 agent；Skill Factory。",
+      "tags": [
+        "AI agent",
+        "Playwright"
+      ],
+      "curatedDate": "2026-09-12",
+      "tweetDraftZh": "🔥 microsoft/Webwright ⭐6k\n\n终端里的浏览器 agent，把「解过一次」蒸馏成可重跑脚本。\n\n微软出品，长程网页任务 SOTA。\n\n💡 试试：让它帮你自动化一个重复的网页…",
+      "useForZh": "面向需要自动化复杂网页任务的开发者和测试工程师。解决长程网页操作（多步骤、跨页面）难以自动化的问题，可将手动操作转化为可重复执行的脚本。",
+      "featuresZh": [
+        "SOTA 长程网页任务：在复杂多步骤网页任务上达到业界领先效果",
+        "Skill Factory：将成功的操作序列蒸馏为可复用的 skill"
+      ],
+      "howToRunZh": "```bash\n# 克隆项目\ngit clone https://github.com/microsoft/Webwright.git\ncd Webwright\n# 安装依赖（通常需要 Pyth…",
+      "forYouZh": "第一件事：想一个你每周都要重复做的网页操作（比如从某网站导出数据、填写表单），用 Webwright 让它自动完成一次，然后保存为脚本复用。",
+      "difficulty": "中等",
+      "demoUrl": null
+    },
+    {
+      "id": "img2threejs",
+      "fullName": "img2threejs/img2threejs",
+      "url": "https://github.com/img2threejs/img2threejs",
+      "starsApprox": 16000,
+      "hookZh": "不是砸一坨 mesh，而是用代码把物体「长」出来。",
+      "whyZh": "图→可动画 Three.js 代码模型。",
+      "tags": [
+        "前端",
+        "创意",
+        "Three.js"
+      ],
+      "curatedDate": "2026-09-12",
+      "tweetDraftZh": "🔥 img2threejs/img2threejs ⭐16k\n\n不是砸一坨 mesh，而是用代码把物体「长」出来。\n\n图片→程序化 Three.js 模型，可动画、可编辑。\n\n💡 试试：上传一张…",
+      "useForZh": "面向前端开发者、3D 创意工作者和游戏开发者。解决从 2D 图片创建 3D 模型的问题——生成的不是静态 mesh，而是可编辑、可动画的 Three.js 代码。",
+      "featuresZh": [
+        "图片到 3D：从参考图片重建物体的程序化 3D 模型",
+        "代码优先：生成可读、可修改的 Three.js 代码而非二进制文件"
+      ],
+      "howToRunZh": "```bash\n# 克隆项目\ngit clone https://github.com/img2threejs/img2threejs.git\ncd img2threejs\n# 安装依赖\nnpm…",
+      "forYouZh": "第一件事：找一张你想做成 3D 的简单物体图片（比如一个杯子、一把椅子），用 img2threejs 转换看看生成的代码质量和效果。",
+      "difficulty": "中等",
+      "demoUrl": null
+    },
+    {
+      "id": "colibri",
+      "fullName": "JustVugg/colibri",
+      "url": "https://github.com/JustVugg/colibri",
+      "starsApprox": 28000,
+      "hookZh": "引擎很小，模型可以很大：专家权重从磁盘流式加载。",
+      "whyZh": "纯 C 零依赖跑 MoE。",
+      "tags": [
+        "趣味",
+        "硬件",
+        "MoE"
+      ],
+      "curatedDate": "2026-09-12",
+      "tweetDraftZh": "🔥 JustVugg/colibri ⭐28k\n\n引擎很小，模型可以很大：专家权重从磁盘流式加载。\n\n纯 C 零依赖，让普通硬件也能跑 MoE 大模型。\n\n💡 试试：在你的旧电脑上跑一个 MoE…",
+      "useForZh": "面向想在消费级硬件上运行大型 MoE 模型的开发者和 AI 爱好者。解决 MoE 模型内存需求巨大的问题——通过磁盘流式加载专家权重，用有限内存运行超大模型。",
+      "featuresZh": [
+        "纯 C 实现：零外部依赖，极致轻量",
+        "磁盘流式加载：专家权重按需从磁盘加载，突破内存限制"
+      ],
+      "howToRunZh": "```bash\n# 克隆项目\ngit clone https://github.com/JustVugg/colibri.git\ncd colibri\n# 编译（纯 C，需要 gcc 或 cla…",
+      "forYouZh": "第一件事：找一台内存只有 8GB 的旧电脑，试试用 colibri 跑一个本来需要 32GB+ 内存的 MoE 模型，体验「小引擎跑大模型」的感觉。",
+      "difficulty": "硬核",
+      "demoUrl": null
+    },
+    {
+      "id": "openwiki",
+      "fullName": "langchain-ai/openwiki",
+      "url": "https://github.com/langchain-ai/openwiki",
+      "starsApprox": 16000,
+      "hookZh": "人读的 README 不够用了，OpenWiki 专写 agent 友好的项目 wiki。",
+      "whyZh": "LangChain CLI，可维护的 agent 文档。",
+      "tags": [
+        "开发者工具",
+        "agent docs"
+      ],
+      "curatedDate": "2026-09-12",
+      "tweetDraftZh": "🔥 langchain-ai/openwiki ⭐16k\n\n人读的 README 不够用了，OpenWiki 专写 agent 友好的项目 wiki。\n\nLangChain 出品，自动生成 AI…",
+      "useForZh": "面向希望让 AI agent 更好理解自己项目的开发者。解决 AI 编程助手难以理解项目上下文的问题——生成结构化、agent 友好的项目文档，让 AI 更高效地帮你写代码。",
+      "featuresZh": [
+        "Agent 友好文档：生成专为 AI 理解优化的项目 wiki",
+        "CLI 工具：命令行操作，易于集成到开发流程"
+      ],
+      "howToRunZh": "```bash\n# 安装 CLI（需要 Python 3.9+）\npip install openwiki\n# 在项目根目录运行\ncd your-project\nopenwiki init\n# …",
+      "forYouZh": "第一件事：在你的一个开源项目上运行 openwiki，然后用 AI 编程助手（如 Cursor、GitHub Copilot）基于生成的文档问一个关于项目的问题，对比有无文档时的回答质量差异。",
+      "difficulty": "轻松",
+      "demoUrl": null
+    },
+    {
+      "id": "gods-eye-view",
+      "fullName": "bilawalsidhu/gods-eye-view",
+      "url": "https://github.com/bilawalsidhu/gods-eye-view",
+      "starsApprox": 24848,
+      "hookZh": "浏览器里开一架「上帝视角」间谍卫星——数据竟然全是真的。",
+      "whyZh": "把航班、船舶、卫星、地震等公开信号叠进 3D 地球；座舱跟飞、夜视/热成像。",
+      "tags": [
+        "创意",
+        "可视化",
+        "趣味"
+      ],
+      "curatedDate": "2026-09-11",
+      "tweetDraftZh": "🔥 bilawalsidhu/gods-eye-view ⭐24.8k\n\n浏览器里开一架「上帝视角」间谍卫星——数据竟然全是真的。\n\n航班、船舶、卫星实时轨迹全在 3D 地球上。\n\n💡 打开就能…",
+      "useForZh": "面向对地理空间数据和可视化感兴趣的开发者、数据爱好者和好奇心旺盛的普通用户。提供「上帝视角」——在 3D 地球上实时查看航班、船舶、卫星等公开数据，满足探索世界的好奇心。",
+      "featuresZh": [
+        "实时数据叠加：航班、船舶、卫星、地震等多种公开数据源",
+        "3D 地球渲染：逼真的地球可视化效果"
+      ],
+      "howToRunZh": "```bash\n# 在线体验（推荐）\n# 直接访问项目提供的 Demo 链接\n# 本地运行\ngit clone https://github.com/bilawalsidhu/gods-eye-…",
+      "forYouZh": "第一件事：打开 Demo，找到你家附近正在飞行的航班，点击「座舱视角」跟着它飞一段，感受「上帝视角」的魅力。",
+      "difficulty": "轻松",
+      "demoUrl": null
+    },
+    {
+      "id": "diagram-design",
+      "fullName": "cathrynlavery/diagram-design",
+      "url": "https://github.com/cathrynlavery/diagram-design",
+      "starsApprox": 37958,
+      "hookZh": "让 AI 画出设计师也不会嫌弃的架构图——告别 Mermaid 塑料感。",
+      "whyZh": "杂志级图表技能；HTML+SVG；可重绘 draw.io/Mermaid/Excalidraw。",
+      "tags": [
+        "AI",
+        "前端",
+        "设计"
+      ],
+      "curatedDate": "2026-09-11",
+      "tweetDraftZh": "🔥 cathrynlavery/diagram-design ⭐38k\n\n让 AI 画出设计师也不会嫌弃的架构图——告别 Mermaid 塑料感。\n\n38 种杂志级图表风格，HTML+SVG 输…",
+      "useForZh": "面向需要制作高质量技术图表的开发者、技术写作者和架构师。解决 AI 生成图表丑陋（Mermaid 风格）的问题——提供 38 种杂志级图表设计，让 AI 也能画出专业美观的图。",
+      "featuresZh": [
+        "38 种图表类型：覆盖流程图、架构图、时序图等常见需求",
+        "杂志级设计：告别简陋的 Mermaid 风格，达到出版级美观"
+      ],
+      "howToRunZh": "```bash\n# 克隆项目获取图表模板\ngit clone https://github.com/cathrynlavery/diagram-design.git\n# 使用方式：作为 AI 编…",
+      "forYouZh": "第一件事：下次需要画架构图时，不要直接说「画个 Mermaid 图」，而是把 diagram-design 的设计风格给 AI，让它生成一张杂志级的 HTML 架构图。",
+      "difficulty": "轻松",
+      "demoUrl": null
+    },
+    {
+      "id": "llmfit",
+      "fullName": "AlexsJones/llmfit",
+      "url": "https://github.com/AlexsJones/llmfit",
+      "starsApprox": 35827,
+      "hookZh": "一条命令问清楚：这台机器到底能舒服跑哪些开源大模型？",
+      "whyZh": "Rust 硬件嗅探+模型适配；TUI/Dashboard。",
+      "tags": [
+        "AI",
+        "LLM",
+        "开发者工具"
+      ],
+      "curatedDate": "2026-09-11",
+      "tweetDraftZh": "🔥 AlexsJones/llmfit ⭐35.8k\n\n一条命令问清楚：这台机器到底能舒服跑哪些开源大模型？\n\nRust 写的硬件嗅探工具，自动匹配适合你的模型。\n\n💡 马上试：在你电脑上跑一下…",
+      "useForZh": "面向想在本地跑大模型的开发者和 AI 爱好者。解决「我的电脑能跑什么模型」的困惑——自动检测硬件配置，匹配能流畅运行的开源大模型列表。",
+      "featuresZh": [
+        "硬件自动检测：识别 GPU、内存、存储等关键配置",
+        "模型适配推荐：从数百个模型/提供商中匹配适合的选项"
+      ],
+      "howToRunZh": "```bash\n# 安装（需要 Rust 工具链，或直接下载 release）\ncargo install llmfit\n# 或下载预编译版本\n# https://github.com/Alex…",
+      "forYouZh": "第一件事：在你的电脑上运行 llmfit，看看它推荐你跑哪些模型，然后挑一个尝试本地部署。",
+      "difficulty": "轻松",
+      "demoUrl": null
+    },
+    {
+      "id": "openmaic",
+      "fullName": "THU-MAIC/OpenMAIC",
+      "url": "https://github.com/THU-MAIC/OpenMAIC",
+      "starsApprox": 35492,
+      "hookZh": "一句话生成整堂课：AI 老师 + AI 同学，还能白板板书。",
+      "whyZh": "清华多智能体课堂；Live Demo；中文友好。",
+      "tags": [
+        "AI",
+        "教育",
+        "创意"
+      ],
+      "curatedDate": "2026-09-11",
+      "tweetDraftZh": "🔥 THU-MAIC/OpenMAIC ⭐35.5k\n\n一句话生成整堂课：AI 老师 + AI 同学，还能白板板书。\n\n清华出品，多智能体互动课堂。\n\n💡 试试：输入一个你想学的主题，体验 AI…",
+      "useForZh": "面向学习者、教育工作者和对 AI 教育感兴趣的开发者。提供沉浸式多智能体学习体验——AI 老师讲课、AI 同学互动提问，让自学变得更有课堂氛围。",
+      "featuresZh": [
+        "多智能体架构：AI 老师、AI 同学各司其职",
+        "白板板书：实时生成可视化讲解内容"
+      ],
+      "howToRunZh": "```bash\n# 在线体验（推荐）\n# 访问项目提供的 Live Demo 链接\n# 本地部署\ngit clone https://github.com/THU-MAIC/OpenMAIC.g…",
+      "forYouZh": "第一件事：打开 Live Demo，输入一个你一直想学但没时间系统学习的主题（比如「量子计算入门」），体验 AI 课堂给你上一堂课。",
+      "difficulty": "轻松",
+      "demoUrl": null
+    },
+    {
+      "id": "open-pencil",
+      "fullName": "open-pencil/open-pencil",
+      "url": "https://github.com/open-pencil/open-pencil",
+      "starsApprox": 8261,
+      "hookZh": "…",
+      "whyZh": "…",
+      "tags": [
+        "前端",
+        "设计"
+      ],
+      "curatedDate": "2026-09-11",
+      "tweetDraftZh": "…",
+      "useForZh": "…",
+      "featuresZh": [
+        "…"
+      ],
+      "howToRunZh": "见README",
+      "forYouZh": "见站点",
+      "difficulty": "中等"
+    }
+  ]
+}

@@ -5,14 +5,11 @@ import RepoCard from "@/components/RepoCard";
 import TagFilter from "@/components/TagFilter";
 import SearchBar from "@/components/SearchBar";
 import SortSelect from "@/components/SortSelect";
-import { Repo, SortOption } from "@/lib/types";
+import { SortOption } from "@/lib/types";
 import { getAllTags, groupByDate, getDateLabel } from "@/lib/utils";
-import reposPart1 from "../../data/repos.part1.json";
-import reposPart2 from "../../data/repos.part2.json";
+import { loadRepos } from "@/lib/load-repos";
 
-const reposData = { repos: [...reposPart1.repos, ...reposPart2.repos] };
-
-const repos = reposData.repos as Repo[];
+const repos = loadRepos();
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");

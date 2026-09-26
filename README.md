@@ -67,11 +67,11 @@ npm start
 
 ## 📝 添加新项目
 
-项目数据存储在 `data/repos.json` 文件中。要添加新项目，按以下步骤操作：
+项目数据按收录月份存放，每月一个文件：`data/repos/YYYY-MM.json`（例如 `data/repos/2026-09.json`）。一个月最多一天一条，文件不会堆得很大。要添加新项目，按以下步骤操作：
 
 ### 1. 编辑数据文件
 
-打开 `data/repos.json`，在 `repos` 数组中添加新项目：
+打开对应月份的 `data/repos/YYYY-MM.json`。新的月份直接新建这个文件，写入 `{ "repos": [] }` 后再追加项目。在 `repos` 数组中添加：
 
 ```json
 {
@@ -194,7 +194,7 @@ https://github.com/owner/repo-name
 完成编辑后，提交 Pull Request：
 
 ```bash
-git add data/repos.json
+git add data/repos/YYYY-MM.json
 git commit -m "feat: add [repo-name] to collection"
 git push origin your-branch
 ```
@@ -204,7 +204,7 @@ git push origin your-branch
 ```
 github-scout/
 ├── data/
-│   └── repos.json        # 项目数据文件
+│   └── repos/            # 按月存放，如 2026-09.json
 ├── src/
 │   ├── app/
 │   │   ├── layout.tsx    # 根布局

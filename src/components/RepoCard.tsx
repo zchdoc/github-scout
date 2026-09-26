@@ -226,7 +226,7 @@ export default function RepoCard({ repo }: RepoCardProps) {
                   d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
                 />
               </svg>
-              复制推文
+              复制介绍
             </>
           )}
         </button>
@@ -235,7 +235,7 @@ export default function RepoCard({ repo }: RepoCardProps) {
       {copied && (
         <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 translate-y-full z-10">
           <div className="copy-toast bg-[var(--foreground)] text-[var(--background)] px-3 py-1.5 rounded-lg text-sm shadow-lg">
-            推文已复制到剪贴板 ✓
+            介绍已复制到剪贴板 ✓
           </div>
         </div>
       )}
