@@ -1,0 +1,34 @@
+name: fold-monthly-json
+on:
+  push:
+    branches: [chore/monthly-json-only]
+    paths: ['.github/workflows/fold-monthly-json.yml']
+jobs:
+  fold:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chore/monthly-json-only
+      - name: Assemble monthly JSON from parts
+        run: |
+          python3 - <<'PY'
+          import base64, zlib, pathlib
+          p1 = pathlib.Path("data/repos/.fold-b64-part1").read_text().strip()
+          p2 = pathlib.Path("data/repos/.fold-b64-part2").read_text().strip()
+          raw = zlib.decompress(base64.b64decode(p1 + p2))
+          pathlib.Path("data/repos/2026-09.json").write_bytes(raw)
+          print("wrote", len(raw))
+          for p in ["data/repos/.fold-b64-part1", "data/repos/.fold-b64-part2", ".github/workflows/fold-monthly-json.yml"]:
+              pathlib.Path(p).unlink(missing_ok=True)
+          PY
+      - name: Commit folded JSON and cleanup
+        run: |
+          git config user.name "zch"
+          git config user.email "571928489@qq.com"
+          git add -A data/repos/2026-09.json data/repos/.fold-b64-part1 data/repos/.fold-b64-part2 .github/workflows/fold-monthly-json.yml || true
+          git status
+          git commit -m "chore: fold genoffice into monthly JSON; drop sidecars" || exit 0
+          git push origin HEAD:chore/monthly-json-only
