@@ -7,13 +7,12 @@ interface ReposContext {
   (id: string): ReposModule;
 }
 
-// Collects data/repos/YYYY-MM.json and optional YYYY-MM-<slug>.json sidecars
-// (e.g. 2026-09-genoffice.json). Page sorts by curatedDate, so file order is secondary.
+// One file per month: data/repos/YYYY-MM.json (no sidecars / no part splits).
 // @ts-expect-error require.context is provided by the Next.js bundler
 const reposContext = require.context(
   "../../data/repos",
   false,
-  /^\.\/\d{4}-\d{2}(?:-[a-z0-9]+)?\.json$/,
+  /^\.\/\d{4}-\d{2}\.json$/,
 ) as ReposContext;
 
 function readRepos(mod: ReposModule): Repo[] {
