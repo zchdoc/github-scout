@@ -13,11 +13,11 @@ jobs:
         with:
           ref: chore/monthly-json-only
       - name: Assemble monthly JSON from parts
-        run: python3 -c "import base64,zlib,pathlib; p1=pathlib.Path('data/repos/.fold-b64-part1').read_text().strip(); p2=pathlib.Path('data/repos/.fold-b64-part2').read_text().strip(); raw=zlib.decompress(base64.b64decode(p1+p2)); pathlib.Path('data/repos/2026-09.json').write_bytes(raw); print('wrote',len(raw)); [pathlib.Path(p).unlink(missing_ok=True) for p in ['data/repos/.fold-b64-part1','data/repos/.fold-b64-part2','.github/workflows/fold-monthly-json.yml']]"
+        run: python3 scripts/assemble-monthly.py
       - name: Commit folded JSON and cleanup
         run: |
-          git config user.name "zch"
-          git config user.email "571928489@qq.com"
+          git config user.name zch
+          git config user.email 571928489@qq.com
           git add -A
           git status
           git commit -m "chore: fold genoffice into monthly JSON; drop sidecars" || exit 0
