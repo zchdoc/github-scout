@@ -1,3 +1,4 @@
+# one-shot fold of monthly JSON from verified b64 chunks
 name: fold-monthly-json
 on:
   push:
