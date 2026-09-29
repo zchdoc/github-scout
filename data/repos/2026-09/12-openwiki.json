@@ -1,0 +1,23 @@
+{
+  "id": "openwiki",
+  "fullName": "langchain-ai/openwiki",
+  "url": "https://github.com/langchain-ai/openwiki",
+  "starsApprox": 16000,
+  "hookZh": "人读的 README 不够用了，OpenWiki 专写 agent 友好的项目 wiki。",
+  "whyZh": "LangChain CLI，可维护的 agent 文档。",
+  "tags": [
+    "开发者工具",
+    "agent docs"
+  ],
+  "curatedDate": "2026-09-12",
+  "tweetDraftZh": "🔥 langchain-ai/openwiki ⭐16k\n\n人读的 README 不够用了，OpenWiki 专写 agent 友好的项目 wiki。\n\nLangChain 出品，自动生成 AI…",
+  "useForZh": "面向希望让 AI agent 更好理解自己项目的开发者。解决 AI 编程助手难以理解项目上下文的问题——生成结构化、agent 友好的项目文档，让 AI 更高效地帮你写代码。",
+  "featuresZh": [
+    "Agent 友好文档：生成专为 AI 理解优化的项目 wiki",
+    "CLI 工具：命令行操作，易于集成到开发流程"
+  ],
+  "howToRunZh": "```bash\n# 安装 CLI（需要 Python 3.9+）\npip install openwiki\n# 在项目根目录运行\ncd your-project\nopenwiki init\n# …",
+  "forYouZh": "第一件事：在你的一个开源项目上运行 openwiki，然后用 AI 编程助手（如 Cursor、GitHub Copilot）基于生成的文档问一个关于项目的问题，对比有无文档时的回答质量差异。",
+  "difficulty": "轻松",
+  "demoUrl": null
+}

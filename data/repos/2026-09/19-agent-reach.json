@@ -1,0 +1,36 @@
+{
+  "id": "agent-reach",
+  "fullName": "Panniantong/Agent-Reach",
+  "url": "https://github.com/Panniantong/Agent-Reach",
+  "starsApprox": 86000,
+  "hookZh": "agent 能改代码，一让它去读推特、小红书、B 站就抓瞎。",
+  "whyZh": "给 agent 装互联网渠道的能力层：网页、YouTube、GitHub、B 站等先能读，要登录的平台再按你点名配置。MIT。CLI 要从本仓库装，不要装 PyPI 上的同名包。",
+  "tags": [
+    "AI",
+    "CLI",
+    "MCP",
+    "agent"
+  ],
+  "curatedDate": "2026-09-19",
+  "tweetDraftZh": "🛠️ Panniantong/Agent-Reach ⭐~86k\n\nagent 能改代码，一让它读推特、小红书、B 站、YouTube 字幕就抓瞎：要么付费 API，要么 403。\n\nAgent Reach：一层选型 / 安装 / 体检，不是又包一层爬虫。零配置就能读网页、看 GitHub、抽 YouTube 字幕、搜 B 站。小红书、Twitter、Reddit 这些要登录的，你点名才装。MIT。不要从 PyPI 装同名包。\n\n把这句丢给 Claude Code / Cursor：\n帮我安装 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md\n\nhttps://github.com/Panniantong/Agent-Reach",
+  "useForZh": "面向已经有 coding agent、却让它读不了社交网站和视频的人。解决「每个平台单独找 CLI、配 cookie、对付风控」——Agent Reach 负责选当前还能用的接法、装好并体检，真正的读取仍由上游工具完成。",
+  "featuresZh": [
+    "零配置渠道：网页（Jina）、GitHub（gh）、YouTube 字幕（yt-dlp）、B 站搜索、Exa 搜索、RSS",
+    "登录渠道按需开：小红书、Twitter、Reddit、Facebook、Instagram，点名才装",
+    "每个平台是首选加备选：后端停了就换顺序，不用重写一套",
+    "agent-reach doctor：看每个渠道现在走哪条路",
+    "默认 install 只做检查；只有显式 --system 才装系统包、写 MCP 和 skill"
+  ],
+  "howToRunZh": "不要 `pip install` PyPI 上的同名包，那不是这个项目。CLI 从本仓库装，并自带 yt-dlp、feedparser。\n\n把下面这句交给 Claude Code、Cursor 或其他能跑 shell 的 agent：\n\n```text\n帮我安装 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md\n```\n\n默认 `agent-reach install` 只检查环境。你明确允许改系统后才用 `agent-reach install --system`。装完跑 `agent-reach doctor`。\n\nOpenClaw 若默认只有 messaging 工具，要先打开 exec：`openclaw config set tools.profile \"coding\"`，再重启 Gateway。Cookie 留在本机。",
+  "forYouZh": "今天第一件事：让你的 agent 按官方 install.md 做一次安全检查安装，然后用 doctor 看网页、YouTube、GitHub 是否已通，再决定要不要点名配置小红书或 Twitter。",
+  "difficulty": "轻松",
+  "howItWorksZh": "它不自己包一层爬虫。每个平台是一张有序后端列表（例如 Twitter 可以是 twitter-cli，备选 OpenCLI）。agent 读 skill 后直接调用这些上游命令。doctor 报告当前实际走的后端。接入方式过时就调整列表顺序，而不是改调用方。",
+  "coreTechZh": [
+    "渠道路由：每平台首选加备选，doctor 显示当前后端",
+    "上游工具直连：Jina、gh、yt-dlp、Exa、feedparser，无额外包装层",
+    "安装分级：默认只检查，--system 才写 skill / MCP / 系统包",
+    "登录态留在本机：需要 cookie 的平台单独点名",
+    "skill 驱动：agent 读 SKILL.md 决定调哪条命令"
+  ],
+  "demoUrl": null
+}

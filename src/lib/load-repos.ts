@@ -1,29 +1,36 @@
-import { Repo, ReposData } from "./types";
+import { Repo } from "./types";
 
-type ReposModule = ReposData | { default: ReposData };
-
-interface ReposContext {
+interface RepoContext {
   keys(): string[];
-  (id: string): ReposModule;
+  (id: string): unknown;
 }
 
-// One file per month: data/repos/YYYY-MM.json (no sidecars / no part splits).
+// One directory per month, one file per project:
+// data/repos/YYYY-MM/DD-id.json
 // @ts-expect-error require.context is provided by the Next.js bundler
 const reposContext = require.context(
   "../../data/repos",
-  false,
-  /^\.\/\d{4}-\d{2}\.json$/,
-) as ReposContext;
+  true,
+  /^\.\/\d{4}-\d{2}\/\d{2}-[a-z0-9-]+\.json$/,
+) as RepoContext;
 
-function readRepos(mod: ReposModule): Repo[] {
-  if ("repos" in mod && Array.isArray(mod.repos)) return mod.repos;
-  if ("default" in mod && Array.isArray(mod.default?.repos)) return mod.default.repos;
-  return [];
+function asRepo(mod: unknown): Repo | null {
+  if (!mod || typeof mod !== "object") return null;
+  const record = mod as { id?: unknown; fullName?: unknown; default?: unknown };
+  if (typeof record.id === "string" && typeof record.fullName === "string") {
+    return record as Repo;
+  }
+  if ("default" in record) return asRepo(record.default);
+  return null;
 }
 
 export function loadRepos(): Repo[] {
   return reposContext
     .keys()
     .sort()
-    .flatMap((key) => readRepos(reposContext(key)));
+    .map((key) => {
+      const repo = asRepo(reposContext(key));
+      if (!repo) throw new Error(`Invalid repo file: ${key}`);
+      return repo;
+    });
 }

@@ -1,0 +1,37 @@
+{
+  "id": "openhuman",
+  "fullName": "tinyhumansai/openhuman",
+  "url": "https://github.com/tinyhumansai/openhuman",
+  "starsApprox": 40200,
+  "hookZh": "想同时跑很多 agent，结果每个都是一个笨重进程。",
+  "whyZh": "Rust 核心的开源 agent harness：桌面、浏览器、终端和库共用同一套核心，引擎用配置切换。GPL-3.0，仍是早期 beta。",
+  "tags": [
+    "AI",
+    "LLM",
+    "Rust",
+    "agent",
+    "desktop"
+  ],
+  "curatedDate": "2026-09-22",
+  "tweetDraftZh": "🛠️ tinyhumansai/openhuman ⭐~40.2k\n\n想同时跑一堆 agent，结果每个都是一个笨重进程，内存先爆。\n\nOpenHuman：开源 agent harness（GPL-3.0），Rust 核心同时撑起桌面、浏览器、终端和库。LLM、嵌入、搜索用配置换，不写死一家。官方测量同进程里多加一个 agent 大约 2MB 量级。早期 beta，边角还糙。\n\n安装：从 https://tinyhumans.ai/openhuman 或 GitHub Releases 下安装包。终端安装见仓库 INSTALL.md。\n\nhttps://github.com/tinyhumansai/openhuman",
+  "useForZh": "面向想自托管一套 agent 运行时、又不想每个 agent 单独起一个大进程的人。解决「harness 又重又绑死某一家模型」——一个 Rust 核心，桌面 / 浏览器 / 终端 / 库四条入口，模型与搜索按配置插拔。",
+  "featuresZh": [
+    "同一核心四条入口：桌面应用、浏览器 UI、终端客户端，以及可嵌入的 Rust 库",
+    "进程内运行：核心不另起 daemon；官方对 50/100/500 个 agent 的测量里，每多一个大约 2MB",
+    "编译期模块开关：skills、flows、mcp、channels 等用 Cargo feature 控制体积",
+    "可插拔引擎：LLM 可接 Ollama、LM Studio、Claude、OpenRouter 等；搜索可接 Brave、Exa、Tavily 或自建 SearXNG",
+    "记忆默认走本机 Memory Trees，并可镜像成 Obsidian vault"
+  ],
+  "howToRunZh": "状态：早期 beta，界面和接口还会变。\n\n**安装：**\n从 https://tinyhumans.ai/openhuman 或 https://github.com/tinyhumansai/openhuman/releases/latest 下载安装包。\n终端（Homebrew、Debian/Ubuntu .deb、AUR、安装脚本）见仓库 INSTALL.md。\n\n文档：https://tinyhumans.gitbook.io/openhuman/\n\n装好后先用桌面或浏览器入口配一个你已有的模型（本地 Ollama 或自己的 API key），再开一个 agent 对话，确认不是只绑 TinyHumans 托管线路。",
+  "forYouZh": "今天第一件事：装好 OpenHuman，把 LLM 指到你已经在用的本地或云端模型，开一个 agent 跑一轮，看核心是不是和界面在同一个进程里，而不是又套了一层远程壳。",
+  "difficulty": "轻松",
+  "howItWorksZh": "Rust 核心在进程内跑，界面不通过 socket 去连一个单独 daemon。能力用 Cargo feature 和可加载模块（文档、语音、MCP、频道等）拼出来。真正调用的 LLM、嵌入和搜索都由配置选择。记忆目前默认是本机 Memory Trees，并镜像成 Obsidian vault；远程记忆驱动的接口已经有了，但 README 写明现场切换还没接上。",
+  "coreTechZh": [
+    "进程内 Rust 核心：桌面、浏览器、终端、库共用",
+    "Cargo feature 门控：按需编译 skills / flows / mcp / channels",
+    "可插拔 LLM 与搜索：本地兼容端点或 BYOK，不写死供应商",
+    "本机记忆树：默认同步成 Obsidian vault",
+    "token 压缩（tinyjuice）：减少真正送进模型的上下文"
+  ],
+  "demoUrl": "https://tinyhumans.ai/openhuman"
+}

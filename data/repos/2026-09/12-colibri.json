@@ -1,0 +1,24 @@
+{
+  "id": "colibri",
+  "fullName": "JustVugg/colibri",
+  "url": "https://github.com/JustVugg/colibri",
+  "starsApprox": 28000,
+  "hookZh": "引擎很小，模型可以很大：专家权重从磁盘流式加载。",
+  "whyZh": "纯 C 零依赖跑 MoE。",
+  "tags": [
+    "趣味",
+    "硬件",
+    "MoE"
+  ],
+  "curatedDate": "2026-09-12",
+  "tweetDraftZh": "🔥 JustVugg/colibri ⭐28k\n\n引擎很小，模型可以很大：专家权重从磁盘流式加载。\n\n纯 C 零依赖，让普通硬件也能跑 MoE 大模型。\n\n💡 试试：在你的旧电脑上跑一个 MoE…",
+  "useForZh": "面向想在消费级硬件上运行大型 MoE 模型的开发者和 AI 爱好者。解决 MoE 模型内存需求巨大的问题——通过磁盘流式加载专家权重，用有限内存运行超大模型。",
+  "featuresZh": [
+    "纯 C 实现：零外部依赖，极致轻量",
+    "磁盘流式加载：专家权重按需从磁盘加载，突破内存限制"
+  ],
+  "howToRunZh": "```bash\n# 克隆项目\ngit clone https://github.com/JustVugg/colibri.git\ncd colibri\n# 编译（纯 C，需要 gcc 或 cla…",
+  "forYouZh": "第一件事：找一台内存只有 8GB 的旧电脑，试试用 colibri 跑一个本来需要 32GB+ 内存的 MoE 模型，体验「小引擎跑大模型」的感觉。",
+  "difficulty": "硬核",
+  "demoUrl": null
+}

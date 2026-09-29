@@ -1,0 +1,36 @@
+{
+  "id": "yoyo-evolve",
+  "fullName": "yologdev/yoyo-evolve",
+  "url": "https://github.com/yologdev/yoyo-evolve",
+  "starsApprox": 1900,
+  "hookZh": "一个 coding agent，连自己的源码都是它自己改、自己测、自己提交的。",
+  "whyZh": "从大约 200 行 Rust 起步、在公开仓库里自我演化的终端 coding agent。测试不过就回滚。MIT。",
+  "tags": [
+    "AI",
+    "coding-agents",
+    "Rust",
+    "terminal"
+  ],
+  "curatedDate": "2026-09-18",
+  "tweetDraftZh": "🛠️ yologdev/yoyo-evolve ⭐~1.9k\n\n一个 coding agent，连自己的源码都是它改的：读代码、改、跑测试，过了才提交。\n\nyoyo：MIT 终端 coding agent。仓库自称从约 200 行 Rust 起步，之后的提交由 agent 写、测试把门。你也能把它当普通 REPL 用：改多文件、跑测试、管 git。\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/yologdev/yoyo-evolve/main/install.sh | bash\nANTHROPIC_API_KEY=sk-... yoyo\n```\n\nhttps://github.com/yologdev/yoyo-evolve",
+  "useForZh": "面向想要一个终端 coding agent，又好奇「agent 改自己的代码」能不能被测试门挡住的人。解决「自我修改听起来很炫，但看不到门禁」——测试失败就回滚，历史全在公开 git log 里。",
+  "featuresZh": [
+    "定时自我演化：读自己的源码和 GitHub issue，改完跑测试，通过才提交",
+    "终端 REPL：多文件编辑、跑测试、git、项目上下文、失败恢复",
+    "多供应商：可换模型；支持扩展思考和项目 skills",
+    "会话可恢复，权限系统控制工具调用；也可自动批准",
+    "公开轨迹：journal、演化 workflow 和 git 历史都能看"
+  ],
+  "howToRunZh": "你自己用它写代码，和它在上游仓库里自我演化，是两件事。自我演化跑在项目的 GitHub Actions 上；你本地安装的是一个终端 agent。\n\n```bash\n# macOS / Linux\ncurl -fsSL https://raw.githubusercontent.com/yologdev/yoyo-evolve/main/install.sh | bash\n\n# Windows PowerShell\nirm https://raw.githubusercontent.com/yologdev/yoyo-evolve/main/install.ps1 | iex\n\n# 或\ncargo install yoyo-agent\n\nANTHROPIC_API_KEY=sk-... yoyo\n```\n\n单次提问：`yoyo \"explain this codebase\"`。文档：https://yoyo.yolog.dev",
+  "forYouZh": "今天第一件事：装好 yoyo，在一个你不介意它改文件的小仓库里丢一句「给这个函数补测试并跑通」，确认它是先跑测试再留改动，而不是直接堆代码。",
+  "difficulty": "中等",
+  "howItWorksZh": "上游仓库里，yoyo 每隔几小时醒来：读自己的源码和带 agent-input 标签的 issue，计划改动，跑测试。测试通过才提交并推送，失败就还原。另有社交会话去回 GitHub Discussions。你安装的 CLI 则是一个带工具的流式 REPL，用你配置的模型供应商在当前项目里改代码。",
+  "coreTechZh": [
+    "Rust REPL agent：多文件编辑、shell、git、会话恢复",
+    "测试门禁的自我修改：失败即回滚，历史在公开 git log",
+    "GitHub Actions 定时演化与社交会话",
+    "多模型供应商和项目 skills",
+    "权限系统：默认可询问，也可自动批准工具调用"
+  ],
+  "demoUrl": "https://yoyo.yolog.dev"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "diagram-design",
+  "fullName": "cathrynlavery/diagram-design",
+  "url": "https://github.com/cathrynlavery/diagram-design",
+  "starsApprox": 37958,
+  "hookZh": "让 AI 画出设计师也不会嫌弃的架构图——告别 Mermaid 塑料感。",
+  "whyZh": "杂志级图表技能；HTML+SVG；可重绘 draw.io/Mermaid/Excalidraw。",
+  "tags": [
+    "AI",
+    "前端",
+    "设计"
+  ],
+  "curatedDate": "2026-09-11",
+  "tweetDraftZh": "🔥 cathrynlavery/diagram-design ⭐38k\n\n让 AI 画出设计师也不会嫌弃的架构图——告别 Mermaid 塑料感。\n\n38 种杂志级图表风格，HTML+SVG 输…",
+  "useForZh": "面向需要制作高质量技术图表的开发者、技术写作者和架构师。解决 AI 生成图表丑陋（Mermaid 风格）的问题——提供 38 种杂志级图表设计，让 AI 也能画出专业美观的图。",
+  "featuresZh": [
+    "38 种图表类型：覆盖流程图、架构图、时序图等常见需求",
+    "杂志级设计：告别简陋的 Mermaid 风格，达到出版级美观"
+  ],
+  "howToRunZh": "```bash\n# 克隆项目获取图表模板\ngit clone https://github.com/cathrynlavery/diagram-design.git\n# 使用方式：作为 AI 编…",
+  "forYouZh": "第一件事：下次需要画架构图时，不要直接说「画个 Mermaid 图」，而是把 diagram-design 的设计风格给 AI，让它生成一张杂志级的 HTML 架构图。",
+  "difficulty": "轻松",
+  "demoUrl": null
+}

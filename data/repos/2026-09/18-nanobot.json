@@ -1,0 +1,37 @@
+{
+  "id": "nanobot",
+  "fullName": "HKUDS/nanobot",
+  "url": "https://github.com/HKUDS/nanobot",
+  "starsApprox": 48600,
+  "hookZh": "想要一个能自己养着的个人 agent，又不想搬进一个巨型平台。",
+  "whyZh": "港大开源的轻量个人 agent：WebUI、终端、聊天软件、记忆、MCP 和定时任务都在一个 Python 核心里。MIT。",
+  "tags": [
+    "AI",
+    "LLM",
+    "agent",
+    "MCP",
+    "Python"
+  ],
+  "curatedDate": "2026-09-18",
+  "tweetDraftZh": "🛠️ HKUDS/nanobot ⭐~48.6k\n\n想要一个能自己养着的个人 agent，又不想搬进一个巨型平台。\n\nnanobot：Python 写的超轻量自托管框架（MIT）。浏览器 WebUI 或终端都能跑，能接 Telegram / Discord / Slack / 飞书 / 邮件，带工具、长期记忆、MCP、子 agent 和定时任务。\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/HKUDS/nanobot/main/scripts/install.sh | sh\nnanobot webui\n```\n浏览器打开 127.0.0.1:8765，在 Settings → Models 配第一家模型。\n\nhttps://github.com/HKUDS/nanobot",
+  "useForZh": "面向想自托管一个长期在线的个人 agent、并把聊天软件接进来的人。解决「要么用封闭托管，要么自己把记忆、定时任务、MCP 拼一堆」——一个小核心覆盖 WebUI、终端、频道和调度。",
+  "featuresZh": [
+    "WebUI 和终端：第一次运行可在浏览器里配模型，不必先手写 JSON",
+    "聊天频道：Telegram、Discord、Slack、微信、邮件、飞书、Mattermost、Linear 等",
+    "工具：文件、shell、网页搜索与抓取、MCP、cron、图像、子 agent",
+    "会话历史和长期记忆（Dream），以及可挂起的长期目标",
+    "Python SDK 和 OpenAI 兼容 API，方便接到现有程序"
+  ],
+  "howToRunZh": "前提：Python 3.11+。要最新实验功能从源码装；日常稳定版用安装脚本或 uv / pip。安装器会避开系统级 pip，改用 venv、uv 或 pipx。\n\n```bash\n# macOS / Linux\ncurl -fsSL https://raw.githubusercontent.com/HKUDS/nanobot/main/scripts/install.sh | sh\n\n# 或\nuv tool install nanobot-ai\n\nnanobot webui\n```\n\nWindows：`irm https://raw.githubusercontent.com/HKUDS/nanobot/main/scripts/install.ps1 | iex`\n\nWebUI 默认只绑 127.0.0.1:8765。在 Settings → Models 配好供应商后再对话。文档：https://nanobot.wiki",
+  "forYouZh": "今天第一件事：用官方安装脚本装好，跑 `nanobot webui`，在本机浏览器里配一个你已有的模型，让它用文件或网页工具完成一件小事，确认网关没有暴露到局域网。",
+  "difficulty": "中等",
+  "howItWorksZh": "nanobot 是一个自托管运行时，不是单次聊天窗口。WebUI、终端和各个聊天频道都接到同一个网关。工具调用、MCP、定时任务和子 agent 由这个核心调度。记忆和目标可以跨过单轮对话留下来。模型走 OpenAI 兼容接口或本地模型，并可以配置备用模型。",
+  "coreTechZh": [
+    "Python 核心加 WebUI / TUI：稳定版轮子自带界面，不必为界面再装一套前端链",
+    "本地网关：WebUI 默认只听 127.0.0.1",
+    "频道适配：同一 agent 接到多个聊天软件",
+    "MCP、cron、子 agent：工具和定时任务在核心里，不另起平台",
+    "OpenAI 兼容 API：外部程序可以把它当成一个模型端点"
+  ],
+  "demoUrl": "https://nanobot.wiki"
+}

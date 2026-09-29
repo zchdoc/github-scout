@@ -1,0 +1,37 @@
+{
+  "id": "foremerge",
+  "fullName": "naw103/foremerge",
+  "url": "https://github.com/naw103/foremerge",
+  "starsApprox": 518,
+  "hookZh": "两个 agent 各改各的，Git 说没冲突，合进去才发现互相拆台。",
+  "whyZh": "架在 Git 之上的本地协调协议：agent 先声明要动哪个符号，冲突在写代码前就被点名。Apache-2.0，仍是 pre-1.0。",
+  "tags": [
+    "AI",
+    "coding-agents",
+    "Git",
+    "MCP",
+    "worktree"
+  ],
+  "curatedDate": "2026-09-23",
+  "tweetDraftZh": "🛠️ naw103/foremerge ⭐~518\n\n两个 Claude Code / Codex 各改各的，Git 说没有冲突，合进去才发现一个把 PaymentService 换成 Stripe，另一个还在给旧类加 PayPal。\n\nForemerge：架在 Git 之上的开源协调协议（Apache-2.0）。worktree 仍然隔离，但动手前先在仓库 .git 里登记「我要改哪个符号」。碰撞只是建议，不锁文件，也不让模型来裁判。本地 MVP，跨机器还不在范围内。\n\n快速上手：\n```bash\ncurl -fsSL https://foremerge.com/install.sh | sh\ncd your-repo && foremerge init && foremerge setup all\n```\n\nhttps://github.com/naw103/foremerge",
+  "useForZh": "面向同时开多个 coding agent、又用 git worktree 隔离改动的人。解决「各改不同文件、Git 合并干净，但意图互相拆台」——动手前先登记要碰的符号，冲突在写代码前就被点名。",
+  "featuresZh": [
+    "意图先于代码：agent 声明要改的符号和操作（替换 / 扩展），不必等 diff 重叠",
+    "仓库内共享名单：状态放在项目 .git 里，本机上的 Claude / Codex / Cursor 看到同一份",
+    "建议式冲突：点名双方并给出拆分建议，不锁文件，崩溃的 agent 不会卡住其他人",
+    "确定性判定：不调用模型裁判，同样的声明得到同样的结论",
+    "MCP 与检查门：foremerge setup all 接入客户端，可用 cargo test 这类命令做验证门"
+  ],
+  "howToRunZh": "前提：较新的 Git，以及 jq。macOS / Linux 用安装脚本；Windows 用 Releases 里的二进制。Rust 1.85+ 也可 cargo install。这是 pre-1.0 的本地 MVP，不协调多台机器。\n\n```bash\ncurl -fsSL https://foremerge.com/install.sh | sh\ncd your-repo\nforemerge init\nforemerge setup all\nforemerge checks set test -- cargo test --all-targets\nforemerge doctor --client all\n```\n\n也可以把仓库 README 里的那段安装说明直接贴给 Claude Code / Codex / Cursor，让它自己跑。短命令 `fmg` 和 `foremerge` 是同一个程序。详见 https://foremerge.com 。",
+  "forYouZh": "今天第一件事：在正在并行改的仓库里跑 `foremerge init` 和 `foremerge setup all`，让两个 agent 各自声明要动的符号，看 doctor 会不会在写代码前点出碰撞。",
+  "difficulty": "中等",
+  "howItWorksZh": "Git 仍是代码的真相。Foremerge 在它上面加一层共享意识：每个 agent 在编辑前发布 semantic scope（比如 symbol:PaymentService 加 replace 或 extend）。这些声明进项目 .git 里的 SQLite。检测器只比较声明，不读模型的自由发挥总结，所以措辞不同但操作相同会得到同一个结论。警告是建议，不会锁文件。",
+  "coreTechZh": [
+    "本地 SQLite：协调状态放在仓库 .git，本机各 agent 共用",
+    "语义 scope：用符号和操作类型描述意图，而不是比对文本 diff",
+    "确定性冲突检测：同样输入同样结论，不把裁判交给模型",
+    "MCP / skill：foremerge setup 给 Claude Code、Codex、Cursor 接线",
+    "验证门：checks set 把测试命令登记成可点名的检查"
+  ],
+  "demoUrl": "https://foremerge.com"
+}

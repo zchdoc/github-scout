@@ -1,0 +1,36 @@
+{
+  "id": "graphify",
+  "fullName": "Graphify-Labs/graphify",
+  "url": "https://github.com/Graphify-Labs/graphify",
+  "starsApprox": 122000,
+  "hookZh": "仓库一大，agent 还在 grep，你其实想问的是「这两块怎么连上的」。",
+  "whyZh": "把代码、文档、SQL、PDF 收成可查询的知识图。代码用 tree-sitter 本地解析，不建向量库。Apache-2.0。",
+  "tags": [
+    "AI",
+    "knowledge-graph",
+    "MCP",
+    "coding-agents"
+  ],
+  "curatedDate": "2026-09-17",
+  "tweetDraftZh": "🛠️ Graphify-Labs/graphify ⭐~122k\n\n仓库一大，agent 还在全文 grep。你想问的是「这两块怎么连上的」。\n\ngraphify：/graphify 把代码、文档、PDF 收成知识图。代码用 tree-sitter 在本地解析，不上传、不建向量库。每条边标 EXTRACTED 或 INFERRED。产出 graph.html、GRAPH_REPORT.md、graph.json。Apache-2.0。\n\n```bash\nuv tool install graphifyy\ngraphify install\n```\n然后在 Claude Code / Cursor 里输入 `/graphify .`\n\nhttps://github.com/Graphify-Labs/graphify",
+  "useForZh": "面向仓库已经大到不想靠 grep 猜结构的人。解决「agent 每次重新读文件，仍然说不清模块怎么连」——先做成一张可查询的图，再让助手沿着边回答。",
+  "featuresZh": [
+    "代码本地解析：tree-sitter AST，确定性结果，代码本身不离开本机",
+    "文档 / PDF / 图片 / 视频走语义步骤，用助手自己的模型或你配置的 API key",
+    "每条边标明 EXTRACTED（源码里写明）或 INFERRED（graphify 推断）",
+    "三个产物：可点击的 graph.html、GRAPH_REPORT.md、可反复查询的 graph.json",
+    "可作 MCP 或 HTTP 服务，给 Claude Code、Cursor、Codex、Gemini CLI 等反复调用"
+  ],
+  "howToRunZh": "```bash\nuv tool install graphifyy\n# 或 pipx install graphifyy\ngraphify install\n```\n\n在 Claude Code、Cursor、Codex 等助手里：\n\n```text\n/graphify .\n```\n\n会生成 `graphify-out/graph.html`、`GRAPH_REPORT.md` 和 `graph.json`。终端查询示例：`graphify explain \"APIRouter\"`。文档：https://docs.graphify.com 。代码图免费且本地；平台版早期访问在 https://app.graphify.com 。",
+  "forYouZh": "今天第一件事：在你最熟的仓库里跑 `/graphify .`，打开 graph.html，点一个你以为孤立的模块，看它实际连到谁，以及那条边是 EXTRACTED 还是 INFERRED。",
+  "difficulty": "轻松",
+  "howItWorksZh": "代码路径不靠嵌入。tree-sitter 抽出语法结构，再连成图，所以同一份代码得到同一张图。文档和多媒体才调用模型做语义。查询时沿图遍历，而不是在向量库里找相似块。助手通过安装进去的 skill，或通过 MCP，反复读这张已经建好的图。",
+  "coreTechZh": [
+    "tree-sitter AST：代码解析确定性、可离线",
+    "图而非向量库：路径查询和概念解释走边",
+    "边的来源标签：EXTRACTED 与 INFERRED",
+    "skill 安装：graphify install 注册到多家 coding agent",
+    "MCP / HTTP：同一张 graph.json 给多次工具调用"
+  ],
+  "demoUrl": "https://www.graphify.com"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "openmaic",
+  "fullName": "THU-MAIC/OpenMAIC",
+  "url": "https://github.com/THU-MAIC/OpenMAIC",
+  "starsApprox": 35492,
+  "hookZh": "一句话生成整堂课：AI 老师 + AI 同学，还能白板板书。",
+  "whyZh": "清华多智能体课堂；Live Demo；中文友好。",
+  "tags": [
+    "AI",
+    "教育",
+    "创意"
+  ],
+  "curatedDate": "2026-09-11",
+  "tweetDraftZh": "🔥 THU-MAIC/OpenMAIC ⭐35.5k\n\n一句话生成整堂课：AI 老师 + AI 同学，还能白板板书。\n\n清华出品，多智能体互动课堂。\n\n💡 试试：输入一个你想学的主题，体验 AI…",
+  "useForZh": "面向学习者、教育工作者和对 AI 教育感兴趣的开发者。提供沉浸式多智能体学习体验——AI 老师讲课、AI 同学互动提问，让自学变得更有课堂氛围。",
+  "featuresZh": [
+    "多智能体架构：AI 老师、AI 同学各司其职",
+    "白板板书：实时生成可视化讲解内容"
+  ],
+  "howToRunZh": "```bash\n# 在线体验（推荐）\n# 访问项目提供的 Live Demo 链接\n# 本地部署\ngit clone https://github.com/THU-MAIC/OpenMAIC.g…",
+  "forYouZh": "第一件事：打开 Live Demo，输入一个你一直想学但没时间系统学习的主题（比如「量子计算入门」），体验 AI 课堂给你上一堂课。",
+  "difficulty": "轻松",
+  "demoUrl": null
+}

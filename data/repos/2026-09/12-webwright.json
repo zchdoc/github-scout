@@ -1,0 +1,23 @@
+{
+  "id": "webwright",
+  "fullName": "microsoft/Webwright",
+  "url": "https://github.com/microsoft/Webwright",
+  "starsApprox": 6000,
+  "hookZh": "终端里的浏览器 agent，把「解过一次」蒸馏成可重跑脚本。",
+  "whyZh": "微软长程网页 agent；Skill Factory。",
+  "tags": [
+    "AI agent",
+    "Playwright"
+  ],
+  "curatedDate": "2026-09-12",
+  "tweetDraftZh": "🔥 microsoft/Webwright ⭐6k\n\n终端里的浏览器 agent，把「解过一次」蒸馏成可重跑脚本。\n\n微软出品，长程网页任务 SOTA。\n\n💡 试试：让它帮你自动化一个重复的网页…",
+  "useForZh": "面向需要自动化复杂网页任务的开发者和测试工程师。解决长程网页操作（多步骤、跨页面）难以自动化的问题，可将手动操作转化为可重复执行的脚本。",
+  "featuresZh": [
+    "SOTA 长程网页任务：在复杂多步骤网页任务上达到业界领先效果",
+    "Skill Factory：将成功的操作序列蒸馏为可复用的 skill"
+  ],
+  "howToRunZh": "```bash\n# 克隆项目\ngit clone https://github.com/microsoft/Webwright.git\ncd Webwright\n# 安装依赖（通常需要 Pyth…",
+  "forYouZh": "第一件事：想一个你每周都要重复做的网页操作（比如从某网站导出数据、填写表单），用 Webwright 让它自动完成一次，然后保存为脚本复用。",
+  "difficulty": "中等",
+  "demoUrl": null
+}

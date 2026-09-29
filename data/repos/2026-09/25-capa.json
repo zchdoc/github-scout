@@ -1,0 +1,39 @@
+{
+  "id": "capa",
+  "fullName": "infragate/capa",
+  "url": "https://github.com/infragate/capa",
+  "starsApprox": 730,
+  "hookZh": "skills、rules、MCP 各写一份？换 Claude Code / Cursor / Codex 又要同步一遍。",
+  "whyZh": "一份 capabilities.yaml + capa install，写进 35+ agent 原生目录；本地 MCP 网关按需加载工具。开源，MIT。",
+  "tags": [
+    "AI",
+    "MCP",
+    "skills",
+    "Claude Code",
+    "Cursor",
+    "Codex",
+    "developer-tools",
+    "gateway"
+  ],
+  "curatedDate": "2026-09-25",
+  "tweetDraftZh": "🛠️ infragate/capa ⭐~730\n\nCursor / Claude Code / Codex 各写一套 skills、rules、MCP？队友 clone 下来对不上，自己换工具也要对半天。\n\nCAPA：一份 capabilities.yaml 管 skills / rules / 子 agent / MCP / hooks；capa install 写进 35+ 家原生目录，还有本地 MCP 网关按需加载工具（官方称约 19–40% 少烧 token）。开源 MIT。\n\n快速上手：\n```bash\ncurl -LsSf https://capa.sh/install.sh | sh\ncd your-project && capa init && capa install --yes\n```\nWindows 用：`irm https://capa.sh/install.ps1 | iex`\n\nhttps://github.com/infragate/capa",
+  "useForZh": "面向同时用 Cursor / Claude Code / Codex 等多家 coding agent、又要让队友拿到同一套 skills/rules/MCP 的人。解决「配置散落各目录、clone 对不上、工具表一次性塞满上下文」——版本库里一份 YAML，安装时扇出，运行时一个本地网关代理上游 MCP。",
+  "featuresZh": [
+    "一份 capabilities.yaml → 35+ agent 原生布局（.cursor/rules、.claude/agents、AGENTS.md 等）",
+    "capabilities.lock 钉 SHA：明天 clone 拿到同一字节",
+    "本地 MCP 网关：一个 endpoint，按需加载工具、按子 agent 过滤权限",
+    "capa wrap：影子工作区跑 agent，不把 .cursor/.claude 污染真仓库",
+    "本地 Web UI：编辑能力、看 MCP 调用轨迹"
+  ],
+  "howToRunZh": "前提：macOS / Linux / Windows；建议已装至少一家 coding agent。\n\n**安装 CLI：**\n```bash\n# macOS / Linux\ncurl -LsSf https://capa.sh/install.sh | sh\n\n# Windows PowerShell\nirm https://capa.sh/install.ps1 | iex\n```\n\n**进项目：**\n```bash\ncd your-project\ncapa init\ncapa add vercel-labs/agent-skills@web-researcher   # 示例，可换你要的\ncapa install --yes\ncapa status   # 本地 UI / 网关地址\n```\n可选：`capa wrap claude` / `capa wrap cursor` 在影子目录跑，避免污染仓库。详见 https://capa.sh 。",
+  "forYouZh": "今天第一件事：在常用仓库跑 capa init + capa install --yes，打开 capa status 看本地 UI；再故意换一家 agent（比如 Cursor 和 Claude Code）确认 skills/rules/MCP 是否同一套。",
+  "difficulty": "轻松",
+  "demoUrl": "https://capa.sh",
+  "howItWorksZh": "capabilities.yaml 是源；capa install 解析并写入各 agent 原生文件，SHA 记进 lock。运行时本地 CAPA 服务当 MCP 网关：agent 连一个 endpoint，CAPA 代理上游 stdio/HTTP/SSE，按需暴露工具、给子 agent 过滤权限，并把调用记进活动流。capa wrap 则在 ~/.capa/workspaces 建影子目录装配置再启动 agent。",
+  "coreTechZh": [
+    "capabilities.yaml + lock：声明式能力清单与内容寻址钉版",
+    "多 provider 写入器：扇出到 Cursor / Claude Code / Codex / Windsurf / Copilot 等原生路径",
+    "本地 MCP 网关：代理上游、按需加载、子 agent 工具过滤",
+    "Web UI + 活动追踪：编辑 YAML、观察工具调用"
+  ]
+}

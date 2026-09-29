@@ -1,0 +1,36 @@
+{
+  "id": "open-pencil",
+  "fullName": "open-pencil/open-pencil",
+  "url": "https://github.com/open-pencil/open-pencil",
+  "starsApprox": 8700,
+  "hookZh": "设计稿锁在 Figma 里，agent 连节点树都摸不到。",
+  "whyZh": "开源设计编辑器：能打开 .fig / .pen，带对话式 AI、CLI、XPath 和 MCP。MIT。在线 demo 可先试。",
+  "tags": [
+    "前端",
+    "设计",
+    "MCP",
+    "AI"
+  ],
+  "curatedDate": "2026-09-11",
+  "tweetDraftZh": "🛠️ open-pencil/open-pencil ⭐~8.7k\n\n设计稿锁在 Figma 里，agent 连节点树都摸不到。\n\nOpenPencil：开源设计编辑器（MIT）。能打开 .fig 和 .pen，聊天让 AI 改节点，CLI 可以用 XPath 查图层、导出 JSX/Tailwind。还有 MCP，以及约 15MB 的 Tauri 桌面版。无账号的 WebRTC 协作。仍在积极开发。\n\n在线试：https://app.openpencil.dev/demo\nmacOS：`brew install --cask openpencil`\n\nhttps://github.com/open-pencil/open-pencil",
+  "useForZh": "面向要改 Figma 稿、又想让 coding agent 查询和导出设计的人。解决「稿在专有编辑器里，脚本和 agent 进不去」——同一份 .fig 既能打开编辑，也能用 CLI / MCP 查节点、导出代码。",
+  "featuresZh": [
+    "读写 .fig 和 .pen：应用里打开，节点可在支持的应用之间复制",
+    "对话式 AI：100+ 工具创建和修改节点，可接 OpenRouter、Anthropic、OpenAI、Google、DeepSeek 等",
+    "CLI：树、查找、XPath 查询、导出 PNG/SVG/JSX/HTML，以及格式互转",
+    "MCP 和桌面 agent 集成：Claude Code、Codex、Gemini CLI 可接",
+    "无服务器协作：WebRTC 点对点；自动布局用 Yoga WASM；桌面版约 15MB（Tauri）"
+  ],
+  "howToRunZh": "仍在积极开发，能用，但功能还会变。\n\n**先在浏览器试：** https://app.openpencil.dev/demo\n\n**桌面：**\n```bash\nbrew install --cask openpencil\n```\n或从 https://github.com/open-pencil/open-pencil/releases/latest 下载。macOS 13+、Windows 10+，或带 WebKitGTK 2.40+ 的 Linux。\n\n**CLI：**\n```bash\nnpm install -g @open-pencil/cli\nopenpencil info design.fig\nopenpencil query design.fig \"//FRAME[@width < 300]\"\n```\n\n文档：https://openpencil.dev",
+  "forYouZh": "今天第一件事：打开在线 demo，或用 CLI 对一份 .fig 跑 `openpencil tree`，确认不用打开编辑器也能看到节点树。",
+  "difficulty": "中等",
+  "howItWorksZh": "编辑器能读写真的 Figma 文件和 Pencil 文档。无头 CLI 用同一套文档模型做查询和导出，所以 agent 不必先操作 GUI。XPath 按类型和属性选节点。MCP 和 skill 把这些命令暴露给 coding agent。协作不经过账号服务器，走 WebRTC。布局计算用 Yoga。",
+  "coreTechZh": [
+    "原生 .fig / .pen 读写，而不只是导入一张图",
+    "无头 CLI 与 XPath：同一文档模型给脚本和 agent",
+    "MCP 与 Figma Plugin API 风格的 eval",
+    "Tauri 桌面版加浏览器 PWA",
+    "WebRTC 点对点协作，Yoga 做自动布局"
+  ],
+  "demoUrl": "https://app.openpencil.dev/demo"
+}

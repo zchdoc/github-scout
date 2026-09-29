@@ -198,11 +198,11 @@ export default function AboutPage() {
         </h2>
         <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-xl p-6 space-y-3">
           <p className="leading-relaxed">
-            欢迎提交你发现的优质项目！数据按收录月份存放，编辑对应的{" "}
+            欢迎提交你发现的优质项目！数据按月分目录、一天一个文件，新建{" "}
             <code className="px-1.5 py-0.5 rounded bg-[var(--tag-bg)] text-[var(--tag-text)] text-sm">
-              data/repos/YYYY-MM.json
+              data/repos/YYYY-MM/DD-id.json
             </code>
-            （例如 data/repos/2026-09.json），在 repos 数组里按现有格式添加新项目，然后提交 Pull Request。
+            （例如 data/repos/2026-09/29-agent-browser.json）。同一天有多个项目就放多个文件，然后提交 Pull Request。
           </p>
           <p className="text-sm text-[var(--muted)]">
             贡献要求：不只是复制 README，要提供真正有用的中文内容——

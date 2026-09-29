@@ -1,0 +1,40 @@
+{
+  "id": "hcom",
+  "fullName": "aannoo/hcom",
+  "url": "https://github.com/aannoo/hcom",
+  "starsApprox": 519,
+  "hookZh": "开两个 coding agent，想让它们互相 review？你还在终端之间复制粘贴。",
+  "whyZh": "单二进制 CLI：agent 互相发消息、盯状态、互相 spawn；Claude Code / Codex / Cursor CLI 等可混搭。开源，MIT。",
+  "tags": [
+    "AI",
+    "coding-agents",
+    "multi-agent",
+    "CLI",
+    "Claude Code",
+    "Codex",
+    "Cursor",
+    "terminal",
+    "hooks"
+  ],
+  "curatedDate": "2026-09-26",
+  "tweetDraftZh": "🛠️ aannoo/hcom ⭐~519\n\n开两个 Claude Code / Codex，想让它们互相 review？你还在终端之间复制粘贴。\n\nhcom：单二进制 CLI，让 coding agent 互相发消息、盯状态、互相 spawn。Claude Code / Codex / Cursor CLI / OpenCode 等随便混搭；默认开碰撞检测——两人改同一文件 30 秒内都会被提醒。开源 MIT。\n\n快速上手：\n```bash\ncurl -fsSL https://github.com/aannoo/hcom/releases/latest/download/hcom-installer.sh | sh\n# Windows: irm https://github.com/aannoo/hcom/releases/latest/download/hcom-installer.ps1 | iex\nhcom claude   # 终端 1\nhcom codex    # 终端 2\n```\n然后丢一句：「ask the other agent to review what you just changed」。\n\nhttps://github.com/aannoo/hcom",
+  "useForZh": "面向同时开多个 CLI coding agent（Claude Code / Codex / Cursor CLI 等）、又懒得在终端之间复制粘贴的人。解决「agent 各干各的、没法互相 review、改同一文件撞车才发现」——用 hooks + 本地 SQLite 把消息和状态串起来。",
+  "featuresZh": [
+    "跨工具互通：Claude Code / Codex / OpenCode / Cursor CLI / Gemini / Copilot 等可任意组合",
+    "互相发消息、观察 transcript / 终端屏 / 文件编辑，并订阅状态变化自动反应",
+    "可 spawn / fork / resume / kill 彼此；默认碰撞检测（同文件 30 秒内双改会通知）",
+    "单 Rust 二进制，无常驻后台服务；可选 MQTT relay 跨设备",
+    "TUI 仪表盘：一条 `hcom` 看所有活跃 agent"
+  ],
+  "howToRunZh": "前提：已装至少一个支持的 CLI agent（如 Claude Code / Codex）。\n\n**安装：**\n```bash\n# macOS / Linux / WSL\ncurl -fsSL https://github.com/aannoo/hcom/releases/latest/download/hcom-installer.sh | sh\n\n# Windows PowerShell\nirm https://github.com/aannoo/hcom/releases/latest/download/hcom-installer.ps1 | iex\n\n# 或 brew / uv\nbrew install aannoo/hcom/hcom\n# uv tool install hcom\n```\n\n**开两个 agent：**\n```bash\nhcom claude   # 终端 1\nhcom codex    # 终端 2\n```\n提示词示例：「ask the other agent to review what you just changed」。仪表盘：`hcom`。详见 https://github.com/aannoo/hcom 。",
+  "forYouZh": "今天第一件事：装好 hcom，开两个终端分别 `hcom claude` 与 `hcom codex`（或你常用的两个 CLI），让其中一个 review 另一个刚改的文件——确认不用再复制粘贴。",
+  "difficulty": "轻松",
+  "demoUrl": "https://pypi.org/project/hcom/",
+  "howItWorksZh": "用各家 agent 的 hooks 把活动记进本地 SQLite，再从库把消息投递给对方：消息可插在工具调用之间，也能立刻叫醒空闲 agent。碰撞检测看短时间窗口内的同文件编辑。可选 MQTT relay 做跨设备，载荷端到端加密。",
+  "coreTechZh": [
+    "Rust 单二进制 CLI + 本地 SQLite 消息总线",
+    "各家 coding agent hooks：记录 transcript / 编辑 / 状态并投递消息",
+    "碰撞检测：同文件短窗口双改双向通知",
+    "可选 MQTT relay：跨设备编排，PSK 端到端加密"
+  ]
+}

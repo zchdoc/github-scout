@@ -1,0 +1,41 @@
+{
+  "id": "agent-browser",
+  "fullName": "vercel-labs/agent-browser",
+  "url": "https://github.com/vercel-labs/agent-browser",
+  "starsApprox": 43300,
+  "hookZh": "让 coding agent 去点网页，最怕的是截图来回传、选择器一变就点空。",
+  "whyZh": "Vercel 的浏览器自动化 CLI：Rust 原生，先拍无障碍树给每个元素一个 ref，agent 用 @e2 点击填写。Apache-2.0。",
+  "tags": [
+    "AI",
+    "CLI",
+    "browser",
+    "coding-agents",
+    "MCP",
+    "Chrome",
+    "Rust",
+    "Claude Code",
+    "Cursor"
+  ],
+  "curatedDate": "2026-09-29",
+  "tweetDraftZh": "🛠️ vercel-labs/agent-browser ⭐~43.3k\n\n让 Claude Code / Cursor 去点网页，最怕的是截图来回传、CSS 选择器一变就点空。\n\nagent-browser：Vercel 的浏览器自动化 CLI（Apache-2.0）。Rust 原生，不靠 Playwright。先 snapshot 出无障碍树，每个按钮/输入框一个 ref（@e1、@e2）；接着 click @e2、fill @e3。装 skill 后，agent 自己会跑这套流程。还有 MCP。\n\n快速上手：\n```bash\nnpm install -g agent-browser\nagent-browser install\nnpx skills add vercel-labs/agent-browser\nagent-browser open https://example.com\nagent-browser snapshot -i\n```\n\nhttps://github.com/vercel-labs/agent-browser",
+  "useForZh": "面向用 Claude Code / Codex / Cursor 做网页操作、验收或抓页面的人。解决「agent 靠截图猜坐标、选择器一改就点空、每次还要拉起一整套 Playwright」——一条 CLI：打开页面、拿带 ref 的快照、按 ref 点击填写。",
+  "featuresZh": [
+    "快照 + ref：snapshot 给出无障碍树，元素标成 @e1、@e2；click / fill 用 ref，不用重查 DOM",
+    "Rust CLI + 常驻 daemon：直接走 CDP 控 Chrome，daemon 不需要 Node.js；第一次命令自动拉起",
+    "给 coding agent 的 skill：npx skills add 适配 Claude Code / Codex / Cursor / Copilot / Windsurf 等，指令跟已装 CLI 版本对齐",
+    "stdio MCP：agent-browser mcp，默认 core 工具集，也可加上 network / state / debug",
+    "登录与会话：可保存恢复登录态、复用本机 Chrome profile；截图可 --if-changed 跳过没变的画面"
+  ],
+  "howToRunZh": "前提：能跑 npm 或 Homebrew。第一次会下载 Chrome for Testing；本机已有的 Chrome / Brave 也会被识别。日常使用不用装 Playwright，也不用 Node 跑 daemon。从源码编译才需要 Node.js 24+、pnpm 11+ 和 Rust。\n\n**1) 安装 CLI 和浏览器：**\n```bash\nnpm install -g agent-browser\nagent-browser install\n```\nmacOS 也可以：`brew install agent-browser && agent-browser install`\nLinux 缺系统库时：`agent-browser install --with-deps`\n\n**2) 给 coding agent 装 skill：**\n```bash\nnpx skills add vercel-labs/agent-browser\n```\n\n**3) 自己先跑通一遍：**\n```bash\nagent-browser open https://example.com\nagent-browser snapshot -i\nagent-browser screenshot page.png\nagent-browser close\n```\n然后对新对话说：「用 agent-browser 打开 example.com，snapshot 后点第一个链接」。详见 https://agent-browser.dev 与仓库 README。",
+  "forYouZh": "今天第一件事：装好 CLI，跑 `npx skills add vercel-labs/agent-browser`，再让 Cursor 用 agent-browser 打开你正在做的页面，根据 snapshot 的 ref 点一个按钮并截图——确认它点的是 @eN，不是猜坐标。",
+  "difficulty": "轻松",
+  "demoUrl": "https://agent-browser.dev",
+  "howItWorksZh": "命令行是 Rust CLI，真正开浏览器的是一个纯 Rust daemon，两者通过本机通信。daemon 用 CDP 直连 Chrome（默认 Chrome for Testing），不经过 Node。agent 先 snapshot：拿到无障碍树和稳定 ref；下一步 click @e2 / fill @e3 打在这棵树上的具体节点，页面变了再重新 snapshot。daemon 在第一条命令时自动起来，空闲约 1 小时会存档并退出，避免 agent 忘了 close 把浏览器挂死。",
+  "coreTechZh": [
+    "Rust CLI + Rust daemon：解析命令、直连 CDP，daemon 不依赖 Node.js",
+    "无障碍树 ref：snapshot 给元素编号，后续操作按 @eN 命中，避免选择器漂移",
+    "MCP 分档：core / network / state / debug，默认可只暴露常用工具以省上下文",
+    "会话与登录态：~/.agent-browser/sessions/ 可恢复；也能复用本机 Chrome profile",
+    "引擎：默认 Chrome for Testing，也可切 lightpanda；iOS Safari 走 WebDriver"
+  ]
+}

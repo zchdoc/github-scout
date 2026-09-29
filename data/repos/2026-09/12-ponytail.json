@@ -1,0 +1,24 @@
+{
+  "id": "ponytail",
+  "fullName": "DietrichGebert/ponytail",
+  "url": "https://github.com/DietrichGebert/ponytail",
+  "starsApprox": 136000,
+  "hookZh": "最好的代码，是你根本没写出来的那部分。",
+  "whyZh": "YAGNI agent skill，少写约一半代码。",
+  "tags": [
+    "AI",
+    "LLM",
+    "agent skill"
+  ],
+  "curatedDate": "2026-09-12",
+  "tweetDraftZh": "🔥 DietrichGebert/ponytail ⭐136k\n\n最好的代码，是你根本没写出来的那部分。\n\nYAGNI agent skill，让 AI 像最懒的资深工程师一样思考——少写约一半…",
+  "useForZh": "面向使用 AI 编程 agent 的开发者。解决 AI 生成代码时过度工程化、写太多不必要代码的问题——让 AI 像「最懒的资深工程师」一样，只写真正需要的代码。",
+  "featuresZh": [
+    "YAGNI 原则驱动：自动识别并删减不必要的代码生成",
+    "Agent Skill 架构：可直接集成到主流 AI 编程工具中"
+  ],
+  "howToRunZh": "```bash\n# 作为 agent skill 引入（具体步骤参考项目 README）\n# 通常步骤：\ngit clone https://github.com/DietrichGebert/…",
+  "forYouZh": "第一件事：在你下一次让 AI 写代码时，观察它是否生成了你不需要的功能。如果有，试试引入 ponytail skill，对比前后的代码量差异。",
+  "difficulty": "中等",
+  "demoUrl": null
+}

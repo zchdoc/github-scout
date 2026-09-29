@@ -1,0 +1,36 @@
+{
+  "id": "prime-agent",
+  "fullName": "PrimeIntellect-ai/prime-agent",
+  "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+  "starsApprox": 21400,
+  "hookZh": "长任务一断终端，agent 的上下文和子任务就一起没了。",
+  "whyZh": "面向长时间编码和研究的开源 agent：持久 Python REPL 当工具环境，harness 状态可小步修正、可回滚。MIT。它不是安全沙箱。",
+  "tags": [
+    "AI",
+    "LLM",
+    "coding-agents",
+    "agent"
+  ],
+  "curatedDate": "2026-09-16",
+  "tweetDraftZh": "🛠️ PrimeIntellect-ai/prime-agent ⭐~21.4k\n\n长任务一断终端，上下文和子任务就一起没了。\n\nPrime Agent：开源 coding / research agent（MIT）。上下文当成变量，子 agent 像函数调用，跑在一个持久 Python REPL 里。/refine 只小步改补充状态，改不了基础系统提示，还能回滚。断开后还能 attach。\n\n```bash\ncurl --proto '=https' --proto-redir '=https' -fsSL https://app.primeintellect.ai/prime-agent/install.sh | sh\ncd your-repo && prime-agent\n```\n第一次 /login。它会用你的权限执行模型写出的 Python，不是沙箱。\n\nhttps://github.com/PrimeIntellect-ai/prime-agent",
+  "useForZh": "面向要跑很久的编码或研究任务、又不想进度死在一个聊天窗口里的人。解决「终端一关，子任务和记下来的做法都丢了」——后台 agent 可重新接上，补充状态可以小步改、可以回滚。",
+  "featuresZh": [
+    "持久 Python REPL：文件、shell、工具、子 agent 和上下文管理都通过代码进行",
+    "rlm.spawn 拉起真正的子 agent，并行或后台跑，结果回到调用处",
+    "/refine 只更新补充的 harness 状态，不改不可变的基础系统提示，并留快照可回滚",
+    "技能是可导入的 Python 包；后台 daemon 让终端断开后会话还在",
+    "agent 之间可以直接发消息，不必每一步都绕回给你"
+  ],
+  "howToRunZh": "macOS 或 Linux：\n\n```bash\ncurl --proto '=https' --proto-redir '=https' -fsSL https://app.primeintellect.ai/prime-agent/install.sh | sh\ncd /path/to/project\nprime-agent\n```\n\n第一次运行执行 `/login`，选订阅或 API key。它在当前目录执行模型生成的 Python 和项目命令，权限就是你的用户权限。README 写明 worker 不是安全沙箱。请用可恢复的副本或 worktree。\n\n```bash\nprime-agent agents\nprime-agent attach <agent>\nprime-agent doctor --fix\n```\n\n文档在仓库 `packages/coding-agent/docs/index.md`。",
+  "forYouZh": "今天第一件事：在一个一次性 worktree 里启动 prime-agent，让它改一个小函数并跑测试，然后关掉终端再用 `prime-agent attach` 接回去，确认进度还在。",
+  "difficulty": "中等",
+  "howItWorksZh": "模型不直接堆一段越来越长的聊天记录。上下文被当成 REPL 里的变量，子 agent 和工具像函数调用。补充提示、记忆、技能说明和子 agent 规格放在可修改的 harness 状态里，默认只属于当前会话。/refine 根据轨迹做小的、有依据的更新，基础系统提示保持不变，并保留快照以便回滚。daemon 让会话在终端断开后继续。",
+  "coreTechZh": [
+    "递归语言模型：上下文是变量，子 agent 是函数调用",
+    "持久 Python REPL：工具使用发生在代码里",
+    "Continual Harness：补充状态可 refine、可回滚，基础提示不可改",
+    "后台 daemon：断开后 attach / resume",
+    "技能即 Python 包：重复流程可以变成可导入技能"
+  ],
+  "demoUrl": "https://primeintellect.ai"
+}

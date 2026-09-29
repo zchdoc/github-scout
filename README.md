@@ -67,11 +67,11 @@ npm start
 
 ## 📝 添加新项目
 
-项目数据按收录月份存放，每月一个文件：`data/repos/YYYY-MM.json`（例如 `data/repos/2026-09.json`）。一个月最多一天一条，文件不会堆得很大。要添加新项目，按以下步骤操作：
+项目数据按月分目录、一天一个文件：`data/repos/YYYY-MM/DD-id.json`（例如 `data/repos/2026-09/29-agent-browser.json`）。同一天收录多个项目时，这一天放多个文件。要添加新项目，按以下步骤操作：
 
 ### 1. 编辑数据文件
 
-打开对应月份的 `data/repos/YYYY-MM.json`。新的月份直接新建这个文件，写入 `{ "repos": [] }` 后再追加项目。在 `repos` 数组中添加：
+在对应月份目录里新建 `DD-id.json`。文件内容就是这一条项目，不再包在 `repos` 数组里：
 
 ```json
 {
@@ -194,7 +194,7 @@ https://github.com/owner/repo-name
 完成编辑后，提交 Pull Request：
 
 ```bash
-git add data/repos/YYYY-MM.json
+git add data/repos/YYYY-MM/DD-id.json
 git commit -m "feat: add [repo-name] to collection"
 git push origin your-branch
 ```
@@ -204,7 +204,7 @@ git push origin your-branch
 ```
 github-scout/
 ├── data/
-│   └── repos/            # 按月存放，如 2026-09.json
+│   └── repos/            # 按月分目录，如 2026-09/29-agent-browser.json
 ├── src/
 │   ├── app/
 │   │   ├── layout.tsx    # 根布局

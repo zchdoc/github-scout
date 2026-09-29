@@ -1,0 +1,24 @@
+{
+  "id": "llmfit",
+  "fullName": "AlexsJones/llmfit",
+  "url": "https://github.com/AlexsJones/llmfit",
+  "starsApprox": 35827,
+  "hookZh": "一条命令问清楚：这台机器到底能舒服跑哪些开源大模型？",
+  "whyZh": "Rust 硬件嗅探+模型适配；TUI/Dashboard。",
+  "tags": [
+    "AI",
+    "LLM",
+    "开发者工具"
+  ],
+  "curatedDate": "2026-09-11",
+  "tweetDraftZh": "🔥 AlexsJones/llmfit ⭐35.8k\n\n一条命令问清楚：这台机器到底能舒服跑哪些开源大模型？\n\nRust 写的硬件嗅探工具，自动匹配适合你的模型。\n\n💡 马上试：在你电脑上跑一下…",
+  "useForZh": "面向想在本地跑大模型的开发者和 AI 爱好者。解决「我的电脑能跑什么模型」的困惑——自动检测硬件配置，匹配能流畅运行的开源大模型列表。",
+  "featuresZh": [
+    "硬件自动检测：识别 GPU、内存、存储等关键配置",
+    "模型适配推荐：从数百个模型/提供商中匹配适合的选项"
+  ],
+  "howToRunZh": "```bash\n# 安装（需要 Rust 工具链，或直接下载 release）\ncargo install llmfit\n# 或下载预编译版本\n# https://github.com/Alex…",
+  "forYouZh": "第一件事：在你的电脑上运行 llmfit，看看它推荐你跑哪些模型，然后挑一个尝试本地部署。",
+  "difficulty": "轻松",
+  "demoUrl": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "gods-eye-view",
+  "fullName": "bilawalsidhu/gods-eye-view",
+  "url": "https://github.com/bilawalsidhu/gods-eye-view",
+  "starsApprox": 24848,
+  "hookZh": "浏览器里开一架「上帝视角」间谍卫星——数据竟然全是真的。",
+  "whyZh": "把航班、船舶、卫星、地震等公开信号叠进 3D 地球；座舱跟飞、夜视/热成像。",
+  "tags": [
+    "创意",
+    "可视化",
+    "趣味"
+  ],
+  "curatedDate": "2026-09-11",
+  "tweetDraftZh": "🔥 bilawalsidhu/gods-eye-view ⭐24.8k\n\n浏览器里开一架「上帝视角」间谍卫星——数据竟然全是真的。\n\n航班、船舶、卫星实时轨迹全在 3D 地球上。\n\n💡 打开就能…",
+  "useForZh": "面向对地理空间数据和可视化感兴趣的开发者、数据爱好者和好奇心旺盛的普通用户。提供「上帝视角」——在 3D 地球上实时查看航班、船舶、卫星等公开数据，满足探索世界的好奇心。",
+  "featuresZh": [
+    "实时数据叠加：航班、船舶、卫星、地震等多种公开数据源",
+    "3D 地球渲染：逼真的地球可视化效果"
+  ],
+  "howToRunZh": "```bash\n# 在线体验（推荐）\n# 直接访问项目提供的 Demo 链接\n# 本地运行\ngit clone https://github.com/bilawalsidhu/gods-eye-…",
+  "forYouZh": "第一件事：打开 Demo，找到你家附近正在飞行的航班，点击「座舱视角」跟着它飞一段，感受「上帝视角」的魅力。",
+  "difficulty": "轻松",
+  "demoUrl": null
+}

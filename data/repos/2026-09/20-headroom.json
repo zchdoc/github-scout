@@ -1,0 +1,37 @@
+{
+  "id": "headroom",
+  "fullName": "headroomlabs-ai/headroom",
+  "url": "https://github.com/headroomlabs-ai/headroom",
+  "starsApprox": 74000,
+  "hookZh": "工具一吐日志，上下文半小时就被啃光，答案却没变好。",
+  "whyZh": "在内容进模型前，于本机压缩工具输出、日志、文件和 RAG 片段。库、代理、wrap 和 MCP 四种接法。Apache-2.0。",
+  "tags": [
+    "AI",
+    "LLM",
+    "MCP",
+    "context",
+    "coding-agents"
+  ],
+  "curatedDate": "2026-09-20",
+  "tweetDraftZh": "🛠️ headroomlabs-ai/headroom ⭐~74k\n\n工具一吐日志，上下文半小时就被啃光，答案却没变好。\n\nHeadroom：进模型之前先在本机压缩。工具输出、日志、RAG、文件和历史都能压；原文留在本地，需要时再 retrieve。可以当库用、当代理用，或一条命令 wrap 住 Claude Code / Codex / Cursor。也有 MCP。Apache-2.0。\n\n```bash\nuv tool install --python 3.13 \"headroom-ai[all]\"\nheadroom wrap claude\n```\n\nhttps://github.com/headroomlabs-ai/headroom",
+  "useForZh": "面向每天用 coding agent、又被工具输出和日志撑爆上下文的人。解决「还没写到正事，token 先被 JSON 和日志吃掉」——压缩发生在你的机器上，原文可按需取回。",
+  "featuresZh": [
+    "库：Python / TypeScript 里直接 compress(messages)",
+    "本地代理：headroom proxy，不用改业务代码",
+    "一条 wrap：headroom wrap claude|codex|cursor|… 把现有 CLI 套上压缩，unwrap 可还原",
+    "MCP：headroom_compress / retrieve / stats，给任意 MCP 客户端",
+    "可逆：原文缓存在本地，模型需要全文时再 headroom_retrieve；另有跨 agent 记忆和 headroom learn"
+  ],
+  "howToRunZh": "前提：Python 3.13 更适合 CLI；TypeScript 包只有 SDK，没有 CLI。压缩在本机完成，提示词和文件内容不会为了压缩被送出去。\n\n```bash\nuv tool install --python 3.13 \"headroom-ai[all]\"\n# 或\npip install \"headroom-ai[all]\"\n```\n\n套住已有 agent：\n```bash\nheadroom wrap claude\n# 也可：codex / cursor / copilot / aider 等，见 README 列表\nheadroom unwrap claude\n```\n\n文档：https://docs.headroomlabs.ai/docs",
+  "forYouZh": "今天第一件事：装好 headroom，对你正在用的 Claude Code 或 Cursor 跑一次 wrap，再丢一段很长的工具日志，看压缩后还能不能找到原来的报错行。",
+  "difficulty": "轻松",
+  "howItWorksZh": "请求先经过本机的 Headroom，再送给模型。ContentRouter 按内容类型选压缩器：JSON 走 SmartCrusher，源码走 CodeCompressor，散文走 Kompress。原文放在本地缓存（CCR），压缩后的提示里带检索工具，模型要全文就取回来。CacheAligner 只标记会冲掉厂商 KV 缓存前缀的易变内容，不改写提示本身。",
+  "coreTechZh": [
+    "按类型路由压缩：JSON、源码 AST、散文各一条路径",
+    "CCR：原文本地缓存，压缩可逆",
+    "代理与 wrap：不改 agent 源码也能插进调用链",
+    "MCP 工具：compress / retrieve / stats",
+    "Kompress 文本模型：散文压缩走本地权重，而不是把正文外送"
+  ],
+  "demoUrl": "https://docs.headroomlabs.ai/docs"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "context-mode",
+  "fullName": "mksglu/context-mode",
+  "url": "https://github.com/mksglu/context-mode",
+  "starsApprox": 23800,
+  "hookZh": "写代码半小时就变笨？多半是工具输出把上下文塞满了，不是模型突然变差。",
+  "whyZh": "工具输出先丢沙箱，只回摘要；压缩后还能检索接上进度。开源，ELv2。",
+  "tags": [
+    "AI",
+    "MCP",
+    "context",
+    "Claude Code",
+    "Cursor"
+  ],
+  "curatedDate": "2026-09-21",
+  "tweetDraftZh": "🛠️ mksglu/context-mode ⭐23.8k\n\n用 Claude Code / Cursor 写代码，半小时就「变笨」？多半不是模型差，是工具输出把上下文塞满了。\n\nPlaywright 快照一次几十 KB，拉一堆 Issue 又几十 KB——半小时窗口少四成；一压缩，刚才改到哪全忘。\n\nContext Mode 很直接：工具输出先丢进沙箱，只把有用摘要塞回对话；压缩后还能靠索引接着…",
+  "useForZh": "面向每天用 Claude Code / Cursor 等 coding agent、又开了一堆 MCP 的人。解决「工具一吐就几十 KB，半小时上下文被啃掉，一…",
+  "featuresZh": [
+    "沙箱消化工具输出：原始日志/快照/API 响应不进对话，只回填短摘要（官方称可到约 98% 上下文节…",
+    "压缩后不丢进度：文件编辑、git、任务等事件入库，需要时按相关片段检索接上"
+  ],
+  "howToRunZh": "前提：已安装 Claude Code（v1.0.33+）或其它支持 MCP 的客户端；Node.js 用于非插件安装路径。\n\n**Claude Code（推荐，全自动 hooks）：**\n```bash\n/plugin marketplace add mksglu/context-mode\n/plu…",
+  "forYouZh": "今天第一件事：在 Claude Code 里装好 Context Mode，跑通 `/context-mode:ctx-…",
+  "difficulty": "轻松",
+  "demoUrl": "https://context-mode.com",
+  "howItWorksZh": "Agent 调用会吐大量数据的工具时，Context Mode 先在沙箱/子进程里跑完，原始输出留在本地，不整段塞进对话；模型只看到精简摘要。同时把「改了哪些文件、跑了什么命令、你做了什么决定」记进本地索引。会话一压缩，不是把旧内容再糊回去…",
+  "coreTechZh": [
+    "MCP Server：向 Claude Code / Cursor 等客户端暴露…",
+    "子进程沙箱：工具在隔离环境跑，stdout 摘要回传，完整数据默认不进上下文"
+  ]
+}

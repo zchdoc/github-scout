@@ -1,0 +1,24 @@
+{
+  "id": "img2threejs",
+  "fullName": "img2threejs/img2threejs",
+  "url": "https://github.com/img2threejs/img2threejs",
+  "starsApprox": 16000,
+  "hookZh": "不是砸一坨 mesh，而是用代码把物体「长」出来。",
+  "whyZh": "图→可动画 Three.js 代码模型。",
+  "tags": [
+    "前端",
+    "创意",
+    "Three.js"
+  ],
+  "curatedDate": "2026-09-12",
+  "tweetDraftZh": "🔥 img2threejs/img2threejs ⭐16k\n\n不是砸一坨 mesh，而是用代码把物体「长」出来。\n\n图片→程序化 Three.js 模型，可动画、可编辑。\n\n💡 试试：上传一张…",
+  "useForZh": "面向前端开发者、3D 创意工作者和游戏开发者。解决从 2D 图片创建 3D 模型的问题——生成的不是静态 mesh，而是可编辑、可动画的 Three.js 代码。",
+  "featuresZh": [
+    "图片到 3D：从参考图片重建物体的程序化 3D 模型",
+    "代码优先：生成可读、可修改的 Three.js 代码而非二进制文件"
+  ],
+  "howToRunZh": "```bash\n# 克隆项目\ngit clone https://github.com/img2threejs/img2threejs.git\ncd img2threejs\n# 安装依赖\nnpm…",
+  "forYouZh": "第一件事：找一张你想做成 3D 的简单物体图片（比如一个杯子、一把椅子），用 img2threejs 转换看看生成的代码质量和效果。",
+  "difficulty": "中等",
+  "demoUrl": null
+}
