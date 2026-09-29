@@ -67,9 +67,15 @@ npm start
 
 ## 📝 添加新项目
 
-项目数据按月分目录、一天一个文件：`data/repos/YYYY-MM/DD-id.json`（例如 `data/repos/2026-09/29-agent-browser.json`）。同一天收录多个项目时，这一天放多个文件。要添加新项目，按以下步骤操作：
+项目数据按月分目录、一天一个文件：`data/repos/YYYY-MM/DD-id.json`（例如 `data/repos/2026-09/29-agent-browser.json`）。同一天收录多个项目时，这一天放多个文件。
 
-### 1. 编辑数据文件
+排重只看 `data/repos/index.json`。里面按仓库名排序，每条只有 `fullName`、`url`、`curatedDate` 和对应文件路径，没有正文。条目超过 500 条时，这个文件会改成指向 `index.part1.json`、`index.part2.json`，到那时再分文件查。
+
+### 1. 先查汇总，再写当天的文件
+
+在 `data/repos/index.json` 里搜 `owner/repo-name`。已经有就不要重复收录。
+
+### 2. 编辑数据文件
 
 在对应月份目录里新建 `DD-id.json`。文件内容就是这一条项目，不再包在 `repos` 数组里：
 
@@ -103,7 +109,7 @@ npm start
 }
 ```
 
-### 2. 字段说明
+### 3. 字段说明
 
 #### 基础字段
 
@@ -132,7 +138,7 @@ npm start
 | `difficulty` | string | ❌ | 难度级别：`"轻松"` / `"中等"` / `"硬核"` |
 | `demoUrl` | string\|null | ❌ | 在线演示链接，无则为 `null` |
 
-### 3. 深度字段撰写指南
+### 4. 深度字段撰写指南
 
 #### useForZh（有什么用）
 - 格式：`面向 [目标用户]。解决 [具体问题]——[一句话价值主张]`
@@ -164,7 +170,7 @@ npm start
 - 要具体到今天就能做的事
 - 让读者有明确的行动方向
 
-### 4. 推文文案模板
+### 5. 推文文案模板
 
 推荐的推文格式（强调用途和如何尝试）：
 
@@ -182,19 +188,20 @@ Why（简短说明亮点）
 https://github.com/owner/repo-name
 ```
 
-### 5. 标签规范
+### 6. 标签规范
 
 常用标签参考：
 - 技术领域：`AI`、`LLM`、`前端`、`后端`、`DevOps`
 - 应用类型：`工具`、`框架`、`可视化`、`设计`
 - 特点：`创意`、`趣味`、`效率`、`教育`
 
-### 6. 提交 PR
+### 7. 提交 PR
 
 完成编辑后，提交 Pull Request：
 
 ```bash
-git add data/repos/YYYY-MM/DD-id.json
+npm run index
+git add data/repos/index.json data/repos/YYYY-MM/DD-id.json
 git commit -m "feat: add [repo-name] to collection"
 git push origin your-branch
 ```
@@ -204,7 +211,9 @@ git push origin your-branch
 ```
 github-scout/
 ├── data/
-│   └── repos/            # 按月分目录，如 2026-09/29-agent-browser.json
+│   └── repos/
+│       ├── index.json    # 已收录仓库名单，排重用
+│       └── 2026-09/      # 当月项目，如 29-agent-browser.json
 ├── src/
 │   ├── app/
 │   │   ├── layout.tsx    # 根布局

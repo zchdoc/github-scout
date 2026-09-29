@@ -1,0 +1,186 @@
+{
+  "repos": [
+    {
+      "id": "hcom",
+      "fullName": "aannoo/hcom",
+      "url": "https://github.com/aannoo/hcom",
+      "curatedDate": "2026-09-26",
+      "file": "2026-09/26-hcom.json"
+    },
+    {
+      "id": "llmfit",
+      "fullName": "AlexsJones/llmfit",
+      "url": "https://github.com/AlexsJones/llmfit",
+      "curatedDate": "2026-09-11",
+      "file": "2026-09/11-llmfit.json"
+    },
+    {
+      "id": "gods-eye-view",
+      "fullName": "bilawalsidhu/gods-eye-view",
+      "url": "https://github.com/bilawalsidhu/gods-eye-view",
+      "curatedDate": "2026-09-11",
+      "file": "2026-09/11-gods-eye-view.json"
+    },
+    {
+      "id": "diagram-design",
+      "fullName": "cathrynlavery/diagram-design",
+      "url": "https://github.com/cathrynlavery/diagram-design",
+      "curatedDate": "2026-09-11",
+      "file": "2026-09/11-diagram-design.json"
+    },
+    {
+      "id": "ponytail",
+      "fullName": "DietrichGebert/ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "curatedDate": "2026-09-12",
+      "file": "2026-09/12-ponytail.json"
+    },
+    {
+      "id": "genoffice",
+      "fullName": "genspark-ai/genoffice",
+      "url": "https://github.com/genspark-ai/genoffice",
+      "curatedDate": "2026-09-27",
+      "file": "2026-09/27-genoffice.json"
+    },
+    {
+      "id": "graphify",
+      "fullName": "Graphify-Labs/graphify",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "curatedDate": "2026-09-17",
+      "file": "2026-09/17-graphify.json"
+    },
+    {
+      "id": "pane",
+      "fullName": "greenfield-inc/Pane",
+      "url": "https://github.com/greenfield-inc/Pane",
+      "curatedDate": "2026-09-24",
+      "file": "2026-09/24-pane.json"
+    },
+    {
+      "id": "headroom",
+      "fullName": "headroomlabs-ai/headroom",
+      "url": "https://github.com/headroomlabs-ai/headroom",
+      "curatedDate": "2026-09-20",
+      "file": "2026-09/20-headroom.json"
+    },
+    {
+      "id": "nanobot",
+      "fullName": "HKUDS/nanobot",
+      "url": "https://github.com/HKUDS/nanobot",
+      "curatedDate": "2026-09-18",
+      "file": "2026-09/18-nanobot.json"
+    },
+    {
+      "id": "img2threejs",
+      "fullName": "img2threejs/img2threejs",
+      "url": "https://github.com/img2threejs/img2threejs",
+      "curatedDate": "2026-09-12",
+      "file": "2026-09/12-img2threejs.json"
+    },
+    {
+      "id": "capa",
+      "fullName": "infragate/capa",
+      "url": "https://github.com/infragate/capa",
+      "curatedDate": "2026-09-25",
+      "file": "2026-09/25-capa.json"
+    },
+    {
+      "id": "colibri",
+      "fullName": "JustVugg/colibri",
+      "url": "https://github.com/JustVugg/colibri",
+      "curatedDate": "2026-09-12",
+      "file": "2026-09/12-colibri.json"
+    },
+    {
+      "id": "openwiki",
+      "fullName": "langchain-ai/openwiki",
+      "url": "https://github.com/langchain-ai/openwiki",
+      "curatedDate": "2026-09-12",
+      "file": "2026-09/12-openwiki.json"
+    },
+    {
+      "id": "webwright",
+      "fullName": "microsoft/Webwright",
+      "url": "https://github.com/microsoft/Webwright",
+      "curatedDate": "2026-09-12",
+      "file": "2026-09/12-webwright.json"
+    },
+    {
+      "id": "context-mode",
+      "fullName": "mksglu/context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "curatedDate": "2026-09-21",
+      "file": "2026-09/21-context-mode.json"
+    },
+    {
+      "id": "foremerge",
+      "fullName": "naw103/foremerge",
+      "url": "https://github.com/naw103/foremerge",
+      "curatedDate": "2026-09-23",
+      "file": "2026-09/23-foremerge.json"
+    },
+    {
+      "id": "open-pencil",
+      "fullName": "open-pencil/open-pencil",
+      "url": "https://github.com/open-pencil/open-pencil",
+      "curatedDate": "2026-09-11",
+      "file": "2026-09/11-open-pencil.json"
+    },
+    {
+      "id": "serena",
+      "fullName": "oraios/serena",
+      "url": "https://github.com/oraios/serena",
+      "curatedDate": "2026-09-13",
+      "file": "2026-09/13-serena.json"
+    },
+    {
+      "id": "agent-reach",
+      "fullName": "Panniantong/Agent-Reach",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "curatedDate": "2026-09-19",
+      "file": "2026-09/19-agent-reach.json"
+    },
+    {
+      "id": "prime-agent",
+      "fullName": "PrimeIntellect-ai/prime-agent",
+      "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+      "curatedDate": "2026-09-16",
+      "file": "2026-09/16-prime-agent.json"
+    },
+    {
+      "id": "orca",
+      "fullName": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "curatedDate": "2026-09-28",
+      "file": "2026-09/28-orca.json"
+    },
+    {
+      "id": "openmaic",
+      "fullName": "THU-MAIC/OpenMAIC",
+      "url": "https://github.com/THU-MAIC/OpenMAIC",
+      "curatedDate": "2026-09-11",
+      "file": "2026-09/11-openmaic.json"
+    },
+    {
+      "id": "openhuman",
+      "fullName": "tinyhumansai/openhuman",
+      "url": "https://github.com/tinyhumansai/openhuman",
+      "curatedDate": "2026-09-22",
+      "file": "2026-09/22-openhuman.json"
+    },
+    {
+      "id": "agent-browser",
+      "fullName": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "curatedDate": "2026-09-29",
+      "file": "2026-09/29-agent-browser.json"
+    },
+    {
+      "id": "yoyo-evolve",
+      "fullName": "yologdev/yoyo-evolve",
+      "url": "https://github.com/yologdev/yoyo-evolve",
+      "curatedDate": "2026-09-18",
+      "file": "2026-09/18-yoyo-evolve.json"
+    }
+  ]
+}
