@@ -29,18 +29,18 @@ export default function RepoCard({ repo }: RepoCardProps) {
   };
 
   return (
-    <article className="group relative bg-[var(--card-bg)] border border-[var(--card-border)] rounded-xl p-5 hover:border-[var(--accent)] transition-all duration-200 hover:shadow-lg">
+    <article className="group relative bg-[var(--card-bg)] border border-[var(--card-border)] rounded-xl p-4 sm:p-5 hover:border-[var(--accent)] transition-all duration-200 hover:shadow-lg">
       <div className="flex items-start justify-between gap-4 mb-3">
         <div className="flex-1 min-w-0">
           <a
             href={repo.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group/link inline-flex items-center gap-2 text-lg font-semibold hover:text-[var(--accent)] transition-colors"
+            className="group/link inline-flex max-w-full items-center gap-2 text-base sm:text-lg font-semibold hover:text-[var(--accent)] transition-colors"
           >
             <span className="truncate">{repo.fullName}</span>
             <svg
-              className="w-4 h-4 opacity-0 group-hover/link:opacity-100 transition-opacity flex-shrink-0"
+              className="w-4 h-4 shrink-0 opacity-60 sm:opacity-0 sm:group-hover/link:opacity-100 transition-opacity"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -77,7 +77,7 @@ export default function RepoCard({ repo }: RepoCardProps) {
         {repo.useForZh}
       </p>
 
-      <div className="flex items-center justify-between gap-4 mb-3">
+      <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between mb-3">
         <div className="flex flex-wrap gap-2">
           {repo.tags.map((tag) => (
             <span
@@ -91,7 +91,7 @@ export default function RepoCard({ repo }: RepoCardProps) {
 
         <button
           onClick={() => setExpanded(!expanded)}
-          className="flex-shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-medium bg-[var(--tag-bg)] text-[var(--tag-text)] hover:bg-[var(--accent)] hover:text-white transition-all duration-200"
+          className="self-end sm:self-auto shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-medium bg-[var(--tag-bg)] text-[var(--tag-text)] hover:bg-[var(--accent)] hover:text-white transition-all duration-200"
         >
           {expanded ? (
             <>

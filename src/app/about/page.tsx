@@ -162,7 +162,7 @@ export default function AboutPage() {
               <div>
                 <strong>项目库 MVP</strong>
                 <p className="text-sm text-[var(--muted)]">
-                  搜索、标签筛选、日期分组、一键复制推文
+                  搜索、标签筛选、日期分组
                 </p>
               </div>
             </li>

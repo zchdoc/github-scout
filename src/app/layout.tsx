@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import Image from "next/image";
 import Link from "next/link";
+import "./globals.css";
+import brandIcon from "../../docs/icon/githubscout.png";
 
 export const metadata: Metadata = {
   title: "GitHub Scout | GitHub 拾光",
@@ -67,25 +69,35 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen">
         <header className="sticky top-0 z-50 border-b border-[var(--card-border)] bg-[var(--background)]/80 backdrop-blur-sm">
-          <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <span className="text-2xl">🔭</span>
-              <h1 className="text-xl font-bold">
-                GitHub Scout <span className="text-[var(--muted)] font-normal">| GitHub 拾光</span>
+          <div className="max-w-6xl mx-auto px-4 py-3 sm:py-4 flex items-center justify-between gap-3">
+            <Link href="/" className="flex items-center gap-2 min-w-0 hover:opacity-80 transition-opacity">
+              <Image
+                src={brandIcon}
+                alt=""
+                width={40}
+                height={40}
+                className="h-9 w-9 sm:h-10 sm:w-10 shrink-0"
+                priority
+              />
+              <h1 className="font-bold truncate text-base sm:text-xl">
+                <span className="sm:hidden">GitHub 拾光</span>
+                <span className="hidden sm:inline">
+                  GitHub Scout <span className="text-[var(--muted)] font-normal">| GitHub 拾光</span>
+                </span>
               </h1>
             </Link>
-            <nav className="flex items-center gap-4">
+            <nav className="flex items-center gap-3 sm:gap-4 shrink-0">
               <a
                 href="https://github.com/zchdoc/github-scout"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm hover:text-[var(--accent)] transition-colors"
+                className="text-sm whitespace-nowrap hover:text-[var(--accent)] transition-colors"
               >
                 项目库
               </a>
               <Link
                 href="/about"
-                className="text-sm hover:text-[var(--accent)] transition-colors"
+                className="text-sm whitespace-nowrap hover:text-[var(--accent)] transition-colors"
               >
                 关于
               </Link>

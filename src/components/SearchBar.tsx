@@ -33,7 +33,7 @@ export default function SearchBar({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="block w-full pl-10 pr-4 py-3 border border-[var(--card-border)] rounded-xl bg-[var(--card-bg)] text-[var(--foreground)] placeholder-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition-all"
+        className="block w-full pl-10 pr-4 py-3 border border-[var(--card-border)] rounded-xl bg-[var(--card-bg)] text-[var(--foreground)] text-base placeholder-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition-all"
       />
       {value && (
         <button

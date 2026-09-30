@@ -82,15 +82,15 @@ export default function RepoBrowser({
   const today = new Date().toISOString().split("T")[0];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <section className="mb-8 text-center">
-        <h2 className="text-3xl font-bold mb-3">实用开源项目深度库</h2>
+    <div className="max-w-6xl mx-auto px-4 py-6 sm:py-8">
+      <section className="mb-6 sm:mb-8 text-center">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-3">实用开源项目深度库</h2>
         <p className="text-[var(--muted)] max-w-2xl mx-auto">
           每日一个深度项目解析——不只是「看一眼」，而是「能为我所用」。告诉你怎么跑起来、怎么用到自己的场景。
         </p>
       </section>
 
-      <section className="mb-8 space-y-4 bg-[var(--card-bg)] border border-[var(--card-border)] rounded-xl p-5">
+      <section className="mb-6 sm:mb-8 space-y-4 bg-[var(--card-bg)] border border-[var(--card-border)] rounded-xl p-4 sm:p-5">
         <SearchBar value={searchQuery} onChange={setSearchQuery} />
         <TagFilter
           allTags={allTags}
@@ -98,7 +98,7 @@ export default function RepoBrowser({
           onTagToggle={handleTagToggle}
           onClearAll={() => setSelectedTags([])}
         />
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+        <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
           <p className="text-sm text-[var(--muted)]">
             <span className="inline-flex items-center rounded-lg bg-[var(--tag-bg)] p-0.5 mr-2">
               <Link
