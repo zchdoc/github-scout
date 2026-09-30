@@ -65,6 +65,173 @@ verification: 未实机运行
 - 配图若用仪表盘，先跑 `agent-browser dashboard start`（有打开的 issue #2010）。
 - 不要先加 `doctor --fix`。
 
+## 实测步骤（你来操作）
+
+### 你电脑上现在的状态（2026-09-30 10:12 查的）
+
+- agent-browser 0.38.1，装在 `~/.nvm/versions/node/v24.13.0/bin/agent-browser`。
+- `doctor --offline --quick` 结果：8 pass，0 warn，0 fail。
+- `/Applications/Google Chrome.app` 存在。
+- `~/.agent-browser/browsers/` 里已经有一份 Chrome for Testing 154.0.8037.92（约 360 MB，10:01 下载）。它排在查找顺序第一位，所以默认会用它，而不是你自己的 Chrome。npm 的安装脚本只检查 Chrome、不会下载，doctor 两次运行（10:04、10:10）都在下载之后，所以这份很可能是执行过一次 `agent-browser install` 留下的。写帖子时如实写「我电脑上有 Chrome，但也下载了一份 Chrome for Testing」，或者按第 8 步单独验证用自己的 Chrome。
+
+### 截图怎么截（macOS）
+
+- 截整个窗口：`Cmd + Shift + 4`，按一下空格，点要截的窗口。
+- 截一块区域：`Cmd + Shift + 4`，拖出范围。
+- 截图默认存在桌面。截完拖进下面的截图目录，按表里的文件名改名。
+- 终端路径里的 `/Users/zch` 介意的话发之前打码。
+
+### 第 0 步：准备
+
+在 macOS 自带的「终端」或 iTerm 里执行（不要在 Cursor 里跑 `npm run dev` 的那个终端）：
+
+```bash
+cd ~/Documents/code/github-scout
+SHOTS=data/articals/assets/2026-09/29-agent-browser
+mkdir -p "$SHOTS"
+agent-browser close --all
+```
+
+最后一行是保险：确保没有旧的后台浏览器。`--headed`、`--proxy`、`--executable-path` 这类启动参数只在浏览器启动时生效，后台已经有浏览器时加了也没用。
+
+GitHub 打不开的话，所有 `open` 命令都加 `--proxy http://127.0.0.1:10809`。它也会自动读取 `ALL_PROXY`、`HTTPS_PROXY` 环境变量，你之前 `export all_proxy=...` 过的话可以不加。
+
+### 第 1 步：doctor 截图
+
+```bash
+agent-browser doctor
+```
+
+截图：`01-doctor.png`，截终端，露出 Chrome 那一栏和最后的 Summary。
+
+### 第 2 步：打开项目页，让浏览器窗口显示出来
+
+```bash
+agent-browser open https://github.com/vercel-labs/agent-browser --headed
+```
+
+会弹出一个 Chrome 窗口。把终端和这个窗口左右摆好。
+
+截图：`02-headed.png`，截屏幕上终端和浏览器窗口并排的那一块。
+
+### 第 3 步：拍快照，看编号
+
+```bash
+agent-browser snapshot -i
+agent-browser snapshot -i > "$SHOTS/snapshot.txt"
+grep -c "ref=" "$SHOTS/snapshot.txt"
+```
+
+第一行在终端打出带 `[ref=e1]` 的列表；第二行把同样的内容存成文件；第三行数一共多少个编号，记到下面的记录表。
+
+截图：`03-snapshot.png`，截终端里一段能看清按钮、链接名字和 `[ref=eN]` 的输出，不用截全。
+
+### 第 4 步：带编号的页面截图（适合做首图）
+
+```bash
+agent-browser screenshot --annotate "$SHOTS/04-annotated.png"
+agent-browser screenshot "$SHOTS/05-page.png"
+```
+
+这两张是命令直接生成的文件，不用你手动截。`04-annotated.png` 上每个可点元素都标了 `[N]`，对应快照里的 `@eN`，终端也会打出对照表。
+
+截图（可选）：`04-annotated-legend.png`，截终端里 `--annotate` 打出的对照表。
+
+### 第 5 步：按编号点一下
+
+先找到 Issues 链接的编号：
+
+```bash
+grep -i "issues" "$SHOTS/snapshot.txt"
+```
+
+输出里会有类似 `link "Issues 403" [ref=e27]` 的一行（编号和数字以你看到的为准）。把下面的 `e27` 换成你看到的编号：
+
+```bash
+agent-browser click @e27
+agent-browser get url
+```
+
+浏览器窗口应当跳到 Issues 页，`get url` 打出 `https://github.com/vercel-labs/agent-browser/issues`。
+
+截图：`06-click.png`，终端（露出 click 和 get url 两行）和已经跳到 Issues 页的浏览器窗口并排。
+
+点完页面变了，旧编号作废。要继续点，先重新 `agent-browser snapshot -i`。
+
+### 第 6 步：关掉
+
+```bash
+agent-browser close
+```
+
+### 第 7 步（可选）：让编码代理自己用它
+
+```bash
+npx skills add vercel-labs/agent-browser
+```
+
+这会把 agent-browser 的技能装进当前项目（和 humanizer-zh-next 同一个位置）。装完在 Cursor 或 Claude Code 里新开一个对话，发：
+
+```text
+用 agent-browser 打开 https://github.com/vercel-labs/agent-browser/releases，告诉我最新 release 的版本号和发布日期。
+```
+
+截图：`07-agent.png`，截对话里代理执行 `agent-browser` 命令和给出答案的部分。
+
+### 第 8 步（可选）：验证「已经有 Chrome 就能用」
+
+你电脑上有 Chrome for Testing，默认不会用到你自己的 Chrome。想证明帖子里「已有 Chrome 不用再装」这句，手动指定一次：
+
+```bash
+agent-browser close --all
+agent-browser --executable-path "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" open https://example.com --headed
+agent-browser get title
+agent-browser close
+```
+
+弹出的窗口应当是你平时的 Google Chrome 图标（不是带 “for Testing” 字样的那个），`get title` 打出 `Example Domain`。
+
+截图：`08-system-chrome.png`，截程序坞里的 Chrome 图标和终端。
+
+### 出问题时
+
+- `open` 卡住或超时：大概率是 GitHub 连不上，加 `--proxy http://127.0.0.1:10809`，或先用 `https://example.com` 试。
+- 加了 `--headed` 没有窗口：后台已有无头浏览器。先 `agent-browser close --all` 再 open。
+- click 报被遮挡：页面上有弹层（比如 cookie 提示）。先对弹层的关闭按钮 click，再重新 snapshot。
+- 报错原文复制下来发给我，别先用 `doctor --fix`。
+
+### 代跑进度（2026-09-30 10:17，重启 Cursor 前）
+
+已完成，文件都在 `data/articals/assets/2026-09/29-agent-browser/`：
+
+- 第 1 步：`01-doctor.txt`。完整 doctor 10 pass，0 warn，0 fail；无头启动测试 1.07 秒；用的是 Chrome for Testing 154.0.8037.92。
+- 第 2 步：`02-open.txt`、`02-page-opened.png`。`open ... --headed --proxy http://127.0.0.1:10809` 约 3 秒返回。
+- 第 3 步：`snapshot.txt`。`snapshot -i` 共 945 个编号，约 50 KB（GitHub 页面把整份 README 渲染进来了）。Issues 链接是 `@e27`。
+- 第 4 步：`04-annotated.png`、`04-annotated-legend.txt`（943 行对照表）。
+- 第 5 步第一次：`click @e27` 返回 `✓ Done`，但紧接着的 `get url` 还是仓库首页；过一会儿再查才是 `/issues`。原因是 GitHub 用前端路由换页，点完要等。准备改成 `click @e27` → `wait --url "**/issues"` → `get url` 重跑。`06-click.txt`、`06-after-click.png` 是第一次的结果，需要覆盖。
+
+未完成：
+
+- 第 5 步重跑（上面那条命令被 Cursor 权限打断了）。
+- `02-headed.png` 这类窗口截图：`screencapture` 报 “could not create image from display”，是 Cursor 没有屏幕录制权限。
+- 终端截图：打算把 `.txt` 里的真实输出渲染成终端样式图片，文字不改。
+- 第 6 步 close、第 7 步代理接入、第 8 步用系统 Chrome。
+
+### 记录表（跑完填，改帖子用）
+
+| 项目 | 结果 |
+|------|------|
+| 用的哪个浏览器 | Chrome for Testing 154 / 自己的 Chrome |
+| 是否需要代理 | |
+| open 到页面出来大概几秒 | |
+| snapshot -i 编号数量 | |
+| Issues 链接的编号 | |
+| click 后 get url 输出 | |
+| 第 7 步代理答出的版本号 | |
+| 卡住或报错的地方 | |
+
+跑完把记录表填好、截图放进 `data/articals/assets/2026-09/29-agent-browser/`，告诉我一声，我按真实结果改三篇文稿和配图说明，并把 `verification` 改成已实机运行。
+
 ## 发布辅助
 
 1. 开头用了「实用」和「AI 开源工具」。仓库定位就是给 AI 代理的浏览器命令行，核心能力是点击和填写，所以用「实用」，不用「创新」。

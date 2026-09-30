@@ -1,0 +1,3 @@
+$ agent-browser click @e27
+✗ Unknown ref: e27
+$ agent-browser wait --url "**/issues"

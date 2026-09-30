@@ -1,0 +1,2 @@
+✓ GitHub - vercel-labs/agent-browser: Browser automation CLI for AI agents · GitHub
+  https://github.com/vercel-labs/agent-browser
