@@ -36,6 +36,8 @@ verification: 未实机运行
 - `chat` 没有 `AI_GATEWAY_API_KEY` 会直接退出。默认模型 `anthropic/claude-sonnet-4.6`，默认网关 `https://ai-gateway.vercel.sh`。
 - 域名白名单、动作确认默认关闭；白名单与复用 Chrome 配置、恢复登录态、连接已有浏览器不能同时用。
 - 默认空闲退出约 1 小时；有界面的浏览器和用户已经连上的浏览器不走这个默认。
+- 找浏览器的顺序（`cli/src/native/cdp/chrome.rs` 的 `find_chrome`）：`agent-browser install` 下载的 Chrome → 系统 Chrome、Brave（Mac 另有 Canary、Chromium，Linux 另有 Chromium；Windows 只认 Chrome 和 Brave）→ Puppeteer、Playwright 缓存。已有浏览器就不必执行 `install`。
+- 不带 `--profile` 时，每次用临时 `--user-data-dir` 启动无头浏览器；`--profile <名字>` 会把 Chrome 资料复制到临时目录再用。
 
 ### 我的推断
 
@@ -56,7 +58,7 @@ verification: 未实机运行
 必须核对：
 
 - 再看一眼 Star 和最新 Release。
-- 在本机执行 `npm install -g agent-browser`、`agent-browser install`，对 `https://example.com` 做 `snapshot -i` 和截图，确认退出码与文件。
+- 在本机执行 `npm install -g agent-browser` 和 `agent-browser doctor`，看它是否用上了已有的 Chrome（没有才执行 `agent-browser install`），再对 `https://example.com` 做 `snapshot -i` 和截图，确认退出码与文件。
 
 建议核对：
 

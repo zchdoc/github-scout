@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "humanizer-zh-next": {
+      "source": "Hyacehila/humanizer-zh-next",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "c62a4231ee1818dcf72ba2ede65a83700f88628571ff299d86b69dbd559686f5"
+    }
+  }
+}

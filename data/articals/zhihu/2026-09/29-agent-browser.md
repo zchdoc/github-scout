@@ -19,7 +19,7 @@ verification: 未实机运行
 
 编码代理碰到网页，常见做法是把 HTML 整页塞进上下文，或者另写一段浏览器脚本。页面一长，上下文先被占满，选择器也容易在改版后失效。agent-browser 把这件事收成一组命令：打开页面，取出一份带编号的无障碍树，再用这些编号去点击和填写。
 
-读完这篇，你会知道它实际做成了什么、一条命令怎样走到 Chrome，以及按文档怎样跑到第一张快照。我这次没有在本机跑。
+下面按仓库源码和文档，讲它实际做成了什么、一条命令怎样走到 Chrome，以及怎样跑到第一张快照。先说清楚：我这次没有在本机跑。
 
 ## 这个项目是干什么的
 
@@ -31,7 +31,7 @@ agent-browser 是 Vercel Labs 仓库里的浏览器自动化命令行工具，�
 
 一个具体场景：核对某个开源项目的文档站。代理打开页面，用快照找到安装说明的链接，点进去，再截一张图。你拿到的是命令结果和截图。
 
-不适合的情况也很明确。你要的是带断言和 CI 报告的端到端测试，Playwright 那条路更对口。机器装不了 Chrome，或者目标站强依赖验证码，这个工具帮不上忙。
+有两种情况别用它。一是你要带断言和 CI 报告的端到端测试，这时 Playwright 更对口。二是机器装不了 Chrome，或者目标站强依赖验证码，它帮不上忙。
 
 ## 它实际做成了什么
 
@@ -41,7 +41,7 @@ agent-browser 是 Vercel Labs 仓库里的浏览器自动化命令行工具，�
 
 边界写在仓库里。域名白名单、动作确认、输出长度限制默认关闭。域名白名单和「复用 Chrome 配置、恢复登录态、连已有浏览器」不能一起用，文档写明这些组合会被拒绝。WebMCP 标了 experimental。iOS 需要 macOS、Xcode 和 Appium。Browserless、Browserbase、Browser Use 等云浏览器要各自的 API Key。
 
-和这次阅读直接相关的版本事实：最新 GitHub Release 是 v0.38.1，发布时间 2026-09-16，`package.json` 也是 0.38.1。main 在这个 tag 之后还有提交。npm、Homebrew 或 Cargo 装到的是已发布包，不一定包含 main 上更新的修复。我没有再打开 npm 页面核对线上版本。
+再说版本。最新 GitHub Release 是 v0.38.1，发布时间 2026-09-16，`package.json` 也是 0.38.1。main 在这个 tag 之后还有提交。npm、Homebrew 或 Cargo 装到的是已发布包，不一定包含 main 上更新的修复。我没有再打开 npm 页面核对线上版本。
 
 0.38.0 的更新记录里，截图可以用 `--if-changed` 跳过没变化的图，快照可以用 `--delta` 只返回变化，同一文档里还活着的元素会尽量保住原来的引用。这些我是从 CHANGELOG 读到的，没有在浏览器里验证。
 
@@ -94,16 +94,20 @@ agent-browser click @e2
 
 我这次没有在本机跑，下面是按仓库文档整理的最短路径。
 
-环境上，日常使用要能下载并启动 Chrome。文档写的是执行 `agent-browser install`，从 Chrome for Testing 拉一份浏览器。本机已有的 Chrome、Brave，以及 Playwright、Puppeteer 自带的浏览器，会被探测。README 的平台表列出 macOS、Linux 的 x64 和 ARM64，以及 Windows x64。Windows ARM 上，`bin/agent-browser.js` 在找不到 ARM 二进制时会改用 x64 包。
+先看你电脑上有没有浏览器。很多人其实已经装了 Chrome，这时不用再下载一份。`cli/src/native/cdp/chrome.rs` 里的 `find_chrome` 按这个顺序找：先找 `agent-browser install` 下载的 Chrome，再找系统里装好的 Chrome、Brave（Mac 和 Linux 上还有 Chromium），最后找 Playwright、Puppeteer 下载过的浏览器。一个都找不到，它才提示你执行 `agent-browser install`，从 Chrome for Testing 拉一份。Windows 上的 Chromium 不在自动查找范围里，要用 `--executable-path` 指定。
 
-安装用文档放在推荐位置的这条：
+它启动浏览器时默认用一个新建的临时资料目录，并且不显示窗口，所以不会动你平时 Chrome 里的登录和书签。想带上已有登录，可以加 `--profile Default`，它会把这份资料复制到临时目录再用；Windows 上要先关掉 Chrome。
+
+README 的平台表列出 macOS、Linux 的 x64 和 ARM64，以及 Windows x64。Windows ARM 上，`bin/agent-browser.js` 在找不到 ARM 二进制时会改用 x64 包。
+
+安装用文档放在推荐位置的这条。第二行只在你电脑上没有上面那些浏览器时才需要：
 
 ```bash
 npm install -g agent-browser
 agent-browser install
 ```
 
-macOS 也可以 `brew install agent-browser`，然后再执行一次 `agent-browser install`。Linux 缺系统库时，文档写的是 `agent-browser install --with-deps`，装不齐会以非零状态退出。
+macOS 也可以用 `brew install agent-browser`。Linux 服务器通常没有浏览器和系统库，文档写的是 `agent-browser install --with-deps`，装不齐会以非零状态退出。装完先跑一次 `agent-browser doctor`，它会检查浏览器、守护进程和配置，并试着启动一次无头浏览器。
 
 最短操作不需要 API Key，在任意目录执行：
 
@@ -114,11 +118,11 @@ agent-browser screenshot /tmp/agent-browser-example.png
 agent-browser close
 ```
 
-怎样算跑起来了：文档没有给出 `open` 的固定终端输出。README 里那段同时出现 “Example Domain” 和 “Submit” 的快照是示意，我不当成 example.com 的真实结果。按命令含义，成功应当是这几条命令退出码为 0，`snapshot -i` 打出带 `[ref=eN]` 的列表，截图出现在你写的路径。若还没执行 `install`，预期是找不到浏览器。
+怎样算跑起来了：文档没有给出 `open` 的固定终端输出。README 里那段同时出现 “Example Domain” 和 “Submit” 的快照是示意，我不当成 example.com 的真实结果。按命令含义，成功应当是这几条命令退出码为 0，`snapshot -i` 打出带 `[ref=eN]` 的列表，截图出现在你写的路径。如果电脑上一个浏览器都没找到，它会列出查过的位置，并提示你执行 `install` 或用 `--executable-path`。想亲眼看它操作，在 `open` 后面加 `--headed`。
 
 文档里已经写明的卡点：点击被遮挡会失败，先处理遮挡再重新快照。`networkidle` 只适合页面确实会安静下来的情况。录屏依赖 ffmpeg。撰写时打开的 issue #2011，标题写着 ffmpeg 低于 5.1 时录制会失败，我没有复现。仪表盘命令是 `agent-browser dashboard start`，默认端口 4848。issue #2010 的标题是 macOS arm64 发布包缺少内嵌资源，启动仪表盘会报 “Dashboard not built”。要把仪表盘放进配图的话，建议你自己先跑这条命令。
 
-诊断用 `agent-browser doctor`。`--fix` 会重装 Chrome、清掉旧状态，没确认之前不要加。
+`doctor` 还有个 `--fix`，会重装 Chrome、清掉旧状态，没确认之前不要加。
 
 要试自然语言，再设密钥，不要写进仓库：
 
@@ -141,9 +145,7 @@ agent-browser chat "打开 example.com，总结页面标题"
 
 第三，机器不能装浏览器时，再看 `-p browserless` 或 `-p browseruse`，前提是对应的 API Key。先别从云浏览器开始。
 
-想改代码，先看 `cli/src/main.rs`、`cli/src/connection.rs`、`cli/src/native/snapshot.rs` 和 `cli/src/native/daemon.rs`。新命令还要同时改 `cli/src/mcp.rs`。仓库的 AGENTS.md 要求命令行和 MCP 保持对齐。
-
-代理需要在真实页面上点击、填写、截图，就用它。你要的是可重复的测试报告，就换 Playwright。页面不让自动化浏览器进来，就不要在这上面耗。
+想改代码，先看 `cli/src/main.rs`、`cli/src/connection.rs`、`cli/src/native/snapshot.rs` 和 `cli/src/native/daemon.rs`。新命令还要同时改 `cli/src/mcp.rs`，因为仓库的 AGENTS.md 要求命令行和 MCP 保持对齐。
 
 ## 和相近项目比，它特别在哪
 
@@ -151,15 +153,15 @@ Playwright 仍然是写浏览器测试脚本时最常被提到的库。agent-bro
 
 Browser Use 是另一套面向 AI 代理的浏览器项目。agent-browser 的 README 把它写成可接入的云浏览器：设置 `BROWSER_USE_API_KEY`，再用 `-p browseruse`。本地命令仍然是 agent-browser，云端换的是浏览器进程。README 写了对方仓库的 star 数，我这次没有去那个仓库复核。
 
-你要在测试代码里断言流程，用 Playwright。你要让编码代理用命令操作本机 Chrome，用 agent-browser。这台机器不能装浏览器，再看云浏览器，并准备 API 费用。
+所以怎么选主要看你要什么。要在测试代码里断言流程、出可重复的报告，用 Playwright。要让编码代理用命令在真实页面上点击、填写、截图，用 agent-browser。机器不能装浏览器时再看云浏览器，同时准备好 API 费用。目标页面本身拦自动化浏览器的话，换哪个工具都要耗很多时间，不如先别碰。
 
 ## 我的判断
 
-我读完仓库后的判断是：如果你已经在用编码代理，又经常要看真实网页，它值得装一次，先走通 `install`、`open`、`snapshot -i`、`screenshot`。最有用的部分是快照编号和常驻浏览器。命令短，被挡住时知道被谁挡住，代理比较容易改下一步。
+我读完仓库后的判断是：如果你已经在用编码代理，又经常要看真实网页，它值得装一次，先走通 `doctor`、`open`、`snapshot -i`、`screenshot`。我觉得最有用的是快照编号和常驻浏览器：命令短，点击被挡住时知道是被谁挡住的，代理比较容易决定下一步怎么改。
 
-局限也具体。仓库创建于 2026-01-11，撰写时 Release 已经到 0.38，旗标还在变，写进长期脚本前要锁版本。打开的 issue 里，讨论较多的包括 Windows 上守护进程启动失败（#37、#132），以及无头 Chrome 残留进程占 CPU（#1371）。这些是撰写时仍打开的 issue，不代表你一定会遇到。安全限制默认关闭，把代理放到不可信网站上之前，要自己打开域名白名单和输出长度限制。许可证是 Apache-2.0，商业使用前看仓库里的 LICENSE。`chat` 和云浏览器都要外部密钥，会有费用。
+它的局限也不少。仓库创建于 2026-01-11，撰写时 Release 已经到 0.38，旗标还在变，写进长期脚本前要锁版本。打开的 issue 里，讨论较多的包括 Windows 上守护进程启动失败（#37、#132），以及无头 Chrome 残留进程占 CPU（#1371）。这些是撰写时仍打开的 issue，不代表你一定会遇到。安全限制默认关闭，把代理放到不可信网站上之前，要自己打开域名白名单和输出长度限制。许可证是 Apache-2.0，商业使用前看仓库里的 LICENSE。`chat` 和云浏览器都要外部密钥，会有费用。
 
-下一步就一件事：装好 CLI，跑 `agent-browser install`，再对 `https://example.com` 做一次快照和截图。确认退出码和截图文件之后，再把技能装进编码代理。
+想试的话，先装好 CLI，用 `doctor` 看它有没有找到你电脑上的浏览器，找不到再跑 `agent-browser install`，然后对 `https://example.com` 做一次快照和截图。确认退出码和截图文件之后，再把技能装进编码代理。
 
 仓库：https://github.com/vercel-labs/agent-browser
 

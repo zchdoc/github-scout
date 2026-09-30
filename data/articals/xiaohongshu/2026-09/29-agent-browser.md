@@ -18,17 +18,21 @@ verification: 未实机运行
 
 它是一条命令行。代理先对页面打一张无障碍树快照。无障碍树就是浏览器按按钮、输入框、链接整理出来的结构。这些元素会带上 @e1、@e2 这种编号，然后再去点击和填写。这样不用把整页 HTML 塞进对话。
 
-适合已经在用 Cursor、Claude Code 这类编码代理，并且经常要打开文档站或后台的人。你要写带断言的自动化测试报告，它不是那条路。机器装不了 Chrome，或者网页强依赖验证码，也先别指望它。
+适合已经在用 Cursor、Claude Code 这类编码代理，并且经常要打开文档站或后台的人。要写带断言的自动化测试报告，它不合适。机器装不了 Chrome，或者网页强依赖验证码，也先别指望它。
 
-我这次没在本机跑。按文档，最短是这几步：
+我这次没在本机跑。按文档和源码，最短是这几步：
 
 1. `npm install -g agent-browser`
-2. `agent-browser install`
+2. `agent-browser doctor`，看它有没有找到浏览器
 3. `agent-browser open https://example.com`
 4. `agent-browser snapshot -i`
 5. 看到带 ref 的列表后，再截一张图，然后 `close`
 
-怎样算成功：snapshot 打出带编号的元素，截图文件出现。install 会下载一份 Chrome。Linux 缺依赖时，文档写的是 `agent-browser install --with-deps`。
+电脑上已经有 Chrome、Brave，或者 Playwright、Puppeteer 下载过的浏览器，它会自己找到，不用再装。一个都没有，第 2 步之后补一句 `agent-browser install`，下载一份 Chrome。Linux 服务器用 `agent-browser install --with-deps`，顺带装系统库。
+
+它默认开的是看不见窗口的临时浏览器，不碰你平时的登录。想看它点网页，open 后面加 `--headed`。
+
+怎样算成功：snapshot 打出带编号的元素，截图文件出现。
 
 浏览器会留在后台进程里，所以打开和快照可以分成两次命令。点击被弹窗挡住时，文档说命令会失败，并告诉你挡住的是谁。先关掉那一层，再重新快照，旧编号不要接着用。
 
@@ -46,8 +50,8 @@ verification: 未实机运行
 
 1. 封面：项目名 agent-browser，一句「让 AI 按编号点网页」
 2. 无障碍树示意：按钮、输入框旁边标 @e1、@e2
-3. 五步命令，从 install 到 snapshot
-4. 一张你自己跑出来的 example.com 截图。撰写时没有截图，不要用生成图冒充
+3. 五步命令，从 npm 安装到 snapshot，旁边标一句「已有 Chrome 不用再装」
+4. 你自己跑出来的截图。`screenshot --annotate` 生成的带编号页面最直观，其次是 snapshot -i 的终端输出。撰写时没有截图，不要用生成图冒充
 5. 「适合编码代理 / 不适合写测试套件」两列
 6. 被弹窗挡住时要重新快照
 7. 仓库地址和 Apache-2.0
