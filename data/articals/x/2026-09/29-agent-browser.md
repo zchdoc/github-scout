@@ -3,8 +3,23 @@ repo: vercel-labs/agent-browser
 url: https://github.com/vercel-labs/agent-browser
 date: 2026-09-29
 platform: x
-verification: 未实机运行
+verification: 已实机运行（macOS Apple Silicon，agent-browser 0.38.1，2026-09-30）
 ---
+
+## 配图（X 一条最多 4 张，按这个顺序上传）
+
+图片都在 `data/articals/assets/2026-09/29-agent-browser/`。
+
+| 顺序 | 文件 | 为什么放 | 替代文本（X 上传时点「添加描述」填） |
+|------|------|----------|------------------------------------|
+| 1 | `04-annotated.png` | 首图。一眼看懂「页面元素都有编号」，不用读字 | agent-browser 对 GitHub 仓库页做的带编号截图，每个可点元素标了红色数字，Issues 是 27 |
+| 2 | `06-click.png` | 证明按编号真的能点：左边命令，右边已经跳到 Issues 页 | 左边终端执行 click @e23、wait --url、get url，右边浏览器已经打开 Issues 页 |
+| 3 | `03-snapshot.png` | 让读者看到模型实际拿到的是什么：一行行带 ref 的元素 | 终端里 snapshot -i 的输出，每个链接和按钮后面带 ref=e 编号 |
+| 4 | `08-system-chrome.png` | 对应「已有 Chrome 能直接用」：用自己的 Chrome 打开，没有测试版提示条 | 用 --executable-path 指向本机 Google Chrome 打开仓库页 |
+
+备用：`02-headed.png`（Chrome for Testing 窗口，顶部有「Chrome 测试版」提示条，可以和图 4 对比）、`01-doctor.png`（自检 10 pass）。
+
+发之前检查：终端里的 `/Users/zch` 路径要不要打码；右边浏览器里的翻译弹窗是 Chrome 自带的，不影响内容。
 
 ## A. 长帖主稿（需要 X Premium）
 
@@ -12,55 +27,40 @@ verification: 未实机运行
 
 分享一个实用的 AI 开源工具 agent-browser，它让 AI 代理按页面上的按钮和输入框操作浏览器。它先给页面拍一张快照，能点的元素都带编号，代理只要说点 @e2。
 
-编号来自 Chrome 的无障碍树，就是浏览器按按钮、输入框、链接整理出来的页面结构。模型不写选择器，只从快照里挑编号。要点的位置被弹窗挡住时，命令会直接失败，并告诉你挡住它的是哪个元素。
+编号来自 Chrome 的无障碍树，就是浏览器按按钮、输入框、链接整理出来的页面结构。模型不用写选择器，只从快照里挑编号。
 
 GitHub：github.com/vercel-labs/agent-browser
 
-它是 Vercel Labs 用 Rust 写的，第一条命令会拉起一个常驻后台进程，直连 Chrome 的调试接口。文档写明不需要 Node.js，也不需要 Playwright。0.38 的更新记录里还加了 snapshot --delta，只回传页面变化；screenshot --if-changed 会跳过没变的截图，都是为了少占上下文。
+我在 Mac 上试了一下。打开它自己的 GitHub 仓库页，snapshot -i 给了 945 个编号，Issues 是 @e27，执行 click @e27 就进了 Issues 页。图一是 screenshot --annotate 截的，红框里的数字就是编号。
 
-怎么跑起来，看你电脑上已经有什么：
+有两个地方要注意。一是编号跟着页面走，我把窗口缩窄后，Issues 变成了 @e23，所以每次操作前都要重新快照。二是 GitHub 用前端换页，click 返回完成时地址还没变，要先 wait --url "**/issues" 再往下走。
 
-1. 已经装了 Chrome 或 Brave，或者用 Playwright、Puppeteer 下载过浏览器：npm install -g agent-browser 就够了，它会自己找到，不用再装 Chrome。
+安装是 npm install -g agent-browser，然后跑 agent-browser doctor 自检。电脑上有 Chrome 或 Brave 就不用再装浏览器，都没有才执行 agent-browser install。我这台机器上还有一份它下载的 Chrome for Testing，它会优先用；想用自己的 Chrome，加 --executable-path 指过去就行。国内网络记得加 --proxy，我不加时连 example.com 都打不开。
 
-2. 电脑上没有这类浏览器：再执行一次 agent-browser install，下载 Chrome for Testing。Linux 服务器改用 agent-browser install --with-deps，顺带装系统库。
+它是 Vercel Labs 用 Rust 写的，不需要 Node.js 和 Playwright。执行 npx skills add vercel-labs/agent-browser，Claude Code、Codex、Cursor 就能读到用法。适合让编码代理看文档站和后台；要写带断言的测试报告，还是 Playwright 更合适。版本更新快，写进长期脚本前记得锁版本。
 
-3. 想让它带着你平时的登录状态：加 --profile Default。它把你的 Chrome 资料复制一份再用，不改原资料。Windows 上要先关掉 Chrome。
+## B. 串推版（免费账号用，括号里是这一条配的图）
 
-装完先跑 agent-browser doctor，它会检查浏览器并试着启动一次。然后 open 一个网址，snapshot -i 看编号。它默认开的是无界面的临时浏览器，不碰你平时的登录；想亲眼看它点网页，就加 --headed。以上按 README 和源码整理，我还没在本机跑过。
-
-再执行 npx skills add vercel-labs/agent-browser，Claude Code、Codex、Cursor 这类代理就能读到用法，也能用 agent-browser mcp 接成 MCP 服务。自然语言的 chat 命令要另配 AI Gateway 密钥，普通命令不用。
-
-它适合让编码代理去看文档站和后台。要写带断言的测试报告，还是 Playwright 更合适。版本更新很快，写进长期脚本前记得锁版本。
-
-配图（最多 4 张，按顺序）：
-
-1. 带编号的页面截图：`screenshot --annotate` 的结果，页面上每个可点元素都标了号。做首图最直观。等你实测后再放
-2. snapshot -i 的终端输出，能看到 [ref=e1] 这种编号。等你实测后再放；没跑之前可以先用 README 里的示例，配一句「这是文档示例」
-3. 用 --headed 打开时弹出的浏览器窗口和终端并排，说明它真的在操作浏览器
-4. README 首屏，露出项目名和 “Browser automation CLI for AI agents”
-
-## B. 串推版（免费账号用）
-
-1.
+1.（图：04-annotated.png）
 让编码代理去点网页，常见做法是把整页 HTML 塞给它，或者让它自己写选择器。分享一个实用的 AI 开源工具 agent-browser，它让代理先拍快照，再按 @e2 这种编号点击和填写。
 
-2.
-编号来自 Chrome 的无障碍树，也就是浏览器按按钮、输入框、链接整理出来的结构。模型只从快照里挑编号。点的位置被弹窗挡住时，命令会直接失败，并告诉你挡住它的是谁。
+2.（图：03-snapshot.png）
+编号来自 Chrome 的无障碍树，也就是浏览器按按钮、输入框、链接整理出来的结构。我在 Mac 上试了它自己的 GitHub 仓库页，snapshot -i 给了 945 个编号，Issues 是 @e27。
 
-3.
-它是 Vercel Labs 用 Rust 写的，常驻后台进程直连 Chrome，文档写明不需要 Node.js 和 Playwright。0.38 加了 snapshot --delta 和 screenshot --if-changed，都是为了少占上下文。
+3.（图：06-click.png）
+click @e27 就进了 Issues 页。两个坑：窗口缩窄后 Issues 变成了 @e23，编号跟着页面走，每次都要重新快照；GitHub 是前端换页，点完要 wait --url 再查地址。
 
 4.
-怎么装，看你电脑上有什么。装过 Chrome、Brave，或用 Playwright、Puppeteer 下载过浏览器：npm install -g agent-browser 就够，它会自己找到。都没有：再跑 agent-browser install。Linux 服务器加 --with-deps。
+安装：npm install -g agent-browser，再跑 agent-browser doctor 自检。电脑上有 Chrome 或 Brave 就不用再装浏览器，都没有才执行 agent-browser install。国内网络记得加 --proxy。
 
-5.
-想带上平时的登录状态，加 --profile Default，它复制一份资料再用。装完先 agent-browser doctor 自检，再 open 网址、snapshot -i 看编号。默认是无界面的临时浏览器，加 --headed 能看它点。
+5.（图：08-system-chrome.png）
+我这台机器上有一份它下载的 Chrome for Testing，默认优先用它。想用自己的 Chrome，加 --executable-path 指过去，窗口顶部就没有「测试版」提示条了。
 
 6.
-执行 npx skills add vercel-labs/agent-browser，Claude Code、Codex、Cursor 就能读到用法。适合让代理看文档站和后台，写测试报告还是用 Playwright。以上按文档整理，我还没实测。
+执行 npx skills add vercel-labs/agent-browser，Claude Code、Codex、Cursor 就能读到用法。适合让代理看文档站和后台，写测试报告还是用 Playwright。
 GitHub：github.com/vercel-labs/agent-browser
 
-## C. 英文速递卡（可选）
+## C. 英文速递卡（可选，配图用 04-annotated.png）
 
 ⭐ agent-browser
 
@@ -70,48 +70,6 @@ Total: 43,365 ⭐ (as of 2026-09-30)
 
 https://github.com/vercel-labs/agent-browser
 
-## D. 实测清单（你自己跑，跑完再改帖子）
+## 实测记录
 
-先确认你属于哪种情况：Mac 看「应用程序」里有没有 Google Chrome、Chrome Canary、Chromium 或 Brave；Windows 看有没有 Chrome 或 Brave；Linux 执行 `which google-chrome chromium brave-browser`。源码的查找顺序是：先找 `agent-browser install` 下载的 Chrome，再找系统浏览器，最后找 Puppeteer 和 Playwright 的缓存。Windows 上的 Chromium 不在自动查找范围内，要用 `--executable-path` 指定。
-
-按顺序执行，每步后面是要截的图：
-
-```bash
-npm install -g agent-browser
-# 已有浏览器就跳过下面这行
-agent-browser install
-
-agent-browser doctor
-# 截图 1：doctor 的检查结果。注意打码用户名路径
-
-agent-browser open https://github.com/vercel-labs/agent-browser --headed
-# 截图 2：弹出的浏览器窗口和终端并排
-
-agent-browser snapshot -i
-# 截图 3：带 [ref=eN] 的输出，挑一段能看清按钮和链接的
-
-agent-browser screenshot --annotate annotated.png
-# 截图 4：annotated.png 本身，适合做首图
-
-agent-browser click @eN        # 换成快照里 Issues 或 Releases 链接的编号
-agent-browser get url
-# 截图 5：点完之后的地址，证明它按编号点对了
-
-agent-browser close
-```
-
-想试接入代理的话，在项目里执行 `npx skills add vercel-labs/agent-browser`，再对 Claude Code 或 Cursor 说「用 agent-browser 打开这个仓库，告诉我最新 release 的版本号」。截图 6 截代理的对话过程。
-
-跑的时候顺手记下这几件事，改帖子要用：
-
-- 你是哪种情况：已有 Chrome 直接用，还是下载了 Chrome for Testing
-- 系统和 agent-browser 版本
-- doctor 有没有报错，报了什么
-- 快照一共给了多少个编号，大概多长
-- 有没有点不准或卡住的地方
-
-跑完后，把长帖里「以上按 README 和源码整理，我还没在本机跑过」这一句换成真实经历，比如：
-
-「我在 {系统} 上试了一下。本机{已经有 Chrome，装完没下载浏览器 / 没有 Chrome，install 下载了一个}，doctor {通过 / 报了 xxx}。打开这个仓库页，snapshot -i 给了 {N} 个编号，我让它点 @e{N} 进了 {页面}。{遇到的问题，没有就不写}」
-
-花括号里只填你真实看到的。同时把文件开头的 `verification` 改成「已实机运行」，串推版第 6 条的「我还没实测」也一起改掉。
+命令、原始输出和完整记录表在 `data/articals/notes/2026-09/29-agent-browser.md` 的「实测结果」一节。帖子里的数字都来自那次运行：945 个编号、@e27 和 @e23、不加代理时 `net::ERR_CONNECTION_CLOSED`、点击后要 `wait --url`。

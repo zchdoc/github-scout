@@ -1,3 +1,12 @@
-$ agent-browser click @e27
-✗ Unknown ref: e27
+$ agent-browser click @e23
+✓ Done
 $ agent-browser wait --url "**/issues"
+https://github.com/vercel-labs/agent-browser/issues
+$ agent-browser get url
+https://github.com/vercel-labs/agent-browser/issues
+$ agent-browser get title
+GitHub - vercel-labs/agent-browser: Browser automation CLI for AI agents · GitHub
+
+# 窗口宽 720px 时 Issues 是 @e23；1280px 默认无头视口下是 @e27。
+# 第一次没加 wait：click 返回 ✓ Done 后立刻 get url，还是仓库首页。
+# get title 比 URL 慢一拍，截图时浏览器标签页已经是 “Issues · vercel-labs/agent-browser”。

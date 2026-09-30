@@ -149,8 +149,11 @@ grep -i "issues" "$SHOTS/snapshot.txt"
 
 ```bash
 agent-browser click @e27
+agent-browser wait --url "**/issues"
 agent-browser get url
 ```
+
+中间那句 `wait` 不能省：GitHub 是前端换页，实测不加时 `get url` 还停在仓库首页。
 
 浏览器窗口应当跳到 Issues 页，`get url` 打出 `https://github.com/vercel-labs/agent-browser/issues`。
 
@@ -200,37 +203,47 @@ agent-browser close
 - click 报被遮挡：页面上有弹层（比如 cookie 提示）。先对弹层的关闭按钮 click，再重新 snapshot。
 - 报错原文复制下来发给我，别先用 `doctor --fix`。
 
-### 代跑进度（2026-09-30 10:17，重启 Cursor 前）
+### 实测结果（2026-09-30 10:16–10:27，由 Cursor 代跑）
 
-已完成，文件都在 `data/articals/assets/2026-09/29-agent-browser/`：
+环境：macOS（Apple Silicon），agent-browser 0.38.1，Node 24.13.0，走本机代理 `http://127.0.0.1:10809`。终端截图是在 macOS「终端」里真实执行后截的窗口，每张最上面一行 `$ ...` 是执行的命令。
 
-- 第 1 步：`01-doctor.txt`。完整 doctor 10 pass，0 warn，0 fail；无头启动测试 1.07 秒；用的是 Chrome for Testing 154.0.8037.92。
-- 第 2 步：`02-open.txt`、`02-page-opened.png`。`open ... --headed --proxy http://127.0.0.1:10809` 约 3 秒返回。
-- 第 3 步：`snapshot.txt`。`snapshot -i` 共 945 个编号，约 50 KB（GitHub 页面把整份 README 渲染进来了）。Issues 链接是 `@e27`。
-- 第 4 步：`04-annotated.png`、`04-annotated-legend.txt`（943 行对照表）。
-- 第 5 步第一次：`click @e27` 返回 `✓ Done`，但紧接着的 `get url` 还是仓库首页；过一会儿再查才是 `/issues`。原因是 GitHub 用前端路由换页，点完要等。准备改成 `click @e27` → `wait --url "**/issues"` → `get url` 重跑。`06-click.txt`、`06-after-click.png` 是第一次的结果，需要覆盖。
+截图和原始输出都在 `data/articals/assets/2026-09/29-agent-browser/`：
 
-未完成：
+| 文件 | 内容 | 适合放哪 |
+|------|------|----------|
+| `04-annotated.png` | `screenshot --annotate` 生成的 GitHub 仓库页，每个可点元素标了红色编号，Issues 是 [27] | 三端首图 |
+| `03-snapshot.png` | 终端里 `snapshot -i` 的前 28 行，能看到 `link "Issues 403" [ref=e23]` | 讲编号原理 |
+| `02-headed.png` | 左边终端执行 `open ... --headed`，右边弹出的 Chrome for Testing 窗口（顶部有「Chrome 测试版」提示条） | 讲「它真的在开浏览器」 |
+| `06-click.png` | 左边 `click @e23` → `wait --url` → `get url`，右边已经跳到 Issues 页 | 讲按编号点击 |
+| `08-system-chrome.png` | 用 `--executable-path` 指向自己的 Google Chrome 打开同一页，没有「Chrome 测试版」提示条 | 讲「已有 Chrome 能直接用」 |
+| `01-doctor.png` | doctor 结果后半段：Chrome、Launch test、Summary 10 pass | 讲安装后自检 |
+| `04-annotated-legend.png` | 终端里 `--annotate` 打出的 `[N] @eN` 对照表 | 备用 |
+| `02-page-opened.png`、`06-issues-page.png` | agent-browser 自己截的页面图（首页、Issues 页） | 备用 |
+| `*.txt` | doctor、open、click 的原始输出，两份完整快照 | 核对数字用，不发 |
 
-- 第 5 步重跑（上面那条命令被 Cursor 权限打断了）。
-- `02-headed.png` 这类窗口截图：`screencapture` 报 “could not create image from display”，是 Cursor 没有屏幕录制权限。
-- 终端截图：打算把 `.txt` 里的真实输出渲染成终端样式图片，文字不改。
-- 第 6 步 close、第 7 步代理接入、第 8 步用系统 Chrome。
+右边浏览器窗口里有 Chrome 自带的翻译弹窗，没关掉。截图里的 `/Users/zch` 路径介意的话发之前打码。
 
-### 记录表（跑完填，改帖子用）
+### 记录表
 
 | 项目 | 结果 |
 |------|------|
-| 用的哪个浏览器 | Chrome for Testing 154 / 自己的 Chrome |
-| 是否需要代理 | |
-| open 到页面出来大概几秒 | |
-| snapshot -i 编号数量 | |
-| Issues 链接的编号 | |
-| click 后 get url 输出 | |
-| 第 7 步代理答出的版本号 | |
-| 卡住或报错的地方 | |
+| 用的哪个浏览器 | 默认用 `~/.agent-browser/browsers/` 里的 Chrome for Testing 154.0.8037.92；加 `--executable-path` 后用了自己的 Google Chrome 154.0.8037.93，也能正常打开 |
+| 是否需要代理 | 需要。不加代理时 example.com 报 `net::ERR_CONNECTION_CLOSED`；加 `--proxy http://127.0.0.1:10809` 后正常 |
+| doctor | 10 pass，0 warn，0 fail；无头启动测试 1.07 秒和 0.89 秒（两次） |
+| open 到页面出来 | GitHub 仓库页约 3 秒（走代理） |
+| snapshot -i 编号数量 | 默认无头视口下 945 个，约 50 KB；720 像素宽的窗口下 798 个。GitHub 仓库页把 README 也渲染进来了，所以很长 |
+| Issues 链接的编号 | 默认视口 `@e27`，720 像素宽窗口 `@e23`。同一个页面，窗口宽度不同，编号就不同 |
+| click 后 get url 输出 | 不加等待时：`click` 返回 `✓ Done`，紧接着 `get url` 还是仓库首页。加 `wait --url "**/issues"` 后：`https://github.com/vercel-labs/agent-browser/issues` |
+| get title | 比 URL 慢一拍：URL 已经是 /issues 时，title 还是首页标题，稍后才变成 “Issues · vercel-labs/agent-browser · GitHub” |
+| 第 7 步代理接入 | 没做，需要你在 Cursor 或 Claude Code 里新开对话测 |
+| 卡住或报错的地方 | 1. 不走代理打不开外网页面。2. GitHub 前端换页，点完要 `wait`。3. `--args` 用逗号分隔多个参数，参数值里本身带逗号（如 `--window-position=720,25`）会被拆坏，还多开了一个空白标签页 |
 
-跑完把记录表填好、截图放进 `data/articals/assets/2026-09/29-agent-browser/`，告诉我一声，我按真实结果改三篇文稿和配图说明，并把 `verification` 改成已实机运行。
+### 可以写进帖子的真实经历
+
+- 「我电脑上本来就有 Chrome，但 agent-browser 默认用的是它自己下载的 Chrome for Testing。用 `--executable-path` 指到自己的 Chrome 也能跑，窗口顶部就没有测试版提示条了。」
+- 「在国内网络下要加 `--proxy`，不然连 example.com 都打不开。」
+- 「GitHub 仓库页 `snapshot -i` 给了 945 个编号，Issues 是 @e27；把窗口缩窄之后变成 @e23。编号跟着页面走，所以文档要求每次操作前重新快照。」
+- 「第一次点 Issues，命令说完成了，马上查地址却还在首页。GitHub 是前端换页，要加一句 `wait --url`。」
 
 ## 发布辅助
 
