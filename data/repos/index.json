@@ -181,6 +181,13 @@
       "url": "https://github.com/yologdev/yoyo-evolve",
       "curatedDate": "2026-09-18",
       "file": "2026-09/18-yoyo-evolve.json"
+    },
+    {
+      "id": "magpie",
+      "fullName": "yetone/magpie",
+      "url": "https://github.com/yetone/magpie",
+      "curatedDate": "2026-10-13",
+      "file": "2026-10/13-magpie.json"
     }
   ]
 }
