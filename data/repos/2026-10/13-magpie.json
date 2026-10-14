@@ -1,0 +1,41 @@
+{
+  "id": "magpie",
+  "fullName": "yetone/magpie",
+  "url": "https://github.com/yetone/magpie",
+  "starsApprox": 11800,
+  "hookZh": "Claude Code、Codex、Gemini CLI 各记一套模型、密钥和 Base URL，配额一满还得手动改配置。",
+  "whyZh": "本地网关 + 菜单栏：任意 agent 切任意模型（Claude Code 跑 Kimi、Codex 跑 DeepSeek），配额用尽自动换下一个账号。MIT。",
+  "tags": [
+    "AI",
+    "CLI",
+    "Claude Code",
+    "Codex",
+    "DeepSeek",
+    "Kimi",
+    "gateway",
+    "macOS",
+    "LLM"
+  ],
+  "curatedDate": "2026-10-13",
+  "tweetDraftZh": "🛠️ yetone/magpie ⭐~11.8k\n\nClaude Code、Codex、Gemini CLI 各记一套模型、密钥和 Base URL，配额一满还得自己改配置。\n\nmagpie：本地网关 + 菜单栏（MIT）。任意 agent 切任意模型：Claude Code 跑 Kimi、Codex 跑 DeepSeek。一个订阅也能给别的 agent 用；配额用尽就切下一组，agent 看不到报错。支持 macOS / Windows / Linux，还有 CLI 和 Docker。\n\n快速上手：\n```bash\ncurl -fsSL https://usemagpie.ai/install.sh | sh\nmagpie provider add deepseek sk-…\nmagpie claude deepseek/deepseek-v4-pro\n```\n\nhttps://github.com/yetone/magpie",
+  "useForZh": "面向同时用 Claude Code / Codex / Gemini CLI 等多套 coding agent、又想共用 DeepSeek、Kimi、ChatGPT 订阅的人。解决「每个 agent 各改各的配置、配额满了就卡住、订阅只能在官方客户端用」——装一个 magpie，从菜单栏或 CLI 统一换模型，配额自动切换。",
+  "featuresZh": [
+    "任意模型配任意 agent：在 Agents 页点选 provider/model，原子改写该 agent 自己的配置文件",
+    "本地网关 127.0.0.1:3425：同时讲 OpenAI / Anthropic / Gemini 协议，流式、工具调用、reasoning 都会翻译",
+    "订阅当 provider：已登录的 Claude / ChatGPT / Copilot / Gemini 等可被其他 agent 调用",
+    "路由组：smart / order / rotate 等策略，配额用尽自动换下一个账号或模型",
+    "用量与配额：tokens、费用、各计划窗口余额；支持 profile 一键切换整套 agent 配置"
+  ],
+  "howToRunZh": "前提：macOS / Windows / Linux 均可。桌面端从 https://usemagpie.ai 下载，或一条安装脚本。\n\n**1) 安装：**\n```bash\ncurl -fsSL https://usemagpie.ai/install.sh | sh\n```\n也可用官网 dmg / exe，或 Docker：`ghcr.io/yetone/magpie`。\n\n**2) 加供应商：** 打开 magpie → Providers → Add provider，选预设贴密钥，或登录订阅。\n\n**3) 给 agent 选模型：** Agents 页点选，例如 Claude Code → DeepSeek。新开一轮会话即生效。\n\n**CLI 等价操作：**\n```bash\nmagpie provider add deepseek sk-你的密钥\nmagpie claude deepseek/deepseek-v4-pro\nmagpie codex moonshot/kimi-k2.5\nmagpie quota\n```\n文档：https://usemagpie.ai/docs/start",
+  "forYouZh": "今天第一件事：装好 magpie，加一个你已有的 DeepSeek 或 Kimi 密钥，把 Claude Code（或 Codex）切到该模型，新开一轮对话确认走的是 magpie 网关，而不是原来的官方配置。",
+  "difficulty": "轻松",
+  "demoUrl": "https://usemagpie.ai",
+  "howItWorksZh": "本机跑一个网关，监听 127.0.0.1:3425。各 agent 的请求先打到这里；magpie 按你选的 provider/model 或路由组转发，并在 OpenAI、Anthropic、Gemini 协议之间翻译。切换模型时它只改各 agent 配置里关键的那几项（密钥、Base URL、模型名），尽量保留原文件注释和格式。路由组把多个账号或模型绑成一个名字，配额或错误时按策略换下一个，agent 侧仍以为连着同一个 endpoint。",
+  "coreTechZh": [
+    "本地多协议网关：OpenAI Chat/Responses、Anthropic Messages、Gemini，含流式与 tool calls",
+    "原子配置改写：按 agent 格式改关键字段，不打乱原文件结构",
+    "订阅桥接：读取本机已登录的 Claude / Codex 等会话，当作可路由的 provider",
+    "路由组策略：smart（优先快到期配额）、order、rotate、usage、pace",
+    "跨端：菜单栏应用 + TUI + Web UI + CLI，可选 Docker / Termux"
+  ]
+}
