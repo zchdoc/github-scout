@@ -1,0 +1,42 @@
+{
+  "id": "pilotdeck",
+  "fullName": "OpenBMB/PilotDeck",
+  "url": "https://github.com/OpenBMB/PilotDeck",
+  "starsApprox": 4400,
+  "hookZh": "多项目并行时，AI 记忆串台、费用烧旗舰模型、人一走开任务就停，办公稿还得自己排。",
+  "whyZh": "按 WorkSpace 隔离文件/记忆/技能；白盒记忆可改可回滚；智能路由省 token；2.0 一键安装，一句话出可编辑 Word / Excel / PPT。AGPL-3.0。",
+  "tags": [
+    "AI",
+    "Agent",
+    "WorkSpace",
+    "MCP",
+    "Office",
+    "Word",
+    "Excel",
+    "PPT",
+    "OpenBMB",
+    "productivity"
+  ],
+  "curatedDate": "2026-10-16",
+  "tweetDraftZh": "🛠️ OpenBMB/PilotDeck ⭐~4.4k\n\n多项目并行时，AI 记忆串台、费用烧旗舰模型，人一走开任务就停，办公稿还得自己排。\n\nPilotDeck：按 WorkSpace 隔离文件/记忆/技能（AGPL-3.0）。白盒记忆可改可回滚；智能路由把简单活分给轻量模型；Always-on 后台继续跑，落地成文件。2.0 一键安装，内置高质量 Word / Excel / PPT Skills。\n\n快速上手：\n```bash\ncurl -fsSL https://raw.githubusercontent.com/OpenBMB/PilotDeck/main/install.sh | bash\npilotdeck\n# 浏览器打开 http://localhost:3001，配上模型密钥\n```\n\nhttps://github.com/OpenBMB/PilotDeck",
+  "useForZh": "面向要同时推进多个长期项目、又在意 token 成本和记忆可追溯的人。解决「共享上下文串戏、全程旗舰模型烧钱、人离开任务就断、出稿还要自己排版」——一个 WorkSpace 一摊事，路由省钱，Always-on 收工落盘。",
+  "featuresZh": [
+    "WorkSpace 级隔离：每个项目独立文件系统、记忆库与技能集，并行互不污染",
+    "白盒记忆：生成/抽取/存储/检索全程可见，可编辑删除，Dream Mode 支持一键回滚",
+    "智能路由：按任务难度自动匹配强弱模型，官方示例社交运营场景约省 70% 费用",
+    "Always-on：离开键盘后仍可发现候选任务、长跑监控，结果落成本地文件并汇总",
+    "2.0：一键安装 + 可视化配模型；新增高质量 Word / Excel / PPT Skills；原生 MCP"
+  ],
+  "howToRunZh": "前提：macOS / Linux（或 Windows PowerShell）。需要 Node.js 22.13+（<23）。\n\n**1) 一键安装（macOS / Linux）：**\n```bash\ncurl -fsSL https://raw.githubusercontent.com/OpenBMB/PilotDeck/main/install.sh | bash\n```\n国内镜像可加：\n```bash\ncurl -fsSL https://raw.githubusercontent.com/OpenBMB/PilotDeck/main/install.sh | \\\n  PILOTDECK_NODE_DIST_MIRROR=https://npmmirror.com/mirrors/node \\\n  NPM_CONFIG_REGISTRY=https://registry.npmmirror.com bash\n```\n\n**2) 启动：**\n```bash\npilotdeck\n# 打开 http://localhost:3001，在引导页配置 provider 与 API key\n```\n\n**Windows：**\n```powershell\npowershell -ExecutionPolicy Bypass -c \"irm https://raw.githubusercontent.com/OpenBMB/PilotDeck/main/install.ps1 | iex\"\n```\n\n也可用 Docker：`docker compose up -d --build`。官网：https://pilotdeck.openbmb.cn",
+  "forYouZh": "今天第一件事：跑安装脚本，打开 localhost:3001，接上 DeepSeek / Kimi 等密钥，新建一个 WorkSpace，丢一份材料试「一句话出可编辑 PPT」。",
+  "difficulty": "轻松",
+  "demoUrl": "https://pilotdeck.openbmb.cn",
+  "howItWorksZh": "以 WorkSpace 为基本单元隔离文件、记忆与技能；白盒记忆链路全程可审计；智能路由按难度把请求分给主/子模型；Always-on 在空闲时继续发现与执行任务，结果写成本地文件。前端 Web / CLI / IM 行为一致，并原生支持 MCP。",
+  "coreTechZh": [
+    "WorkSpace 隔离的文件、记忆与技能作用域",
+    "白盒记忆 + Dream Mode 巩固与回滚",
+    "智能路由（强弱模型协同，控制 token 成本）",
+    "Always-on 后台长任务与落盘交付",
+    "MCP 原生；Office Skills（Word / Excel / PPT）"
+  ]
+}
