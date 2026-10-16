@@ -127,6 +127,13 @@
       "file": "2026-09/11-open-pencil.json"
     },
     {
+      "id": "pilotdeck",
+      "fullName": "OpenBMB/PilotDeck",
+      "url": "https://github.com/OpenBMB/PilotDeck",
+      "curatedDate": "2026-10-16",
+      "file": "2026-10/16-pilotdeck.json"
+    },
+    {
       "id": "serena",
       "fullName": "oraios/serena",
       "url": "https://github.com/oraios/serena",
@@ -176,18 +183,18 @@
       "file": "2026-09/29-agent-browser.json"
     },
     {
-      "id": "yoyo-evolve",
-      "fullName": "yologdev/yoyo-evolve",
-      "url": "https://github.com/yologdev/yoyo-evolve",
-      "curatedDate": "2026-09-18",
-      "file": "2026-09/18-yoyo-evolve.json"
-    },
-    {
       "id": "magpie",
       "fullName": "yetone/magpie",
       "url": "https://github.com/yetone/magpie",
       "curatedDate": "2026-10-13",
       "file": "2026-10/13-magpie.json"
+    },
+    {
+      "id": "yoyo-evolve",
+      "fullName": "yologdev/yoyo-evolve",
+      "url": "https://github.com/yologdev/yoyo-evolve",
+      "curatedDate": "2026-09-18",
+      "file": "2026-09/18-yoyo-evolve.json"
     }
   ]
 }
