@@ -1,0 +1,40 @@
+{
+  "id": "trail-code",
+  "fullName": "trailhq/Trail-Code",
+  "url": "https://github.com/trailhq/Trail-Code",
+  "starsApprox": 10700,
+  "hookZh": "Coding agent 每次从零 grep，队友上周摸清的决策它不知道，一改就把约定改回去。",
+  "whyZh": "本地代码地图 + 可提交的 Learnings：tree-sitter 建图不烧模型；个人偏好留本机，仓库决策进 .trail/ 跟代码走；trail check 在 PR 前拦住「你在推翻别人的决定」。MIT。",
+  "tags": [
+    "AI",
+    "coding-agent",
+    "code-map",
+    "learnings",
+    "tree-sitter",
+    "CLI",
+    "developer-tools",
+    "MIT"
+  ],
+  "curatedDate": "2026-10-25",
+  "tweetDraftZh": "🛠️ trailhq/Trail-Code ⭐~10.7k\n\nCoding agent 每次从零 grep，队友上周摸清的决策它不知道，一改就把约定改回去。\n\nTrail-Code：本地代码地图 + 可提交的 Learnings（MIT）。tree-sitter 建图不烧模型；个人偏好留本机，仓库决策进 .trail/ 跟代码走；trail check 在 PR 前拦住「你在推翻别人的决定」。官方跑分：工具调用约少 46%，耗时约少 60%。\n\n快速上手：\n```bash\nnpm install -g @trailhq/trail-code\ntrail init\n```\n\nhttps://github.com/trailhq/Trail-Code",
+  "useForZh": "面向长期用 coding agent 改同一仓库、又怕 agent 从零摸索、把团队约定改回去的人。解决「每次 grep 烧工具调用、上周决策不进上下文、PR 前才发现推翻了别人的决定」——本地地图加速检索，Learnings 跟代码走，trail check 提前拦住。",
+  "featuresZh": [
+    "本地代码地图：tree-sitter 建图，不靠模型扫全库",
+    "Learnings：个人偏好留本机，仓库决策写入 .trail/ 可提交",
+    "trail check：PR 前检查是否推翻既有约定",
+    "官方跑分：工具调用约少 46%，耗时约少 60%",
+    "从 graft 升级为 Trail-Code（Learnings）"
+  ],
+  "howToRunZh": "前提：已安装 Node.js / npm。\n\n**1) 安装：**\n```bash\nnpm install -g @trailhq/trail-code\n```\n\n**2) 初始化：**\n```bash\ntrail init\n```\n\n仓库：https://github.com/trailhq/Trail-Code",
+  "forYouZh": "今天第一件事：全局安装 @trailhq/trail-code，在常用仓库跑 trail init，写一条团队约定进 .trail/，再用 trail check 看 PR 前会拦什么。",
+  "difficulty": "轻松",
+  "demoUrl": "https://github.com/trailhq/Trail-Code",
+  "howItWorksZh": "用 tree-sitter 在本地建代码地图，降低 agent 反复 grep 的成本；Learnings 分个人与仓库两层，仓库决策进 .trail/ 随代码提交；trail check 在合并前对照既有约定，拦住无意识回滚。",
+  "coreTechZh": [
+    "tree-sitter 本地代码地图",
+    "可提交的 .trail/ Learnings",
+    "个人偏好与仓库决策分层",
+    "trail check 约定守卫",
+    "面向 coding agent 的 CLI"
+  ]
+}

@@ -176,6 +176,13 @@
       "file": "2026-09/22-openhuman.json"
     },
     {
+      "id": "trail-code",
+      "fullName": "trailhq/Trail-Code",
+      "url": "https://github.com/trailhq/Trail-Code",
+      "curatedDate": "2026-10-25",
+      "file": "2026-10/25-trail-code.json"
+    },
+    {
       "id": "agent-browser",
       "fullName": "vercel-labs/agent-browser",
       "url": "https://github.com/vercel-labs/agent-browser",
